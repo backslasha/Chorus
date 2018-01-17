@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Hyson_1.0</string>
+    <string name="init_time">00:00</string>
+    <string name="init_duration">/00:00</string>
+
+    <string name="my_music">我的音乐</string>
+    <string name="default_playmode">列表循环</string>
+
+    <string name="open">启动</string>
+    <string name="back">返回</string>
+    <string name="close">关闭</string>
+    <string name="introduce">ClickMusic是我在协同工作室考核期间做的简易音乐播放器,虽然功能少，可是bug多啊</string>
+    <string name="hint_accout">手机号码：</string>
+    <string name="hint_password">验证码：</string>
+    <string name="get_code">获取验证码</string>
+    <string name="login">登陆</string>
+    <string name="org">haibiao.org</string>
+    <string name="notification_content">ClickMusic正在播放</string>
+    <string name="always_light">歌词界面常亮</string>
+    <string name="sleep_mode">睡眠模式</string>
+
+    <string name="theme_change">切换主题</string>
+    <string name="theme_blue">蓝白清新</string>
+    <string name="nullDataError">data cannot be null!</string>
+
+</resources>

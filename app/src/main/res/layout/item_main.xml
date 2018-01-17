@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_at_main_item_id"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="1dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="新建列表1"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:visibility="gone"
+        android:focusable="false"
+        android:layout_marginRight="15dp"
+        android:id="@+id/ibtn_item_local_list_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_play_circle_small" />
+
+</LinearLayout>

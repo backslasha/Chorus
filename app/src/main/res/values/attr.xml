@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="seekBar_height" format="reference|dimension" />
+    <attr name="seekBar_reach_color" format="reference|color" />
+    <attr name="seekBar_unreach_color" format="reference|color" />
+    <attr name="seekBar_thumb_color" format="reference|color" />
+    <attr name="seekBar_thumb_width" format="reference|dimension" />
+    <declare-styleable name="MySeekBar">
+        <attr name="seekBar_height" />
+        <attr name="seekBar_reach_color" />
+        <attr name="seekBar_unreach_color" />
+        <attr name="seekBar_thumb_color" />
+        <attr name="seekBar_thumb_width" />
+    </declare-styleable>
+</resources>
