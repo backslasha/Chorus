@@ -12,13 +12,16 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import java.io.IOException;
 
-import yhb.chorus.activity.MainActivity;
-import yhb.chorus.utils.Utils;
 import yhb.chorus.R;
+import yhb.chorus.entity.MP3;
+import yhb.chorus.list.ListActivity;
+
+import static yhb.chorus.main.MainActivity.TAG;
 
 
 public class MainService extends Service {
@@ -30,11 +33,13 @@ public class MainService extends Service {
     public static final String ACTION_EXIT = "ACTION_EXIT";
     public static final String ACTION_PROGRESS_CHANGE = "ACTION_PROGRESS_CHANGE";
     public static final String ACTION_CHANGE_FINISH = "ACTION_CHANGE_FINISH";
+    public static final String ACTION_SET_VOLUME = "ACTION_SET_VOLUME";
     private MediaPlayer mMediaPlayer;
     private Handler handler;
-    private Runnable progressLaucher;
+    private Runnable progressLauncher;
     private MainReceiver receiver;
-    private Bitmap bitmap;
+    private PlayCenter mPlayCenter;
+    private boolean isBroadcasting = false, isPaused = false;
 
     @Nullable
     @Override
@@ -46,8 +51,9 @@ public class MainService extends Service {
     public void onCreate() {
         super.onCreate();
         handler = new Handler();
-        mMediaPlayer = new MediaPlayer();
         receiver = new MainReceiver();
+        mPlayCenter = PlayCenter.getInstance(this);
+
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ACTION_PLAY_PAUSE);
         intentFilter.addAction(ACTION_NEXT);
@@ -55,34 +61,35 @@ public class MainService extends Service {
         intentFilter.addAction(ACTION_POINT);
         intentFilter.addAction(ACTION_EXIT);
         intentFilter.addAction(ACTION_PROGRESS_CHANGE);
+        intentFilter.addAction(ACTION_SET_VOLUME);
         registerReceiver(receiver, intentFilter);
 
-        foreSerLaunch();
-        prepared();
-
+        mMediaPlayer = new MediaPlayer();
         mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Utils.getInstance(MainService.this).next();
+                Log.d(TAG, "onCompletion: ");
+                mPlayCenter.next();
             }
         });
 
         //循环散播附带歌曲进度信息的广播
-        progressLaucher = new Runnable() {
+        progressLauncher = new Runnable() {
             @Override
             public void run() {
                 try {
                     Intent msgIntent = new Intent(ACTION_RENEW_PROGRESS);
-                    msgIntent.putExtra("curProgress", mMediaPlayer.getCurrentPosition());
+                    msgIntent.putExtra("currentProgress", mMediaPlayer.getCurrentPosition());
                     msgIntent.putExtra("isPlaying", mMediaPlayer.isPlaying());
                     sendBroadcast(msgIntent);
-                    handler.postDelayed(progressLaucher, 500);
+                    handler.postDelayed(progressLauncher, 500);
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 }
             }
         };
-        handler.postDelayed(progressLaucher, 500);
+
+
     }
 
     @Override
@@ -91,7 +98,7 @@ public class MainService extends Service {
         mMediaPlayer.release();
         unregisterReceiver(receiver);
         Intent msgIntent = new Intent(ACTION_RENEW_PROGRESS);
-        msgIntent.putExtra("curProgress", 0);
+        msgIntent.putExtra("currentProgress", 0);
         msgIntent.putExtra("isPlaying", false);
         sendBroadcast(msgIntent);
     }
@@ -100,14 +107,28 @@ public class MainService extends Service {
     public class MainReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Intent serIntent = new Intent(context, MainService.class);
-            startService(serIntent);
+            if (!isBroadcasting) {
+                handler.postDelayed(progressLauncher, 500);
+                isBroadcasting = true;
+            }
+
+            if (mMediaPlayer.isPlaying()) {
+                isPaused = false;
+            }
+
+            if (intent.getAction() == null) {
+                return;
+            }
             switch (intent.getAction()) {
                 case ACTION_PLAY_PAUSE:
-                    if (!mMediaPlayer.isPlaying()) {
+                    if (isPaused) {
+                        mMediaPlayer.start();
+                    } else if (!mMediaPlayer.isPlaying()) {
+                        prepared();
                         mMediaPlayer.start();
                     } else {
                         mMediaPlayer.pause();
+                        isPaused = true;
                     }
                     foreSerLaunch();
                     break;
@@ -135,47 +156,55 @@ public class MainService extends Service {
                 case ACTION_PROGRESS_CHANGE:
                     mMediaPlayer.seekTo(intent.getIntExtra("changeTo", 0));
                     break;
+                case ACTION_SET_VOLUME:
+                    int intExtra = intent.getIntExtra("progress", 0);
+                    float volume = ((float) intExtra) / 10f;
+                    mMediaPlayer.setVolume(volume,volume);
+                    break;
             }
 
         }
     }
 
-    //准备好mMediaPlayer
+    //准备好 MediaPlayer
     private void prepared() {
+
+        MP3 candidate = mPlayCenter.getCandidateMP3();
+
+        if (candidate == null) {
+            return;
+        }
+
         try {
             mMediaPlayer.reset();
-            mMediaPlayer.setDataSource(Utils.mp3Beans.get(Utils.currentPosition).getUri());
+            mMediaPlayer.setDataSource(candidate.getUri());
             mMediaPlayer.prepare();
-            Utils.currentMP3 = Utils.mp3Beans.get(Utils.currentPosition);
+            mPlayCenter.setCurrentMP3(candidate);
 
-        } catch (IndexOutOfBoundsException e) {
-            Utils.mp3Beans = Utils.getInstance(this).getLocals();
-            try {
-                mMediaPlayer.setDataSource(Utils.mp3Beans.get(Utils.currentPosition).getUri());
-                mMediaPlayer.prepare();
-                Utils.currentMP3 = Utils.mp3Beans.get(Utils.currentPosition);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     //启动前台服务的方法
     private void foreSerLaunch() {
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.content_notification);
-        if (Utils.currentMP3 == null) {
+
+        MP3 currentMP3 = mPlayCenter.getCurrentMP3();
+        if (currentMP3 == null) {
             return;
         }
-        remoteViews.setTextViewText(R.id.tv_not_title_id, Utils.currentMP3.getTitle());
-        remoteViews.setTextViewText(R.id.tv_not_author_id, Utils.currentMP3.getArtist());
+
+        remoteViews.setTextViewText(R.id.tv_not_title_id, currentMP3.getTitle());
+        remoteViews.setTextViewText(R.id.tv_not_author_id, currentMP3.getArtist());
         if (mMediaPlayer.isPlaying()) {
-            remoteViews.setImageViewResource(R.id.ibtn_play_or_pause_id, R.drawable.ic_pause_circle_small);
+            remoteViews.setImageViewResource(R.id.ibtn_play_or_pause_id, R.drawable.ic_pause_circle_outline);
         } else {
-            remoteViews.setImageViewResource(R.id.ibtn_play_or_pause_id, R.drawable.ic_play_circle_small);
+            remoteViews.setImageViewResource(R.id.ibtn_play_or_pause_id, R.drawable.ic_play_circle_outline);
         }
-        if ((bitmap = Utils.getInstance(this).getAlbumart(Utils.currentMP3)) != null) {
+        Bitmap bitmap;
+        if ((bitmap = mPlayCenter.getAlbumart(currentMP3)) != null) {
             remoteViews.setImageViewBitmap(R.id.iv_artist_photo_id, bitmap);
 
         } else {
@@ -196,7 +225,10 @@ public class MainService extends Service {
         remoteViews.setOnClickPendingIntent(R.id.ibtn_play_or_pause_id, pSPi);
 
         Notification.Builder builder = new Notification.Builder(this);
-        builder.setSmallIcon(R.drawable.ic_launcher).setTicker(Utils.currentMP3.getTitle()).setContent(remoteViews).setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0));
+        builder.setSmallIcon(R.drawable.ic_launcher)
+                .setTicker(currentMP3.getTitle())
+                .setContent(remoteViews)
+                .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, ListActivity.class), 0));
         Notification notification = builder.build();
 
         startForeground(1, notification);

@@ -20,6 +20,8 @@ import java.util.List;
 import yhb.chorus.service.MainService;
 import yhb.chorus.entity.MP3;
 
+import static yhb.chorus.list.ListActivity.TAG;
+
 
 public class Utils {
 
@@ -105,9 +107,6 @@ public class Utils {
                 bean.setAlbumId(albumId);
                 bean.setDuration(duration);
                 bean.setArtist(artist);
-                bean.setIsFavourite(isFavourite);
-                bean.setIsLocal(isLocal);
-                bean.setIsRecent(isRecent);
 
                 if (isLocal == 0) {
                     continue;
@@ -118,7 +117,7 @@ public class Utils {
             }
 
         } while (cursor.moveToNext());
-        Log.d("haibiao", "本地数据库扫描完毕，总共条" + cursor.getCount() + "数据,cursor已关闭");
+        Log.d(TAG, "本地数据库扫描完毕，总共条" + cursor.getCount() + "数据,cursor已关闭");
         cursor.close();
 
         return list;
@@ -170,7 +169,7 @@ public class Utils {
     }
 
 
-    public Bitmap getAlbumart(MP3 mp3Bean) {
+    public Bitmap getCover(MP3 mp3Bean) {
         Bitmap albumArtBitMap = null;
         BitmapFactory.Options options = new BitmapFactory.Options();
         try {

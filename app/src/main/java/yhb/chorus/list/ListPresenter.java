@@ -1,4 +1,4 @@
-package yhb.chorus.main;
+package yhb.chorus.list;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,30 +13,22 @@ import java.util.ArrayList;
 import yhb.chorus.db.MP3DBHelper;
 import yhb.chorus.db.MP3DbSchema.MP3Table;
 import yhb.chorus.entity.MP3;
-import yhb.chorus.list.ListContract;
 import yhb.chorus.service.PlayCenter;
 
-import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.ALBUM;
-import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.ALBUM_ID;
-import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.ARTIST;
-import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.DURATION;
-import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.IS_MUSIC;
-import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.SIZE;
-import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.TITLE;
-import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.URI;
+import static yhb.chorus.db.MP3DbSchema.MP3Table.Cols.*;
 import static yhb.chorus.list.ListActivity.TAG;
 
 /**
  * Created by yhb on 18-1-17.
  */
 
-class MainPresenter implements MainContract.Presenter {
+class ListPresenter implements ListContract.Presenter {
     private Context mContext;
-    private MainContract.View mView;
-    private PlayCenter mPlayCenter;
+    private ListContract.View mView;
     private SQLiteDatabase mDatabase;
+    private PlayCenter mPlayCenter;
 
-    MainPresenter(Context context, MainContract.View view) {
+    ListPresenter(Context context, ListContract.View view) {
         mContext = context;
         mView = view;
         mView.setPresenter(this);
@@ -46,12 +38,28 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void start() {
-        ArrayList<MP3> mp3s = query(MP3Table.NAME, MP3.class, null, null);
-        mPlayCenter.setMp3s(mp3s);
+        getLocalMP3s();
     }
 
+    @Override
+    public void collectLocalMP3s() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mView.showProgressBar();
+                scanMediaStore();
+                mView.hideProgressBar();
+            }
+        }).start();
+    }
 
-    private  <T> ArrayList<T> query(String tableName, Class<T> entityType, String fieldName, String value) {
+    @Override
+    public void getLocalMP3s() {
+        ArrayList<MP3> mp3s = query(MP3Table.NAME, MP3.class, null, null);
+        mView.showSongList(mp3s);
+    }
+
+    private <T> ArrayList<T> query(String tableName, Class<T> entityType, String fieldName, String value) {
 
         ArrayList<T> list = new ArrayList<>();
         Cursor cursor;
@@ -68,7 +76,7 @@ class MainPresenter implements MainContract.Presenter {
                     Object content = null;
                     String columnName = cursor.getColumnName(i);// 获取数据记录第i条字段名的
                     if (columnName.equals("_id")) {
-                        columnName = columnName.replace("_","" );
+                        columnName = columnName.replace("_", "");
                     }
                     switch (columnName) {
                         case MP3Table.Cols.ID:
@@ -80,7 +88,7 @@ class MainPresenter implements MainContract.Presenter {
                         case MP3Table.Cols.ARTIST:
                         case MP3Table.Cols.URI:
                         case MP3Table.Cols.ALBUM:
-                            content= cursor.getString(cursor.getColumnIndex(columnName));
+                            content = cursor.getString(cursor.getColumnIndex(columnName));
                             break;
                         case MP3Table.Cols.IS_MUSIC:
                         case MP3Table.Cols.DURATION:
@@ -104,5 +112,36 @@ class MainPresenter implements MainContract.Presenter {
         return list;
     }
 
+    private void scanMediaStore() {
+        mDatabase.execSQL("delete from " + MP3Table.NAME);
+        Cursor cursor = mContext.getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+        if (cursor == null) {
+            return;
+        }
+        while (cursor.moveToNext()) {
+            String title = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE));
+            String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
+            String uri = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
+            int albumId = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
+            int duration = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
+            int size = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.SIZE));
+            String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM));
+            int isMusic = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.IS_MUSIC));
 
+            ContentValues values = new ContentValues();
+            values.put(TITLE, title);
+            values.put(ARTIST, artist);
+            values.put(DURATION, duration);
+            values.put(SIZE, size);
+            values.put(URI, uri);
+            values.put(ALBUM, album);
+            values.put(ALBUM_ID, albumId);
+            values.put(IS_MUSIC, isMusic);
+
+            mDatabase.insert(MP3Table.NAME, null, values);
+        }
+        Log.d(TAG, "扫描完毕，总共条" + cursor.getCount() + "数据");
+
+        cursor.close();
+    }
 }

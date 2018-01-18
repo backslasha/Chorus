@@ -77,7 +77,7 @@ public class LiricFragment extends Fragment {
         lirics = lirBuilder.getLirFromLocal();
         lirView.setLirics(lirics);
 
-//        Bitmap bitmap = Utils.getInstance(getActivity()).getAlbumart(Utils.currentMp3Bean);
+//        Bitmap bitmap = PlayCenter.getInstance(getActivity()).getAlbumart(PlayCenter.currentMp3Bean);
 //        Drawable drawable = new BitmapDrawable(bitmap);
 //        if(bitmap!=null){
 //            lirView.setBackground(drawable);

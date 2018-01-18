@@ -63,7 +63,7 @@ public class MainListViewBaseAdapter extends BaseAdapter {
         }
 
 
-//        if (Utils.getInstance(mContext).mp3Beans.get(position).equals(tempList)) {
+//        if (PlayCenter.getInstance(mContext).mp3s.get(position).equals(tempList)) {
 //            return view;
 //        }
 //        final Drawable playSmall = mContext.getResources().getDrawable(R.drawable.ic_play_circle_small);

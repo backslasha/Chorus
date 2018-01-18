@@ -44,8 +44,8 @@ public class ConsoleFragment extends Fragment implements View.OnClickListener {
         next = (Button) view.findViewById(R.id.btn_next_Id);
         previous = (Button) view.findViewById(R.id.btn_previous_Id);
         songTitle = (TextView) view.findViewById(R.id.tv_song_title_Id);
-        songCur = (TextView) view.findViewById(R.id.tv_song_current_progress_Id);
-        songDur = (TextView) view.findViewById(R.id.tv_song_duration_Id);
+        songCur = (TextView) view.findViewById(R.id.text_view_current_progress);
+        songDur = (TextView) view.findViewById(R.id.text_view_max_progress);
         artistPho = (ImageView) view.findViewById(R.id.iv_artist_photo_id);
         console = (LinearLayout) view.findViewById(R.id.ll_console_id);
 
@@ -88,10 +88,10 @@ public class ConsoleFragment extends Fragment implements View.OnClickListener {
                 Utils.currentMP3 = Utils.mp3Beans.get(Utils.currentPosition);
             }
         }
-        receiver = new ConsoleReceiver();
-        IntentFilter intentFilter = new IntentFilter(MainService.ACTION_RENEW_PROGRESS);
-        intentFilter.addAction(MainService.ACTION_CHANGE_FINISH);
-        context.registerReceiver(receiver, intentFilter);
+            receiver = new ConsoleReceiver();
+            IntentFilter intentFilter = new IntentFilter(MainService.ACTION_RENEW_PROGRESS);
+            intentFilter.addAction(MainService.ACTION_CHANGE_FINISH);
+            context.registerReceiver(receiver, intentFilter);
 
         mainInterface = (ConsoleInterface) context;
     }
@@ -104,7 +104,7 @@ public class ConsoleFragment extends Fragment implements View.OnClickListener {
             switch (intent.getAction()) {
 
                 case MainService.ACTION_CHANGE_FINISH:
-                    if ((bitmap = Utils.getInstance(getActivity()).getAlbumart(Utils.currentMP3)) != null) {
+                    if ((bitmap = Utils.getInstance(getActivity()).getCover(Utils.currentMP3)) != null) {
                         artistPho.setImageBitmap(bitmap);
                     } else {
                         artistPho.setImageResource(R.drawable.marry);

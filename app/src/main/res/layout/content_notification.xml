@@ -1,57 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
-    android:gravity="center_vertical"
+    android:layout_height="wrap_content"
     android:background="@android:color/transparent"
-    android:orientation="horizontal">
-    <ImageView
-        android:id="@+id/iv_artist_photo_id"
-        android:scaleType="fitXY"
-        android:src="@drawable/marry"
-        android:layout_width="68dp"
-        android:layout_height="76dp" />
-    <LinearLayout
-        android:layout_marginLeft="5dp"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
-        <TextView
-            android:gravity="center_vertical"
-            android:textSize="14sp"
-            android:textColor="@color/colorAccent"
-            android:id="@+id/tv_not_title_id"
-            android:layout_weight="1.5"
-            android:layout_width="match_parent"
-            android:layout_height="0dp" />
-        <TextView
-            android:gravity="center_vertical"
-            android:textSize="10sp"
-            android:textColor="@color/colorAccent"
-            android:id="@+id/tv_not_author_id"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp" />
-    </LinearLayout>
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_small">
 
     <ImageView
+        android:id="@+id/iv_artist_photo_id"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/marry" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="6dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_not_title_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_not_author_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <ImageButton
+        style="?android:attr/buttonBarButtonStyle"
         android:id="@+id/ibtn_play_or_pause_id"
-        android:src="@drawable/ic_play_circle_small"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        />
-    <ImageView
-        android:layout_marginLeft="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_play_circle_outline" />
+
+    <ImageButton
+        style="?android:attr/buttonBarButtonStyle"
         android:id="@+id/ibtn_next_id"
-        android:src="@drawable/ic_skip_next"
         android:layout_width="32dp"
-        android:layout_height="32dp" />
-    <ImageView
-        android:layout_marginLeft="16dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/ic_skip_next" />
+
+    <ImageButton
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_gravity="top"
         android:id="@+id/ibtn_exit_id"
-        android:src="@drawable/ic_delete"
-        android:layout_width="24dp"
-        android:layout_height="24dp" />
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_delete" />
 
 </LinearLayout>

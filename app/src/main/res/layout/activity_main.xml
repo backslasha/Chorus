@@ -85,14 +85,11 @@
                 android:layout_height="1dp"
                 android:src="@color/colorAccent" />
 
-            <yhb.chorus.widgets.MySeekBar
+            <MySeekBar
                 android:id="@+id/sb_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="0dp"
-                app:seekBar_reach_color="@color/colorAccent"
-                app:seekBar_thumb_color="@color/colorAccent"
-                app:seekBar_height="2dp"
                 />
 
             <ImageView

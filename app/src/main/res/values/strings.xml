@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hyson_1.0</string>
     <string name="init_time">00:00</string>
-    <string name="init_duration">/00:00</string>
+    <string name="init_duration">00:00</string>
 
     <string name="my_music">我的音乐</string>
     <string name="default_playmode">列表循环</string>
@@ -22,5 +22,6 @@
     <string name="theme_change">切换主题</string>
     <string name="theme_blue">蓝白清新</string>
     <string name="nullDataError">data cannot be null!</string>
+    <string name="volume">音量：</string>
 
 </resources>

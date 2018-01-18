@@ -1,17 +1,10 @@
 package yhb.chorus.db;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import java.lang.reflect.Field;
 
 import yhb.chorus.db.MP3DbSchema.MP3Table;
-
-import static yhb.chorus.main.MainActivity.TAG;
 
 /**
  * Created by yhb on 18-1-17.

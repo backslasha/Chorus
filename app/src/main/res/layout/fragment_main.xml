@@ -1,27 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_songs"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_middle"
-        android:paddingBottom="@dimen/padding_small"
-        android:paddingEnd="72dp"
-        tools:ignore="RtlSymmetry" />
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/padding_middle"
+        android:paddingStart="@dimen/padding_middle">
 
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/seek_bar"
-        style="@android:style/Widget.Material.Light.ProgressBar.Inverse"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/volume"
+            android:textColor="@color/colorAccent" />
+
+        <yhb.chorus.widgets.SlimSeekBar
+            android:id="@+id/slim_seek_bar_volume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="10"
+            app:seekBar_height="2dp"
+            app:seekBar_not_reach_color="@android:color/darker_gray"
+            app:seekBar_reach_color="@color/colorAccent"
+            app:seekBar_thumb_icon="@color/colorAccent"
+            app:seekBar_thumb_radius="6dp" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/image_view_cover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:thumb="@null"
-        android:visibility="invisible"
-        tools:ignore="NewApi" />
+        android:paddingBottom="@dimen/padding_middle"
+        android:paddingTop="@dimen/padding_small"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher" />
 
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/text_view_song_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/padding_small"
+        android:paddingStart="@dimen/padding_small"
+        android:textSize="24sp"
+        tools:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/text_view_artist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/padding_small"
+        android:paddingStart="@dimen/padding_small"
+        android:textSize="12sp"
+        tools:text="@string/app_name" />
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/padding_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/padding_middle"
+        android:paddingStart="@dimen/padding_middle">
+
+        <TextView
+            android:id="@+id/text_view_current_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/init_time"
+            android:textColor="@color/colorAccent" />
+
+        <yhb.chorus.widgets.SlimSeekBar
+            android:id="@+id/slim_seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:seekBar_height="2dp"
+            app:seekBar_not_reach_color="@android:color/darker_gray"
+            app:seekBar_reach_color="@color/colorAccent"
+            app:seekBar_thumb_icon="@color/colorAccent"
+            app:seekBar_thumb_radius="6dp" />
+
+        <TextView
+            android:id="@+id/text_view_max_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/init_duration"
+            android:textColor="@color/colorAccent" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/image_button_play_mode"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/padding_middle"
+            android:src="@drawable/ic_shuffle" />
+
+        <ImageButton
+            android:id="@+id/image_button_previous"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_skip_previous" />
+
+        <ImageButton
+            android:id="@+id/image_button_play_or_pause"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_play_circle_outline" />
+
+        <ImageButton
+            android:id="@+id/image_button_next"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_skip_next" />
+
+        <ImageButton
+            android:id="@+id/image_button_queue_music"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_middle"
+            android:src="@drawable/ic_queue_music" />
+    </LinearLayout>
 </LinearLayout>

@@ -30,14 +30,14 @@ import yhb.chorus.fragment.MainFragment;
 import yhb.chorus.service.MainService;
 import yhb.chorus.utils.Mp3Scanner;
 import yhb.chorus.utils.Utils;
-import yhb.chorus.widgets.MySeekBar;
+import yhb.chorus.widgets.SlimSeekBar;
 import yhb.chorus.R;
 
 
 public class MainActivity extends BaseActivity implements MainFragment.MainInterface, ConsoleFragment.ConsoleInterface, LiricFragment.LiricInterface, View.OnClickListener {
     private Button playMode;
     private Toolbar toolbar;
-    private MySeekBar mySeekbar;
+    private SlimSeekBar mSlimSeekbar;
     private ImageButton addList;
     private TextView toolbarTitle;
     private FragmentManager fragmentManager;
@@ -71,7 +71,7 @@ public class MainActivity extends BaseActivity implements MainFragment.MainInter
         toolbarTitle = (TextView) findViewById(R.id.tv_toolbar_title_id);
         addList = (ImageButton) findViewById(R.id.ibtn_add_id);
         toolbar = (Toolbar) findViewById(R.id.toolbar_id);
-        mySeekbar = (MySeekBar) findViewById(R.id.sb_id);
+        mSlimSeekbar = (SlimSeekBar) findViewById(R.id.sb_id);
 
         playMode = (Button) findViewById(R.id.btn_playmode_id);
         playMode.setOnClickListener(this);
@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity implements MainFragment.MainInter
         IntentFilter intentFilter = new IntentFilter(MainService.ACTION_RENEW_PROGRESS);
         registerReceiver(receiver, intentFilter);
 
-        mySeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        mSlimSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
@@ -187,8 +187,8 @@ public class MainActivity extends BaseActivity implements MainFragment.MainInter
     private class SeekBarReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            mySeekbar.setMax(Utils.currentMP3.getDuration());
-            mySeekbar.setProgress(intent.getIntExtra("curProgress", 0));
+            mSlimSeekbar.setMax(Utils.currentMP3.getDuration());
+            mSlimSeekbar.setProgress(intent.getIntExtra("curProgress", 0));
         }
     }
 

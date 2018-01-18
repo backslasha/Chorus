@@ -7,8 +7,6 @@
     android:paddingRight="5dp"
     android:paddingTop="5dp">
 
-
-
     <ImageView
         android:scaleType="fitXY"
         android:id="@+id/iv_artist_photo_id"
@@ -41,14 +39,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_song_current_progress_Id"
+                android:id="@+id/text_view_current_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/init_time"
                 android:textColor="@color/colorAccent" />
 
             <TextView
-                android:id="@+id/tv_song_duration_Id"
+                android:id="@+id/text_view_max_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/init_duration"

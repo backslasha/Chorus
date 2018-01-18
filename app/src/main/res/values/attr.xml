@@ -2,14 +2,16 @@
 <resources>
     <attr name="seekBar_height" format="reference|dimension" />
     <attr name="seekBar_reach_color" format="reference|color" />
-    <attr name="seekBar_unreach_color" format="reference|color" />
-    <attr name="seekBar_thumb_color" format="reference|color" />
-    <attr name="seekBar_thumb_width" format="reference|dimension" />
-    <declare-styleable name="MySeekBar">
+    <attr name="seekBar_not_reach_color" format="reference|color" />
+    <attr name="seekBar_thumb_icon" format="reference|color" />
+    <attr name="seekBar_thumb_radius" format="reference|dimension" />
+
+    <declare-styleable name="SlimSeekBar">
         <attr name="seekBar_height" />
         <attr name="seekBar_reach_color" />
-        <attr name="seekBar_unreach_color" />
-        <attr name="seekBar_thumb_color" />
-        <attr name="seekBar_thumb_width" />
+        <attr name="seekBar_not_reach_color" />
+        <attr name="seekBar_thumb_icon" />
+        <attr name="seekBar_thumb_radius" />
     </declare-styleable>
+
 </resources>
