@@ -33,32 +33,38 @@
             android:id="@+id/tv_not_author_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:gravity="center_vertical"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="2"
+            android:scrollHorizontally="true"
             android:textColor="@color/colorAccent"
             android:textSize="12sp" />
     </LinearLayout>
 
     <ImageButton
-        style="?android:attr/buttonBarButtonStyle"
         android:id="@+id/ibtn_play_or_pause_id"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_play_circle_outline" />
+        android:src="@drawable/ic_play_circle_small" />
 
     <ImageButton
-        style="?android:attr/buttonBarButtonStyle"
         android:id="@+id/ibtn_next_id"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginLeft="8dp"
         android:src="@drawable/ic_skip_next" />
 
     <ImageButton
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_gravity="top"
         android:id="@+id/ibtn_exit_id"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_gravity="top"
         android:layout_marginStart="16dp"
         android:src="@drawable/ic_delete" />
 

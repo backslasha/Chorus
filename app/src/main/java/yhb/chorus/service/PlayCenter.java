@@ -22,18 +22,18 @@ public class PlayCenter {
     private int currentPosition = 0;
     private int playMode = MODE_LIST_LOOP;
     private Context mContext;
+    private float mVolume = 1f;
 
     public List<MP3> getMp3s() {
         return mp3s;
     }
 
     private List<MP3> mp3s;
-    private MP3 currentMP3, candidateMP3;
+    private MP3 currentMP3;
 
     public static final int MODE_SINGLE_LOOP = 1;
     public static final int MODE_LIST_LOOP = 2;
     public static final int MODE_RANDOM = 3;
-    private int mVolume;
 
     private PlayCenter(Context context) {
         mContext = context;
@@ -46,11 +46,33 @@ public class PlayCenter {
         return sPlayCenter;
     }
 
+    public void next(boolean fromUser) {
+
+        sureServiceAlive();
+
+        currentMP3 = pickCandidateNext(fromUser);
+
+        Intent intent = new Intent(MainService.ACTION_NEXT);
+
+        mContext.sendBroadcast(intent);
+
+    }
+
+    public void previous(boolean fromUser) {
+
+        sureServiceAlive();
+
+        currentMP3 = pickCandidatePrevious(fromUser);
+
+        Intent intent = new Intent(MainService.ACTION_PREVIOUS);
+        mContext.sendBroadcast(intent);
+    }
+
     public void next() {
 
         sureServiceAlive();
 
-        candidateMP3 = pickCandidateNext();
+        currentMP3 = pickCandidateNext(false);
 
         Intent intent = new Intent(MainService.ACTION_NEXT);
 
@@ -62,7 +84,7 @@ public class PlayCenter {
 
         sureServiceAlive();
 
-        candidateMP3 = pickCandidatePrevious();
+        currentMP3 = pickCandidatePrevious(false);
 
         Intent intent = new Intent(MainService.ACTION_PREVIOUS);
         mContext.sendBroadcast(intent);
@@ -70,8 +92,8 @@ public class PlayCenter {
 
     public void playOrPause() {
 
-        if (candidateMP3 == null) {
-            candidateMP3 = pickCandidateNext();
+        if (currentMP3 == null) {
+            currentMP3 = pickCandidateNext(false);
         }
 
         sureServiceAlive();
@@ -84,17 +106,22 @@ public class PlayCenter {
         if (mp3 == null) {
             return;
         }
-        if (-1 == mp3s.indexOf(mp3)) {
+
+        int index = mp3s.indexOf(mp3);
+        if (-1 == index) {
             mp3s.add(mp3);
+            index = mp3s.size() - 1;
         }
 
-        candidateMP3 = mp3;
+        currentPosition = index;
+
+        currentMP3 = mp3;
 
         Intent intent = new Intent(MainService.ACTION_POINT);
         mContext.sendBroadcast(intent);
     }
 
-    private MP3 pickCandidatePrevious() {
+    private MP3 pickCandidatePrevious(boolean fromUser) {
         if (playMode == MODE_LIST_LOOP) {
             if (currentPosition > 0) {
                 currentPosition -= 1;
@@ -104,13 +131,19 @@ public class PlayCenter {
         } else if (playMode == MODE_RANDOM) {
             currentPosition = (int) (mp3s.size() * Math.random());
         } else if (playMode == MODE_SINGLE_LOOP) {
-
+            if (fromUser) {
+                if (currentPosition > 0) {
+                    currentPosition -= 1;
+                } else {
+                    currentPosition = mp3s.size() - 1;
+                }
+            }
         }
 
         return mp3s.get(currentPosition);
     }
 
-    private MP3 pickCandidateNext() {
+    private MP3 pickCandidateNext(boolean fromUser) {
 
         if (playMode == PlayCenter.MODE_LIST_LOOP) {
             if (currentPosition + 1 <= mp3s.size() - 1) {
@@ -121,11 +154,16 @@ public class PlayCenter {
         } else if (playMode == PlayCenter.MODE_RANDOM) {
             currentPosition = (int) (mp3s.size() * Math.random());
         } else if (playMode == PlayCenter.MODE_SINGLE_LOOP) {
-
+            if (fromUser) {
+                if (currentPosition > 0) {
+                    currentPosition += 1;
+                } else {
+                    currentPosition = 0;
+                }
+            }
         }
         return mp3s.get(currentPosition);
     }
-
 
     public void nextPlayMode() {
         switch (playMode) {
@@ -144,13 +182,13 @@ public class PlayCenter {
         }
     }
 
-    Bitmap getAlbumart(MP3 mp3Bean) {
+    public Bitmap getAlbumart(MP3 mp3Bean) {
         Bitmap albumArtBitMap = null;
         BitmapFactory.Options options = new BitmapFactory.Options();
         try {
 
             Uri uri = Uri
-                    .parse("content://media/external/audio/albumart/" + mp3s.get(currentPosition).getAlbumId());
+                    .parse("content://media/external/audio/albumart/" + mp3Bean.getAlbumId());
 
             ParcelFileDescriptor pfd = mContext.getContentResolver()
                     .openFileDescriptor(uri, "r");
@@ -165,10 +203,6 @@ public class PlayCenter {
         } catch (Exception e) {
         }
         return albumArtBitMap;
-    }
-
-    MP3 getCandidateMP3() {
-        return candidateMP3;
     }
 
     void setCurrentMP3(MP3 currentMP3) {
@@ -189,20 +223,15 @@ public class PlayCenter {
         mContext.startService(serIntent);
     }
 
-    public void updateCover(ImageView imageViewCover) {
-        Bitmap albumart = getAlbumart(currentMP3);
-        imageViewCover.setImageBitmap(albumart);
-    }
-
     public int getPlayMode() {
         return playMode;
     }
 
-    public int getVolume() {
-        return mVolume;
+    public void recordVolume(float volume) {
+        mVolume = volume;
     }
 
-    public void setVolume(int volume) {
-        mVolume = volume;
+    public float getVolume() {
+        return mVolume;
     }
 }

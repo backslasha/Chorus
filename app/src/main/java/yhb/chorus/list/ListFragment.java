@@ -77,6 +77,12 @@ public class ListFragment extends Fragment implements ListContract.View {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.release();
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.drawer_menu, menu);
     }

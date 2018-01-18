@@ -22,6 +22,8 @@ public interface ListContract {
     }
 
     interface Presenter extends BasePresenter {
+        void release();
+
         /**
          * scan and collect all local mp3s, then create a database of them.
          */

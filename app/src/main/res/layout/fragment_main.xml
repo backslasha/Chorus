@@ -14,7 +14,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:gravity="center"
         android:orientation="horizontal"
@@ -24,15 +23,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/volume"
-            android:textColor="@color/colorAccent" />
+            android:text="@string/volume_system"
+            android:textColor="@android:color/black" />
 
         <yhb.chorus.widgets.SlimSeekBar
-            android:id="@+id/slim_seek_bar_volume"
+            android:id="@+id/slim_seek_bar_volume_system"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:max="10"
+            android:paddingEnd="@dimen/padding_small"
+            android:paddingStart="@dimen/padding_middle"
             app:seekBar_height="2dp"
             app:seekBar_not_reach_color="@android:color/darker_gray"
             app:seekBar_reach_color="@color/colorAccent"
@@ -41,15 +42,46 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/padding_small"
+        android:paddingStart="@dimen/padding_middle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/volume"
+            android:textColor="@android:color/black" />
+
+        <yhb.chorus.widgets.SlimSeekBar
+            android:id="@+id/slim_seek_bar_volume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="10"
+            android:paddingEnd="@dimen/padding_small"
+            android:paddingStart="@dimen/padding_middle"
+            app:seekBar_height="2dp"
+            app:seekBar_not_reach_color="@android:color/darker_gray"
+            app:seekBar_reach_color="@color/colorAccent"
+            app:seekBar_thumb_icon="@color/colorAccent"
+            app:seekBar_thumb_radius="6dp" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/image_view_cover"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="314dp"
+        android:layout_height="224dp"
         android:paddingBottom="@dimen/padding_middle"
         android:paddingTop="@dimen/padding_small"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/marry" />
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
@@ -60,10 +92,17 @@
         android:id="@+id/text_view_song_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
         android:paddingEnd="@dimen/padding_small"
         android:paddingStart="@dimen/padding_small"
-        android:textSize="24sp"
-        tools:text="@string/app_name" />
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="@string/song_name"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/text_view_artist_name"
@@ -71,14 +110,15 @@
         android:layout_height="wrap_content"
         android:paddingEnd="@dimen/padding_small"
         android:paddingStart="@dimen/padding_small"
-        android:textSize="12sp"
-        tools:text="@string/app_name" />
+        android:text="@string/artist_name"
+        android:textColor="#888888"
+        android:textSize="12sp" />
 
 
     <LinearLayout
-        android:layout_marginTop="@dimen/padding_large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_large"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingEnd="@dimen/padding_middle"
@@ -115,6 +155,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_middle"
         android:gravity="center"
         android:orientation="horizontal">
 

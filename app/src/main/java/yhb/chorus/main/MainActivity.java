@@ -1,13 +1,24 @@
 package yhb.chorus.main;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import yhb.chorus.BuildConfig;
 import yhb.chorus.R;
 import yhb.chorus.utils.ActivityUtils;
 
@@ -19,10 +30,39 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     private MainPresenter mPresenter;
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_container);
+
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+
+            try {
+                Calendar calendar = Calendar.getInstance();
+                Date today = calendar.getTime();
+
+                calendar.setTime(new SimpleDateFormat("yy-MM-dd").parse("2018-02-10"));
+                long delta = calendar.getTimeInMillis() - today.getTime();
+
+                int days = (int) (delta / 1000 / 60 / 60 / 24);
+
+                delta -= days * 1000 * 60 * 60 * 24;
+
+                int hours = (int) (delta / 1000 / 60 / 60);
+
+                delta -= hours * 1000 * 60 * 60;
+
+                int minutes = (int) (delta / 1000 / 60);
+
+                supportActionBar.setTitle("还有 " + days + " 天 " + hours + " 小时 " +minutes+ " 分钟");
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
 
         MainFragment mainFragment = (MainFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.container);

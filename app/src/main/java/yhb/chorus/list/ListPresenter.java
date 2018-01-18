@@ -42,6 +42,11 @@ class ListPresenter implements ListContract.Presenter {
     }
 
     @Override
+    public void release() {
+        mDatabase.close();
+    }
+
+    @Override
     public void collectLocalMP3s() {
         new Thread(new Runnable() {
             @Override

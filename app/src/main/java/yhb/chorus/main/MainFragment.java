@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
@@ -22,7 +23,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import yhb.chorus.R;
 import yhb.chorus.common.SimpleAdapter;
@@ -44,12 +44,11 @@ import static yhb.chorus.service.PlayCenter.MODE_SINGLE_LOOP;
 public class MainFragment extends Fragment implements MainContract.View, View.OnClickListener {
 
     private MainContract.Presenter mPresenter;
-    private PlayCenter mPlayCenter;
     private ImageView mImageViewCover;
     private ImageButton buttonPlayOrPause;
     private ImageButton buttonPlayMode;
     private TextView textViewCurrentProgress, textViewMaxProgress, textViewSongName, textViewArtistName;
-    private SeekBar mSeekBar, mSeekBarVolume;
+    private SeekBar mSeekBar, mSeekBarVolume, mSeekBarVolumeSystem;
     private ConsoleReceiver mReceiver;
 
     public static MainFragment newInstance() {
@@ -62,7 +61,6 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        mPlayCenter = PlayCenter.getInstance(getActivity());
         mReceiver = new ConsoleReceiver();
         IntentFilter intentFilter = new IntentFilter(MainService.ACTION_RENEW_PROGRESS);
         intentFilter.addAction(MainService.ACTION_CHANGE_FINISH);
@@ -82,11 +80,12 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     @Override
     public void onResume() {
         super.onResume();
-        updatePlayMode();
-        updateCover();
-        updateVolume();
-        updateSongName();
-        updateArtistName();
+        mPresenter.loadSavedSetting();
+        mPresenter.reloadCurrentWidgetsData(true);
+        invalidateSeekBarVolumeSystem(
+                mPresenter.getCurrentVolumeSystem(),
+                mPresenter.getMaxVolumeSystem()
+        );
     }
 
     private void bindViews(View root) {
@@ -98,11 +97,11 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
         mImageViewCover = root.findViewById(R.id.image_view_cover);
         mSeekBar = root.findViewById(R.id.slim_seek_bar);
         mSeekBarVolume = root.findViewById(R.id.slim_seek_bar_volume);
+        mSeekBarVolumeSystem = root.findViewById(R.id.slim_seek_bar_volume_system);
         textViewMaxProgress = root.findViewById(R.id.text_view_max_progress);
         textViewCurrentProgress = root.findViewById(R.id.text_view_current_progress);
         textViewSongName = root.findViewById(R.id.text_view_song_name);
         textViewArtistName = root.findViewById(R.id.text_view_artist_name);
-
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             private int progress = -1;
 
@@ -139,7 +138,31 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                     Intent proChangeIntent = new Intent(MainService.ACTION_SET_VOLUME);
                     proChangeIntent.putExtra("progress", progress);
                     getActivity().sendBroadcast(proChangeIntent);
-                    mPlayCenter.setVolume(progress);
+
+                    float volume = ((float) progress) / ((float) seekBar.getMax());
+                    mPresenter.saveCurrentVolume(volume);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        mSeekBarVolumeSystem.setMax(mPresenter.getMaxVolumeSystem());
+        mSeekBarVolumeSystem.setProgress(mPresenter.getCurrentVolumeSystem());
+        mSeekBarVolumeSystem.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    mPresenter.setCurrentVolumeSystem(progress);
                 }
             }
 
@@ -170,6 +193,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mPresenter.release();
         getActivity().unregisterReceiver(mReceiver);
     }
 
@@ -204,33 +228,30 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.image_button_next:
-                mPlayCenter.next();
+                mPresenter.next();
                 break;
             case R.id.image_button_play_or_pause:
-                mPlayCenter.playOrPause();
+                mPresenter.playOrPause();
+                mPresenter.reloadCurrentWidgetsData(true);
                 break;
             case R.id.image_button_previous:
-                mPlayCenter.previous();
+                mPresenter.previous();
                 break;
             case R.id.image_button_play_mode:
-                mPlayCenter.nextPlayMode();
-                updatePlayMode();
+                mPresenter.nextPlayMode();
+                mPresenter.reloadCurrentWidgetsData(false);
                 break;
             case R.id.image_button_queue_music:
                 showBottomSheet();
                 break;
         }
-        updateCover();
-        updateSongName();
-        updateArtistName();
     }
 
-    private void updateVolume() {
-        mSeekBarVolume.setProgress(mPlayCenter.getVolume());
-    }
+    @Override
+    public void invalidateWidgets(int progress, int playMode, Bitmap cover, String songName, String artistName) {
 
-    private void updatePlayMode() {
-        int playMode = mPlayCenter.getPlayMode();
+        mSeekBarVolume.setProgress(progress);
+
         switch (playMode) {
             case MODE_LIST_LOOP:
                 buttonPlayMode.setImageResource(R.drawable.ic_repeat_list);
@@ -245,34 +266,29 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 buttonPlayMode.setImageResource(R.drawable.ic_repeat_list);
                 break;
         }
-    }
 
-    private void updateCover() {
-        mPlayCenter.updateCover(mImageViewCover);
-    }
-
-    private void updateSongName() {
-        MP3 currentMP3 = mPlayCenter.getCurrentMP3();
-        if (currentMP3 == null) {
-            return;
+        if (cover != null) {
+            mImageViewCover.setImageBitmap(cover);
         }
-        textViewSongName.setText(currentMP3.getTitle());
+
+        textViewSongName.setText(songName);
+
+        textViewArtistName.setText(artistName);
     }
 
-    private void updateArtistName() {
-        MP3 currentMP3 = mPlayCenter.getCurrentMP3();
-        if (currentMP3 == null) {
-            return;
-        }
-        textViewArtistName.setText(currentMP3.getArtist());
+    @Override
+    public void invalidateSeekBarVolumeSystem(int currentVolume, int volumeSystemMax) {
+        mSeekBarVolumeSystem.setMax(volumeSystemMax);
+        mSeekBarVolumeSystem.setProgress(currentVolume);
     }
 
     private BottomSheetDialog bottomSheetDialog = null;
+
     private SimpleAdapter<MP3> mMP3SimpleAdapter;
 
     private void showBottomSheet() {
         if (bottomSheetDialog != null && mMP3SimpleAdapter != null) {
-            mMP3SimpleAdapter.performDataChanged(mPlayCenter.getMp3s());
+            mMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3s());
             bottomSheetDialog.show();
             return;
         }
@@ -284,7 +300,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        PlayCenter.getInstance(getActivity()).point(mp3);
+                       mPresenter.point(mp3);
+                       mPresenter.reloadCurrentWidgetsData(true);
                     }
                 });
             }
@@ -293,7 +310,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 .inflate(R.layout.content_queue_song, null);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(mMP3SimpleAdapter);
-        mMP3SimpleAdapter.performDataChanged(mPlayCenter.getMp3s());
+        mMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3s());
 
         bottomSheetDialog = new BottomSheetDialog(getActivity());
         bottomSheetDialog.setCancelable(true);
@@ -324,12 +341,10 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             }
             switch (action) {
                 case MainService.ACTION_CHANGE_FINISH:
-                    updateCover();
-                    updateSongName();
-                    updateArtistName();
+                    mPresenter.reloadCurrentWidgetsData(true);
                     break;
                 default:
-                    MP3 currentMP3 = mPlayCenter.getCurrentMP3();
+                    MP3 currentMP3 = mPresenter.getCurrentMP3();
                     if (currentMP3 == null) {
                         return;
                     }

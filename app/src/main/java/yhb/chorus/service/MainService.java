@@ -96,6 +96,7 @@ public class MainService extends Service {
     public void onDestroy() {
         super.onDestroy();
         mMediaPlayer.release();
+        handler.removeCallbacks(progressLauncher);
         unregisterReceiver(receiver);
         Intent msgIntent = new Intent(ACTION_RENEW_PROGRESS);
         msgIntent.putExtra("currentProgress", 0);
@@ -169,7 +170,7 @@ public class MainService extends Service {
     //准备好 MediaPlayer
     private void prepared() {
 
-        MP3 candidate = mPlayCenter.getCandidateMP3();
+        MP3 candidate = mPlayCenter.getCurrentMP3();
 
         if (candidate == null) {
             return;
@@ -225,7 +226,7 @@ public class MainService extends Service {
         remoteViews.setOnClickPendingIntent(R.id.ibtn_play_or_pause_id, pSPi);
 
         Notification.Builder builder = new Notification.Builder(this);
-        builder.setSmallIcon(R.drawable.ic_launcher)
+        builder.setSmallIcon(R.mipmap.ic_launcher_foreground)
                 .setTicker(currentMP3.getTitle())
                 .setContent(remoteViews)
                 .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, ListActivity.class), 0));
