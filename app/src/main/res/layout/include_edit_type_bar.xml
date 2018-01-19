@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_layout_button_bar_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent"
+    android:elevation="4dp"
+    android:orientation="horizontal"
+    tools:ignore="RtlSymmetry,UnusedAttribute">
+
+    <Button
+        android:id="@+id/button_add_to_song_queue"
+        style="?attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="进队列"
+        android:textColor="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/button_add_to_song_list"
+        style="?attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="进歌单"
+        android:textColor="@color/colorPrimary" />
+
+
+    <Button
+        android:id="@+id/button_delete"
+        style="?attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="删除"
+        android:textColor="@color/colorPrimary" />
+
+
+</LinearLayout>

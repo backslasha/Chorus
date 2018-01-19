@@ -42,7 +42,7 @@ public abstract class SimpleAdapter<Entity> extends RecyclerView.Adapter<SimpleH
 
     public abstract void forEachHolder(SimpleHolder holder, Entity entity);
 
-    public void performDataChanged(Entity[] entities) {
+    private void performDataChanged(Entity[] entities) {
         if (entities == null) {
             Toast.makeText(mContext, R.string.nullDataError, Toast.LENGTH_SHORT).show();
             return;
@@ -54,7 +54,7 @@ public abstract class SimpleAdapter<Entity> extends RecyclerView.Adapter<SimpleH
 
     public void performDataChanged(List<Entity> entities) {
         if (entities == null) {
-            Toast.makeText(mContext, R.string.nullDataError, Toast.LENGTH_SHORT).show();
+            notifyItemRangeChanged(0, mEntities.size());
             return;
         }
         this.mEntities = new ArrayList<>();
@@ -79,7 +79,7 @@ public abstract class SimpleAdapter<Entity> extends RecyclerView.Adapter<SimpleH
             mEntities.remove(entity);
         }
         notifyItemRemoved(position);
-        notifyItemRangeChanged(position, mEntities.size() - position -1);
+        notifyItemRangeChanged(position, mEntities.size() - position - 1);
     }
 
     @Override
