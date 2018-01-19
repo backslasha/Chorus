@@ -30,7 +30,6 @@ import yhb.chorus.common.SimpleHolder;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.list.ListActivity;
 import yhb.chorus.service.MainService;
-import yhb.chorus.service.PlayCenter;
 import yhb.chorus.utils.ActivityUtils;
 
 import static yhb.chorus.service.PlayCenter.MODE_LIST_LOOP;
@@ -292,7 +291,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             bottomSheetDialog.show();
             return;
         }
-        mMP3SimpleAdapter = new SimpleAdapter<MP3>(getActivity(), R.layout.item_mp3) {
+        mMP3SimpleAdapter = new SimpleAdapter<MP3>(getActivity(), R.layout.item_mp3_simple) {
             @Override
             public void forEachHolder(SimpleHolder holder, final MP3 mp3) {
                 TextView textView = holder.getView(R.id.text_view_song_name);

@@ -41,7 +41,7 @@ public class FavouritesListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_mp3, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_mp3_simple, null);
         TextView tv = (TextView) view.findViewById(R.id.text_view_song_name);
         tv.setText((position + 1) + ". " + mp3BeanList.get(position).getTitle());
         final ImageButton ibtn = (ImageButton) view.findViewById(R.id.image_button_favour);

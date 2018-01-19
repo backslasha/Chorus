@@ -60,7 +60,7 @@ public class ListFragment extends Fragment implements ListContract.View {
 
         RecyclerView recyclerViewSongs = root.findViewById(R.id.recycler_songs);
         recyclerViewSongs.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mMP3SimpleAdapter = new SimpleAdapter<MP3>(getActivity(), R.layout.item_mp3) {
+        mMP3SimpleAdapter = new SimpleAdapter<MP3>(getActivity(), R.layout.item_mp3_simple) {
             @Override
             public void forEachHolder(SimpleHolder holder, final MP3 mp3) {
                 TextView textView = holder.getView(R.id.text_view_song_name);

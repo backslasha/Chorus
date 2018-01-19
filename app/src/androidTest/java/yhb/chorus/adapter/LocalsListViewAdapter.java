@@ -41,7 +41,7 @@ public class LocalsListViewAdapter extends BaseAdapter{
 
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
-        final View view = LayoutInflater.from(mContext).inflate(R.layout.item_mp3, null);
+        final View view = LayoutInflater.from(mContext).inflate(R.layout.item_mp3_simple, null);
         TextView tv = (TextView) view.findViewById(R.id.text_view_song_name);
         tv.setText((position + 1) + ". " + mp3BeanList.get(position).getTitle());
 
