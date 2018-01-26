@@ -1,5 +1,6 @@
 package yhb.chorus.list;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import yhb.chorus.BasePresenter;
@@ -18,7 +19,7 @@ public interface ListContract {
 
         void hideProgressBar();
 
-        void showSongList(List<MP3> mp3s);
+        void showLocalMP3s(List<MP3> mp3s);
     }
 
     interface Presenter extends BasePresenter {
@@ -27,9 +28,11 @@ public interface ListContract {
         /**
          * scan and collect all local mp3s, then create a database of them.
          */
-        void collectLocalMP3s();
+        void scanMediaStoreAndCreateDB();
 
 
         void getLocalMP3s();
+
+        void savedIntoQueue(ArrayList<MP3> selectedMP3s);
     }
 }

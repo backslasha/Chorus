@@ -2,20 +2,16 @@ package yhb.chorus.main;
 
 import android.content.Context;
 import android.database.ContentObserver;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.os.Handler;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import yhb.chorus.R;
-import yhb.chorus.db.MP3DBHelper;
-import yhb.chorus.db.MP3DbSchema.MP3Table;
+import yhb.chorus.db.DBUtils;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.service.PlayCenter;
 
@@ -28,7 +24,6 @@ class MainPresenter implements MainContract.Presenter {
     private Context mContext;
     private MainContract.View mView;
     private PlayCenter mPlayCenter;
-    private SQLiteDatabase mDatabase;
     private AudioManager mAudioManager = null;
     private int mVolumeSystem = -1, mVolumeSystemMax = -1;
 
@@ -36,7 +31,6 @@ class MainPresenter implements MainContract.Presenter {
         mContext = context;
         mView = view;
         mView.setPresenter(this);
-        mDatabase = new MP3DBHelper(context).getWritableDatabase();
         mPlayCenter = PlayCenter.getInstance(context);
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         mSettingsContentObserver = new ContentObserver(new Handler()) {
@@ -57,19 +51,29 @@ class MainPresenter implements MainContract.Presenter {
     @Override
     public void start() {
         loadMP3sFromDB(mPlayCenter);
+        loadQueueMP3sFromDB(mPlayCenter);
         mVolumeSystemMax = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         mVolumeSystem = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         mView.invalidateSeekBarVolumeSystem(mVolumeSystem, mVolumeSystemMax);
     }
 
     @Override
-    public void loadMP3sFromDB(final PlayCenter playCenter) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                playCenter.setMp3s(query(MP3Table.NAME, MP3.class, null, null));
+    public void loadQueueMP3sFromDB(final PlayCenter playCenter) {
+        ArrayList<MP3> queueMP3s = new ArrayList<>();
+        List<Long> queueMP3sId = DBUtils.queryAllQueueMP3sId(mContext);
+
+        List<MP3> mp3s = mPlayCenter.getMp3s();
+        for (MP3 mp3 : mp3s) {
+            if (queueMP3sId.indexOf(mp3.getId()) != -1) {
+                queueMP3s.add(mp3);
             }
-        }).start();
+        }
+        playCenter.setQueueMP3s(queueMP3s);
+    }
+
+    @Override
+    public void loadMP3sFromDB(final PlayCenter playCenter) {
+        playCenter.setMp3s(DBUtils.queryAllLocalMP3s(mContext));
     }
 
     @Override
@@ -99,7 +103,7 @@ class MainPresenter implements MainContract.Presenter {
             }
             songName = currentMP3.getTitle();
             artistName = currentMP3.getArtist();
-        }else {
+        } else {
             if (needCover) {
                 cover = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.marry);
             }
@@ -137,8 +141,7 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public List<MP3> loadQueueMP3s() {
-        // todo loadQueueMP3s should not be simply load all data only.
-        return mPlayCenter.getMp3s();
+        return mPlayCenter.getQueueMP3s();
     }
 
     @Override
@@ -149,7 +152,6 @@ class MainPresenter implements MainContract.Presenter {
     @Override
     public void release() {
         mContext.getContentResolver().unregisterContentObserver(mSettingsContentObserver);
-        mDatabase.close();
     }
 
     @Override
@@ -167,57 +169,4 @@ class MainPresenter implements MainContract.Presenter {
         mPlayCenter.point(mp3);
     }
 
-
-    private <T> ArrayList<T> query(String tableName, Class<T> entityType, String fieldName, String value) {
-
-        ArrayList<T> list = new ArrayList<>();
-        Cursor cursor;
-        if (fieldName == null) {
-            cursor = mDatabase.query(tableName, null, null, null, null, null, " id desc", null);
-        } else {
-            cursor = mDatabase.query(tableName, null, fieldName + " like ?", new String[]{value}, null, null, " id desc", null);
-        }
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            try {
-                T t = entityType.newInstance();
-                for (int i = 0; i < cursor.getColumnCount(); i++) {
-                    Object content = null;
-                    String columnName = cursor.getColumnName(i);// 获取数据记录第i条字段名的
-                    if (columnName.equals("_id")) {
-                        columnName = columnName.replace("_", "");
-                    }
-                    switch (columnName) {
-                        case MP3Table.Cols.ID:
-                        case MP3Table.Cols.ALBUM_ID:
-                        case MP3Table.Cols.SIZE:
-                            content = cursor.getLong(cursor.getColumnIndex(columnName));
-                            break;
-                        case MP3Table.Cols.TITLE:
-                        case MP3Table.Cols.ARTIST:
-                        case MP3Table.Cols.URI:
-                        case MP3Table.Cols.ALBUM:
-                            content = cursor.getString(cursor.getColumnIndex(columnName));
-                            break;
-                        case MP3Table.Cols.IS_MUSIC:
-                        case MP3Table.Cols.DURATION:
-                            content = cursor.getInt(cursor.getColumnIndex(columnName));
-                            break;
-                    }
-
-                    Field field = entityType.getDeclaredField(columnName);//获取该字段名的Field对象。
-                    field.setAccessible(true);//取消对age属性的修饰符的检查访问，以便为属性赋值
-                    field.set(t, content);
-                    field.setAccessible(false);//恢复对age属性的修饰符的检查访问
-                }
-                list.add(t);
-                cursor.moveToNext();
-            } catch (InstantiationException | IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-        }
-
-        cursor.close();
-        return list;
-    }
 }

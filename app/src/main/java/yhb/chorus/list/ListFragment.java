@@ -41,10 +41,15 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
     private ListContract.Presenter mPresenter;
     private AppCompatSeekBar mSeekBar;
     private SimpleAdapter<MP3> mMP3SimpleAdapter;
-    private Button mButtonSelectAll, mButtonDelete;
+    private Button mButtonSelectAll, mButtonDelete, mButtonAddToQueue;
     private ImageButton mImageButtonCancel;
     private LinearLayout mButtonBarBottom, mButtonBarTop;
     private ArrayList<MP3> mSelectedMP3s = new ArrayList<>();
+
+    public boolean isEditable() {
+        return mEditable;
+    }
+
     private boolean mEditable = false;
     private List<MP3> mMP3s;
     private Toolbar mToolbar;
@@ -81,7 +86,6 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
         return root;
     }
 
-
     private void bindViews(View root) {
         mSeekBar = root.findViewById(R.id.seek_bar);
         mButtonBarBottom = root.findViewById(R.id.linear_layout_button_bar_bottom);
@@ -90,9 +94,11 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
         mButtonSelectAll = root.findViewById(R.id.button_select_all);
         mImageButtonCancel = root.findViewById(R.id.image_button_cancel);
         mButtonDelete = root.findViewById(R.id.button_delete);
+        mButtonAddToQueue = root.findViewById(R.id.button_add_to_song_queue);
 
         mButtonSelectAll.setOnClickListener(this);
         mButtonDelete.setOnClickListener(this);
+        mButtonAddToQueue.setOnClickListener(this);
         mImageButtonCancel.setOnClickListener(this);
 
         RecyclerView recyclerViewSongs = root.findViewById(R.id.recycler_songs);
@@ -141,7 +147,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                             } else {
                                 mSelectedMP3s.remove(mp3);
                             }
-                            mToolbar.setTitle("选中 " + mSelectedMP3s.size()+" 条");
+                            mToolbar.setTitle("选中 " + mSelectedMP3s.size() + " 条");
                         }
                     });
                 } else {
@@ -152,7 +158,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
         recyclerViewSongs.setAdapter(mMP3SimpleAdapter);
     }
 
-    private void turnOnEditable(boolean on) {
+    public void turnOnEditable(boolean on) {
         if (on) {
             mButtonBarBottom.setVisibility(View.VISIBLE);
             mButtonBarTop.setVisibility(View.VISIBLE);
@@ -175,7 +181,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
         } else {
             mButtonSelectAll.setText("全选");
         }
-        mToolbar.setTitle("选中 " + mSelectedMP3s.size()+" 条");
+        mToolbar.setTitle("选中 " + mSelectedMP3s.size() + " 条");
         mMP3SimpleAdapter.performDataChanged(null);
     }
 
@@ -187,7 +193,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.drawer_menu, menu);
+        inflater.inflate(R.menu.list_menu, menu);
     }
 
     @Override
@@ -196,11 +202,8 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(getActivity());
                 break;
-            case R.id.item_1:
-                mPresenter.collectLocalMP3s();
-                break;
-            case R.id.item_2:
-                mPresenter.getLocalMP3s();
+            case R.id.rescan_local_mp3:
+                mPresenter.scanMediaStoreAndCreateDB();
                 break;
             default:
 
@@ -216,7 +219,6 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
 
     @Override
     public void showProgressBar() {
-
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -236,15 +238,25 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
     }
 
     @Override
-    public void showSongList(List<MP3> mp3s) {
+    public void showLocalMP3s(final List<MP3> mp3s) {
         this.mMP3s = mp3s;
-        mMP3SimpleAdapter.performDataChanged(mp3s);
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mMP3SimpleAdapter.performDataChanged(mp3s);
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_delete:
+                // TODO: 18-1-19 delete function 
+                break;
+            case R.id.button_add_to_song_queue:
+                mPresenter.savedIntoQueue(mSelectedMP3s);
+                turnOnEditable(false);
                 break;
             case R.id.button_select_all:
                 selectAll("全选".equals(mButtonSelectAll.getText()));

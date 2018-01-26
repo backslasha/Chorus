@@ -198,17 +198,13 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.drawer_menu, menu);
+        inflater.inflate(R.menu.main_menu, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.item_1:
-                break;
-            case R.id.item_2:
-                break;
-            case R.id.item_3:
+            case R.id.sort_out:
                 Intent intent = ListActivity.newIntent(getActivity());
                 startActivity(intent);
                 break;

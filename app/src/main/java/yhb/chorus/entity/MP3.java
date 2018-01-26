@@ -13,6 +13,38 @@ public class MP3 {
 
     private String artist;// 艺术家 MediaStore.Audio.Media.ARTIST
 
+    public MP3() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MP3 mp3 = (MP3) o;
+
+        if (id != mp3.id) return false;
+        return uri.equals(mp3.uri);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + uri.hashCode();
+        return result;
+    }
+
+    public MP3(long id, String title, String artist, int duration, long size, String uri, String album, long albumId, int isMusic) {
+        this.id = id;
+        this.title = title;
+        this.artist = artist;
+        this.duration = duration;
+        this.size = size;
+        this.uri = uri;
+        this.album = album;
+        this.albumId = albumId;
+        this.isMusic = isMusic;
+    }
 
     private int duration;// 时长 MediaStore.Audio.Media.DURATION
 

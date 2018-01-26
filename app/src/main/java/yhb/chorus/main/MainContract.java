@@ -24,6 +24,8 @@ public interface MainContract {
 
     interface Presenter extends BasePresenter {
 
+        void loadQueueMP3sFromDB(PlayCenter playCenter);
+
         /**
          *
          * @param playCenter

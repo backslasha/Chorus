@@ -9,7 +9,7 @@ public class MP3DbSchema {
         public static final String NAME = "mp3";
 
         public static final class Cols {
-            public static final String ID = "id";
+            public static final String ID = "_id";
             public static final String TITLE = "title";
             public static final String ARTIST = "artist";
             public static final String DURATION = "duration";

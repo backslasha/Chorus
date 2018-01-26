@@ -22,13 +22,14 @@ public class ListActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     private ListPresenter mPresenter;
+    private ListFragment listFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_container);
 
-        ListFragment listFragment = (ListFragment) getSupportFragmentManager()
+        listFragment = (ListFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.container);
         if (listFragment == null) {
             listFragment = ListFragment.newInstance();
@@ -46,6 +47,16 @@ public class ListActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     502);
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (listFragment.isEditable()) {
+            listFragment.turnOnEditable(false);
+        } else {
+            super.onBackPressed();
         }
     }
 
