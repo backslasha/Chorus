@@ -1,0 +1,1 @@
+a local music player, created for independant volume which could turn up/down all alone, then i can put on my headset, recite english words and listening to lower volume background musics at the same time.
