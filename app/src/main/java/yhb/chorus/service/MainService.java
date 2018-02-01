@@ -200,9 +200,9 @@ public class MainService extends Service {
         remoteViews.setTextViewText(R.id.tv_not_title_id, currentMP3.getTitle());
         remoteViews.setTextViewText(R.id.tv_not_author_id, currentMP3.getArtist());
         if (mMediaPlayer.isPlaying()) {
-            remoteViews.setImageViewResource(R.id.ibtn_play_or_pause_id, R.drawable.ic_pause_circle_outline);
+            remoteViews.setImageViewResource(R.id.image_button_play_or_pause, R.drawable.ic_pause_circle_outline);
         } else {
-            remoteViews.setImageViewResource(R.id.ibtn_play_or_pause_id, R.drawable.ic_play_circle_outline);
+            remoteViews.setImageViewResource(R.id.image_button_play_or_pause, R.drawable.ic_play_circle_outline);
         }
         Bitmap bitmap;
         if ((bitmap = mPlayCenter.getAlbumart(currentMP3)) != null) {
@@ -215,15 +215,15 @@ public class MainService extends Service {
 
         Intent broadIntent = new Intent(ACTION_EXIT);
         PendingIntent exitPi = PendingIntent.getBroadcast(this, 0, broadIntent, 0);
-        remoteViews.setOnClickPendingIntent(R.id.ibtn_exit_id, exitPi);
+        remoteViews.setOnClickPendingIntent(R.id.image_button_stop, exitPi);
 
         Intent nextIntent = new Intent(ACTION_NEXT);
         PendingIntent nextPi = PendingIntent.getBroadcast(this, 0, nextIntent, 0);
-        remoteViews.setOnClickPendingIntent(R.id.ibtn_next_id, nextPi);
+        remoteViews.setOnClickPendingIntent(R.id.image_button_next, nextPi);
 
         Intent pSIntent = new Intent(ACTION_PLAY_PAUSE);
         PendingIntent pSPi = PendingIntent.getBroadcast(this, 0, pSIntent, 0);
-        remoteViews.setOnClickPendingIntent(R.id.ibtn_play_or_pause_id, pSPi);
+        remoteViews.setOnClickPendingIntent(R.id.image_button_play_or_pause, pSPi);
 
         Notification.Builder builder = new Notification.Builder(this);
         builder.setSmallIcon(R.mipmap.ic_launcher_foreground)

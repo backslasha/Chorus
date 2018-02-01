@@ -34,5 +34,7 @@ public interface ListContract {
         void getLocalMP3s();
 
         void savedIntoQueue(ArrayList<MP3> selectedMP3s);
+
+        void clearQueue();
     }
 }

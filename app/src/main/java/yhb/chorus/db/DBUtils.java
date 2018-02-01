@@ -224,7 +224,7 @@ public class DBUtils {
     }
 
     public static void insertIntoQueue(ArrayList<MP3> selectedMP3s, Context context) {
-        try (SQLiteDatabase database = new MP3DBHelper(context).getReadableDatabase()) {
+        try (SQLiteDatabase database = new MP3DBHelper(context).getWritableDatabase()) {
             // insert into list_menu
             for (MP3 selectedMP3 : selectedMP3s) {
                 database.insert("Queue", null, getContentValues(selectedMP3.getId()));
@@ -237,10 +237,17 @@ public class DBUtils {
 
     public static void deleteFromQueue(ArrayList<MP3> selectedMP3s, Context context) {
         // delete from list_menu
-        SQLiteDatabase database = new MP3DBHelper(context).getReadableDatabase();
+        SQLiteDatabase database = new MP3DBHelper(context).getWritableDatabase();
         for (MP3 selectedMP3 : selectedMP3s) {
             database.delete("Queue", "_id=", new String[]{String.valueOf(selectedMP3.getId())});
         }
+        database.close();
+    }
+
+    public static void deleteAllFromQueue(Context context) {
+        // delete from list_menu
+        SQLiteDatabase database = new MP3DBHelper(context).getWritableDatabase();
+        database.delete("Queue", null, null);
         database.close();
     }
 

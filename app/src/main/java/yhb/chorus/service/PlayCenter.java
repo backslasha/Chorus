@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.widget.Toast;
 
 import java.io.FileDescriptor;
 import java.util.ArrayList;
@@ -58,9 +59,10 @@ public class PlayCenter {
 
         currentMP3 = pickCandidateNext(fromUser);
 
-        Intent intent = new Intent(MainService.ACTION_NEXT);
-
-        mContext.sendBroadcast(intent);
+        if (currentMP3 != null) {
+            Intent intent = new Intent(MainService.ACTION_NEXT);
+            mContext.sendBroadcast(intent);
+        }
 
     }
 
@@ -70,8 +72,10 @@ public class PlayCenter {
 
         currentMP3 = pickCandidatePrevious(fromUser);
 
-        Intent intent = new Intent(MainService.ACTION_PREVIOUS);
-        mContext.sendBroadcast(intent);
+        if (currentMP3 != null) {
+            Intent intent = new Intent(MainService.ACTION_PREVIOUS);
+            mContext.sendBroadcast(intent);
+        }
     }
 
     public void next() {
@@ -80,9 +84,10 @@ public class PlayCenter {
 
         currentMP3 = pickCandidateNext(false);
 
-        Intent intent = new Intent(MainService.ACTION_NEXT);
-
-        mContext.sendBroadcast(intent);
+        if (currentMP3 != null) {
+            Intent intent = new Intent(MainService.ACTION_NEXT);
+            mContext.sendBroadcast(intent);
+        }
 
     }
 
@@ -92,8 +97,10 @@ public class PlayCenter {
 
         currentMP3 = pickCandidatePrevious(false);
 
-        Intent intent = new Intent(MainService.ACTION_PREVIOUS);
-        mContext.sendBroadcast(intent);
+        if (currentMP3 != null) {
+            Intent intent = new Intent(MainService.ACTION_PREVIOUS);
+            mContext.sendBroadcast(intent);
+        }
     }
 
     public void playOrPause() {
@@ -104,8 +111,11 @@ public class PlayCenter {
 
         sureServiceAlive();
 
-        Intent intent = new Intent(MainService.ACTION_PLAY_PAUSE);
-        mContext.sendBroadcast(intent);
+        if (currentMP3 != null) {
+            Intent intent = new Intent(MainService.ACTION_PLAY_PAUSE);
+            mContext.sendBroadcast(intent);
+        }
+
     }
 
     public void point(MP3 mp3) {
@@ -145,6 +155,10 @@ public class PlayCenter {
                 }
             }
         }
+        if (currentPosition < 0 || currentPosition >= mQueueMP3s.size()) {
+            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
+            return null;
+        }
 
         return mQueueMP3s.get(currentPosition);
     }
@@ -168,6 +182,12 @@ public class PlayCenter {
                 }
             }
         }
+
+        if (currentPosition < 0 || currentPosition >= mQueueMP3s.size()) {
+            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
         return mQueueMP3s.get(currentPosition);
     }
 
@@ -193,6 +213,7 @@ public class PlayCenter {
 
     /**
      * 根据 mp3 获取封面
+     *
      * @param mp3Bean 目标 mp3
      * @return 封面 bitmap
      */
@@ -221,6 +242,7 @@ public class PlayCenter {
 
     /**
      * 设置当前正在播放/暂停的 mp3
+     *
      * @param currentMP3 当前正在播放/暂停的 mp3
      */
     void setCurrentMP3(MP3 currentMP3) {
@@ -229,6 +251,7 @@ public class PlayCenter {
 
     /**
      * 获取当前正在播放/暂停的 mp3
+     *
      * @return 当前正在播放/暂停的 mp3
      */
     public MP3 getCurrentMP3() {
@@ -237,6 +260,7 @@ public class PlayCenter {
 
     /**
      * 设置当前的本地列表 mp3
+     *
      * @param mp3s 本地列表 mp3，一般从数据库中查出
      */
     public void setMp3s(List<MP3> mp3s) {
@@ -254,14 +278,16 @@ public class PlayCenter {
 
     /**
      * 获取当前的播放模式
+     *
      * @return 当前的播放模式
-     * */
+     */
     public int getPlayMode() {
         return playMode;
     }
 
     /**
      * 记录当前独立音量
+     *
      * @param volume 独立音量，0 ～ 1
      */
     public void recordVolume(float volume) {
@@ -270,6 +296,7 @@ public class PlayCenter {
 
     /**
      * 获取独立音量
+     *
      * @return 独立音量，0 ～ 1
      */
     public float getVolume() {
@@ -278,6 +305,7 @@ public class PlayCenter {
 
     /**
      * 重新设置播放队列
+     *
      * @param queueMP3s 播放队列，一般从数据库中查出
      */
     public void setQueueMP3s(ArrayList<MP3> queueMP3s) {

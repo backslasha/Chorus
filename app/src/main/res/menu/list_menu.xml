@@ -3,4 +3,10 @@
     <item
         android:id="@+id/rescan_local_mp3"
         android:title="重新扫描本地音乐" />
+    <item
+        android:id="@+id/clean_queue_mp3"
+        android:title="整理播放队列" />
+    <item
+        android:id="@+id/clear_queue_mp3"
+        android:title="清空播放队列" />
 </menu>

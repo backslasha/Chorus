@@ -43,6 +43,7 @@ class ListPresenter implements ListContract.Presenter {
             public void run() {
                 mView.showProgressBar();
                 DBUtils.scanMediaStoreAndCreateDB(mContext);
+                clearQueue();
                 mView.hideProgressBar();
                 getLocalMP3s();
             }
@@ -55,15 +56,32 @@ class ListPresenter implements ListContract.Presenter {
     }
 
     @Override
-    public void savedIntoQueue(ArrayList<MP3> selectedMP3s) {
+    public void savedIntoQueue(final ArrayList<MP3> selectedMP3s) {
 
         // 去除重复添加到 PlayCenter(Memory)
         int size = mPlayCenter.addIntoQueue(selectedMP3s);
 
         Toast.makeText(mContext, "以添加" + size + "首歌到队列.", Toast.LENGTH_SHORT).show();
 
+        // TODO: 18-1-28 new thread --> selectedMP3s.size()==0 ???
+        mView.showProgressBar();
         // 去除重复添加到 database(Hard)
         DBUtils.insertIntoQueue(selectedMP3s, mContext);
+        mView.hideProgressBar();
+
+    }
+
+    @Override
+    public void clearQueue() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mView.showProgressBar();
+                DBUtils.deleteAllFromQueue(mContext);
+                mPlayCenter.setQueueMP3s(new ArrayList<MP3>());
+                mView.hideProgressBar();
+            }
+        }).start();
     }
 
 

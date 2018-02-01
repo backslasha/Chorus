@@ -118,23 +118,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                 }
 
 
-                TextView textView = holder.getView(R.id.text_view_song_name);
-                textView.setText(String.format("%s %s / %s", num, mp3.getTitle(), mp3.getArtist()));
-                textView.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View v) {
-                        turnOnEditable(true);
-                        return true;
-                    }
-                });
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        PlayCenter.getInstance(getActivity()).point(mp3);
-                    }
-                });
-
-                CheckBox checkBox = holder.getView(R.id.check_box);
+                final CheckBox checkBox = holder.getView(R.id.check_box);
                 if (mEditable) {
                     checkBox.setVisibility(View.VISIBLE);
                     checkBox.setOnCheckedChangeListener(null);
@@ -153,6 +137,29 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                 } else {
                     checkBox.setVisibility(View.GONE);
                 }
+
+
+                TextView textView = holder.getView(R.id.text_view_song_name);
+                textView.setText(String.format("%s %s / %s", num, mp3.getTitle(), mp3.getArtist()));
+                textView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        turnOnEditable(true);
+                        return true;
+                    }
+                });
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mEditable) {
+                            checkBox.setChecked(!checkBox.isChecked());
+                        } else {
+                            PlayCenter.getInstance(getActivity()).point(mp3);
+                        }
+                    }
+                });
+
+
             }
         };
         recyclerViewSongs.setAdapter(mMP3SimpleAdapter);
@@ -204,6 +211,12 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                 break;
             case R.id.rescan_local_mp3:
                 mPresenter.scanMediaStoreAndCreateDB();
+                break;
+            case R.id.clean_queue_mp3:
+
+                break;
+            case R.id.clear_queue_mp3:
+                mPresenter.clearQueue();
                 break;
             default:
 

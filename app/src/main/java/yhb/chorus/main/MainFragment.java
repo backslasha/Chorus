@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
@@ -85,6 +87,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 mPresenter.getCurrentVolumeSystem(),
                 mPresenter.getMaxVolumeSystem()
         );
+
     }
 
     private void bindViews(View root) {
