@@ -3,12 +3,16 @@ package yhb.chorus.list;
 import android.content.Context;
 import android.widget.Toast;
 
+import org.litepal.crud.DataSupport;
+import org.litepal.crud.callback.SaveCallback;
+import org.litepal.crud.callback.UpdateOrDeleteCallback;
+
 import java.util.ArrayList;
 
-import yhb.chorus.R;
-import yhb.chorus.entity.MP3;
-import yhb.chorus.service.PlayCenter;
 import yhb.chorus.db.DBUtils;
+import yhb.chorus.entity.MP3;
+import yhb.chorus.entity.MP3InQueue;
+import yhb.chorus.service.PlayCenter;
 
 /**
  * Created by yhb on 18-1-17.
@@ -23,7 +27,7 @@ class ListPresenter implements ListContract.Presenter {
         mContext = context;
         mView = view;
         mView.setPresenter(this);
-        mPlayCenter = PlayCenter.getInstance(context);
+        mPlayCenter = PlayCenter.getInstance();
     }
 
     @Override
@@ -52,36 +56,54 @@ class ListPresenter implements ListContract.Presenter {
 
     @Override
     public void getLocalMP3s() {
-        mView.showLocalMP3s(DBUtils.queryAllLocalMP3s(mContext));
+        mView.showLocalMP3s(DataSupport.findAll(MP3.class));
     }
 
     @Override
-    public void savedIntoQueue(final ArrayList<MP3> selectedMP3s) {
+    public void savedIntoQueue(ArrayList<MP3> selectedMP3s) {
+
+        mView.showProgressBar();
+
+        ArrayList<MP3InQueue> mp3InQueues = new ArrayList<>();
+        for (MP3 selectedMP3 : selectedMP3s) {
+            mp3InQueues.add(new MP3InQueue(selectedMP3));
+        }
 
         // 去除重复添加到 PlayCenter(Memory)
-        int size = mPlayCenter.addIntoQueue(selectedMP3s);
+        final int size = mPlayCenter.addIntoQueue(selectedMP3s);
 
-        Toast.makeText(mContext, "以添加" + size + "首歌到队列.", Toast.LENGTH_SHORT).show();
-
-        // TODO: 18-1-28 new thread --> selectedMP3s.size()==0 ???
-        mView.showProgressBar();
         // 去除重复添加到 database(Hard)
-        DBUtils.insertIntoQueue(selectedMP3s, mContext);
-        mView.hideProgressBar();
+        DataSupport.saveAllAsync(mp3InQueues).listen(new SaveCallback() {
+            @Override
+            public void onFinish(boolean success) {
+                if (success) {
+
+                    mView.hideProgressBar();
+
+                    mView.turnOnEditable(false);
+
+                    Toast.makeText(mContext, "以添加" + size + "首歌到队列.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 
     @Override
     public void clearQueue() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                mView.showProgressBar();
-                DBUtils.deleteAllFromQueue(mContext);
-                mPlayCenter.setQueueMP3s(new ArrayList<MP3>());
-                mView.hideProgressBar();
-            }
-        }).start();
+        mView.showProgressBar();
+
+        DataSupport.deleteAllAsync(MP3InQueue.class.getSimpleName())
+                .listen(new UpdateOrDeleteCallback() {
+                    @Override
+                    public void onFinish(int rowsAffected) {
+                        mPlayCenter.setQueueMP3s(new ArrayList<MP3>());
+                        Toast.makeText(mContext, "播放队列已清空.", Toast.LENGTH_SHORT).show();
+                        mView.hideProgressBar();
+                    }
+                });
+
+
     }
 
 

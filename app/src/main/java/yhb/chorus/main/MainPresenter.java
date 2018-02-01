@@ -7,12 +7,16 @@ import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.os.Handler;
 
+import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import yhb.chorus.R;
 import yhb.chorus.db.DBUtils;
 import yhb.chorus.entity.MP3;
+import yhb.chorus.entity.MP3InQueue;
 import yhb.chorus.service.PlayCenter;
 
 /**
@@ -31,7 +35,7 @@ class MainPresenter implements MainContract.Presenter {
         mContext = context;
         mView = view;
         mView.setPresenter(this);
-        mPlayCenter = PlayCenter.getInstance(context);
+        mPlayCenter = PlayCenter.getInstance();
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         mSettingsContentObserver = new ContentObserver(new Handler()) {
             @Override
@@ -58,23 +62,42 @@ class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void loadQueueMP3sFromDB(final PlayCenter playCenter) {
-        ArrayList<MP3> queueMP3s = new ArrayList<>();
-        List<Long> queueMP3sId = DBUtils.queryAllQueueMP3sId(mContext);
+    public void release() {
+        mContext.getContentResolver().unregisterContentObserver(mSettingsContentObserver);
+    }
 
-        List<MP3> mp3s = mPlayCenter.getMp3s();
-        for (MP3 mp3 : mp3s) {
-            if (queueMP3sId.indexOf(mp3.getId()) != -1) {
-                queueMP3s.add(mp3);
-            }
+    /**
+     *  load and save data from memory/db methods
+     */
+
+    @Override
+    public void loadQueueMP3sFromDB(final PlayCenter playCenter) {
+        List<MP3InQueue> mp3InQueue = DataSupport.findAll(MP3InQueue.class,true);
+        ArrayList<MP3> queueMP3s = new ArrayList<>();
+        for (MP3InQueue inQueue : mp3InQueue) {
+            queueMP3s.add(inQueue.getMp3());
         }
         playCenter.setQueueMP3s(queueMP3s);
     }
 
     @Override
     public void loadMP3sFromDB(final PlayCenter playCenter) {
-        playCenter.setMp3s(DBUtils.queryAllLocalMP3s(mContext));
+        playCenter.setMp3s(DataSupport.findAll(MP3.class));
     }
+
+    @Override
+    public List<MP3> loadQueueMP3sFromMemory() {
+        return mPlayCenter.getQueueMP3s();
+    }
+
+    @Override
+    public MP3 getCurrentMP3() {
+        return mPlayCenter.getCurrentMP3();
+    }
+
+    /**
+     * setting method
+     */
 
     @Override
     public void loadSavedSetting() {
@@ -120,6 +143,21 @@ class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
+    public int getCurrentVolumeSystem() {
+        return mVolumeSystem;
+    }
+
+    @Override
+    public int getMaxVolumeSystem() {
+        return mVolumeSystemMax;
+    }
+
+
+    /**
+     * music control methods
+     */
+
+    @Override
     public void next() {
         mPlayCenter.next(true);
     }
@@ -135,38 +173,14 @@ class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
+    public void point(MP3 mp3) {
+        mPlayCenter.point(mp3);
+    }
+
+    @Override
     public void nextPlayMode() {
         mPlayCenter.nextPlayMode();
     }
 
-    @Override
-    public List<MP3> loadQueueMP3s() {
-        return mPlayCenter.getQueueMP3s();
-    }
-
-    @Override
-    public MP3 getCurrentMP3() {
-        return mPlayCenter.getCurrentMP3();
-    }
-
-    @Override
-    public void release() {
-        mContext.getContentResolver().unregisterContentObserver(mSettingsContentObserver);
-    }
-
-    @Override
-    public int getCurrentVolumeSystem() {
-        return mVolumeSystem;
-    }
-
-    @Override
-    public int getMaxVolumeSystem() {
-        return mVolumeSystemMax;
-    }
-
-    @Override
-    public void point(MP3 mp3) {
-        mPlayCenter.point(mp3);
-    }
 
 }

@@ -46,7 +46,7 @@ public interface MainContract {
 
         void reloadCurrentWidgetsData(boolean needCover);
 
-        List<MP3> loadQueueMP3s();
+        List<MP3> loadQueueMP3sFromMemory();
 
         MP3 getCurrentMP3();
 

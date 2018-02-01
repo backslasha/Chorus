@@ -13,45 +13,43 @@ import java.io.FileDescriptor;
 import java.util.ArrayList;
 import java.util.List;
 
+import yhb.chorus.app.ChorusApplication;
 import yhb.chorus.entity.MP3;
 
 
 public class PlayCenter {
-
-    @SuppressLint("StaticFieldLeak")
-    private static PlayCenter sPlayCenter;
-    private int currentPosition = 0;
-    private int playMode = MODE_LIST_LOOP;
-    private Context mContext;
-    private float mVolume = 1f;
-
-    public ArrayList<MP3> getQueueMP3s() {
-        return mQueueMP3s;
-    }
-
-    private ArrayList<MP3> mQueueMP3s = new ArrayList<>();
-
-    public List<MP3> getMp3s() {
-        return mp3s;
-    }
-
-    private List<MP3> mp3s;
-    private MP3 currentMP3;
-
+    /**
+     * three kinds of play mode
+     */
     public static final int MODE_SINGLE_LOOP = 1;
     public static final int MODE_LIST_LOOP = 2;
     public static final int MODE_RANDOM = 3;
 
-    private PlayCenter(Context context) {
-        mContext = context;
-    }
+    @SuppressLint("StaticFieldLeak")
+    private static PlayCenter sPlayCenter;
+    private Context mContext;
+    private int currentPosition = 0;
+    private int playMode = MODE_LIST_LOOP;
+    private float mVolume = 1f;
 
-    public static PlayCenter getInstance(Context context) {
+    private ArrayList<MP3> mQueueMP3s = new ArrayList<>();
+    private List<MP3> mp3s;
+    private MP3 currentMP3;
+
+    public static PlayCenter getInstance() {
         if (sPlayCenter == null) {
-            sPlayCenter = new PlayCenter(context);
+            sPlayCenter = new PlayCenter();
         }
         return sPlayCenter;
     }
+
+    private PlayCenter() {
+        mContext = ChorusApplication.getsApplicationContext();
+    }
+
+    /**
+     * operations of controlling music player
+     */
 
     public void next(boolean fromUser) {
 
@@ -212,6 +210,59 @@ public class PlayCenter {
     }
 
     /**
+     * 确保服务存活
+     */
+    private void sureServiceAlive() {
+        Intent serIntent = new Intent(mContext, MainService.class);
+        mContext.startService(serIntent);
+    }
+
+    /**
+     * global public data get/set methods
+     */
+
+    /**
+     * 设置当前的本地列表 mp3
+     *
+     * @param mp3s 本地列表 mp3，一般从数据库中查出
+     */
+    public void setMp3s(List<MP3> mp3s) {
+        this.mp3s = mp3s;
+        sureServiceAlive();
+    }
+
+    /**
+     * 设置当前正在播放/暂停的 mp3
+     *
+     * @param currentMP3 当前正在播放/暂停的 mp3
+     */
+    void setCurrentMP3(MP3 currentMP3) {
+        this.currentMP3 = currentMP3;
+    }
+
+    /**
+     * 获取当前的播放模式
+     *
+     * @return 当前的播放模式
+     */
+    public int getPlayMode() {
+        return playMode;
+    }
+
+    /**
+     * 获取当前正在播放/暂停的 mp3
+     *
+     * @return 当前正在播放/暂停的 mp3
+     */
+    public MP3 getCurrentMP3() {
+        return currentMP3;
+    }
+
+    public List<MP3> getMP3s() {
+        return mp3s;
+    }
+
+    /**
      * 根据 mp3 获取封面
      *
      * @param mp3Bean 目标 mp3
@@ -240,50 +291,10 @@ public class PlayCenter {
         return albumArtBitMap;
     }
 
-    /**
-     * 设置当前正在播放/暂停的 mp3
-     *
-     * @param currentMP3 当前正在播放/暂停的 mp3
-     */
-    void setCurrentMP3(MP3 currentMP3) {
-        this.currentMP3 = currentMP3;
-    }
 
     /**
-     * 获取当前正在播放/暂停的 mp3
-     *
-     * @return 当前正在播放/暂停的 mp3
+     * record/get independant volume settings
      */
-    public MP3 getCurrentMP3() {
-        return currentMP3;
-    }
-
-    /**
-     * 设置当前的本地列表 mp3
-     *
-     * @param mp3s 本地列表 mp3，一般从数据库中查出
-     */
-    public void setMp3s(List<MP3> mp3s) {
-        this.mp3s = mp3s;
-        sureServiceAlive();
-    }
-
-    /**
-     * 确保服务存活
-     */
-    private void sureServiceAlive() {
-        Intent serIntent = new Intent(mContext, MainService.class);
-        mContext.startService(serIntent);
-    }
-
-    /**
-     * 获取当前的播放模式
-     *
-     * @return 当前的播放模式
-     */
-    public int getPlayMode() {
-        return playMode;
-    }
 
     /**
      * 记录当前独立音量
@@ -301,6 +312,18 @@ public class PlayCenter {
      */
     public float getVolume() {
         return mVolume;
+    }
+
+    /**
+     * mp3s queue operations
+     */
+
+    /**
+     * 缓存数据库中查询到的 queue 队列
+     * @return
+     */
+    public ArrayList<MP3> getQueueMP3s() {
+        return mQueueMP3s;
     }
 
     /**

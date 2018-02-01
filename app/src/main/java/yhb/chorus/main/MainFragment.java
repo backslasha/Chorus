@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
@@ -286,7 +284,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
     private void showBottomSheet() {
         if (bottomSheetDialog != null && mMP3SimpleAdapter != null) {
-            mMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3s());
+            mMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3sFromMemory());
             bottomSheetDialog.show();
             return;
         }
@@ -308,7 +306,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 .inflate(R.layout.content_queue_song, null);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(mMP3SimpleAdapter);
-        mMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3s());
+        mMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3sFromMemory());
 
         bottomSheetDialog = new BottomSheetDialog(getActivity());
         bottomSheetDialog.setCancelable(true);

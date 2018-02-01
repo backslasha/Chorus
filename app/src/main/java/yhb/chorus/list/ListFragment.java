@@ -165,19 +165,25 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
         recyclerViewSongs.setAdapter(mMP3SimpleAdapter);
     }
 
-    public void turnOnEditable(boolean on) {
-        if (on) {
-            mButtonBarBottom.setVisibility(View.VISIBLE);
-            mButtonBarTop.setVisibility(View.VISIBLE);
-            mToolbar.setTitle("选中 0 条");
-        } else {
-            mToolbar.setTitle(R.string.app_name);
-            mButtonBarBottom.setVisibility(View.GONE);
-            mButtonBarTop.setVisibility(View.GONE);
-        }
-        mEditable = on;
-        mMP3SimpleAdapter.performDataChanged(null);
-        mSelectedMP3s.clear();
+    @Override
+    public void turnOnEditable(final boolean on) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (on) {
+                    mButtonBarBottom.setVisibility(View.VISIBLE);
+                    mButtonBarTop.setVisibility(View.VISIBLE);
+                    mToolbar.setTitle("选中 0 条");
+                } else {
+                    mToolbar.setTitle(R.string.app_name);
+                    mButtonBarBottom.setVisibility(View.GONE);
+                    mButtonBarTop.setVisibility(View.GONE);
+                }
+                mEditable = on;
+                mMP3SimpleAdapter.performDataChanged(null);
+                mSelectedMP3s.clear();
+            }
+        });
     }
 
     private void selectAll(boolean selected) {
@@ -269,7 +275,6 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                 break;
             case R.id.button_add_to_song_queue:
                 mPresenter.savedIntoQueue(mSelectedMP3s);
-                turnOnEditable(false);
                 break;
             case R.id.button_select_all:
                 selectAll("全选".equals(mButtonSelectAll.getText()));

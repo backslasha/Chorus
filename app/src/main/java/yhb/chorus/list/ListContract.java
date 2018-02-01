@@ -20,6 +20,8 @@ public interface ListContract {
         void hideProgressBar();
 
         void showLocalMP3s(List<MP3> mp3s);
+
+        void turnOnEditable(boolean on);
     }
 
     interface Presenter extends BasePresenter {

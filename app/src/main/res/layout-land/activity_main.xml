@@ -9,7 +9,7 @@
     <android.support.v7.widget.Toolbar
         app:titleTextColor="#ffffff"
         app:title="Hyson"
-        android:id="@+id/toolbar_id"
+        android:id="@+id/toolbarid"
         app:navigationIcon="@drawable/ic_launcher"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         android:background="@android:color/white" />
 
     <Button
-        android:id="@+id/btn_playmode_id"
+        android:id="@+id/btn_playmodeid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
@@ -59,7 +59,7 @@
         android:background="@android:color/white" />
 
     <SeekBar
-        android:id="@+id/sb_id"
+        android:id="@+id/sbid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent" />

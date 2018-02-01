@@ -1,13 +1,15 @@
 package yhb.chorus.entity;
 
-public class MP3 {
+import org.litepal.crud.DataSupport;
+
+public class MP3 extends DataSupport{
 
 
     public void setUri(String uri) {
         this.uri = uri;
     }
 
-    private long id; // 音乐id MediaStore.Audio.Media._ID
+    private long _id; // 音乐id MediaStore.Audio.Media._ID
 
     private String title;// 音乐标题 MediaStore.Audio.Media.TITLE
 
@@ -16,26 +18,8 @@ public class MP3 {
     public MP3() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MP3 mp3 = (MP3) o;
-
-        if (id != mp3.id) return false;
-        return uri.equals(mp3.uri);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + uri.hashCode();
-        return result;
-    }
-
-    public MP3(long id, String title, String artist, int duration, long size, String uri, String album, long albumId, int isMusic) {
-        this.id = id;
+    public MP3(long _id, String title, String artist, int duration, long size, String uri, String album, long albumId, int isMusic) {
+        this._id = _id;
         this.title = title;
         this.artist = artist;
         this.duration = duration;
@@ -52,19 +36,18 @@ public class MP3 {
 
     private String uri;// 文件路径 MediaStore.Audio.Media.DATA
 
-
     private String album; // 唱片图片MediaStore.Audio.Media.ALBUM
 
     private long albumId;// 唱片图片ID MediaStore.Audio.Media.ALBUM_ID
 
     private int isMusic;// 是否为音乐 MediaStore.Audio.Media.IS_MUSIC
 
-    public long getId() {
-        return id;
+    public long get_id() {
+        return _id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void set_id(long _id) {
+        this._id = _id;
     }
 
     public String getTitle() {
@@ -128,5 +111,21 @@ public class MP3 {
         this.isMusic = isMusic;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        MP3 mp3 = (MP3) o;
+
+        if (_id != mp3._id) return false;
+        return uri.equals(mp3.uri);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (_id ^ (_id >>> 32));
+        result = 31 * result + uri.hashCode();
+        return result;
+    }
 }

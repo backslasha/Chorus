@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
             case 502: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "permission denied!", Toast.LENGTH_SHORT).show();
                 } else {
+                    Toast.makeText(this, "permission denied!", Toast.LENGTH_SHORT).show();
 
                 }
             }

@@ -52,7 +52,7 @@ public class MainService extends Service {
         super.onCreate();
         handler = new Handler();
         receiver = new MainReceiver();
-        mPlayCenter = PlayCenter.getInstance(this);
+        mPlayCenter = PlayCenter.getInstance();
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ACTION_PLAY_PAUSE);
