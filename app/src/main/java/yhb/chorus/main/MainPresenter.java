@@ -2,19 +2,15 @@ package yhb.chorus.main;
 
 import android.content.Context;
 import android.database.ContentObserver;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.os.Handler;
 
-import org.litepal.LitePal;
 import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import yhb.chorus.R;
-import yhb.chorus.db.DBUtils;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.entity.MP3InQueue;
 import yhb.chorus.service.PlayCenter;
@@ -30,6 +26,7 @@ class MainPresenter implements MainContract.Presenter {
     private PlayCenter mPlayCenter;
     private AudioManager mAudioManager = null;
     private int mVolumeSystem = -1, mVolumeSystemMax = -1;
+
 
     MainPresenter(Context context, MainContract.View view) {
         mContext = context;
@@ -66,13 +63,13 @@ class MainPresenter implements MainContract.Presenter {
         mContext.getContentResolver().unregisterContentObserver(mSettingsContentObserver);
     }
 
-    /**
-     *  load and save data from memory/db methods
+    /*
+     * load and save data from memory/db methods
      */
 
     @Override
     public void loadQueueMP3sFromDB(final PlayCenter playCenter) {
-        List<MP3InQueue> mp3InQueue = DataSupport.findAll(MP3InQueue.class,true);
+        List<MP3InQueue> mp3InQueue = DataSupport.findAll(MP3InQueue.class, true);
         ArrayList<MP3> queueMP3s = new ArrayList<>();
         for (MP3InQueue inQueue : mp3InQueue) {
             queueMP3s.add(inQueue.getMp3());
@@ -95,7 +92,7 @@ class MainPresenter implements MainContract.Presenter {
         return mPlayCenter.getCurrentMP3();
     }
 
-    /**
+    /*
      * setting method
      */
 
@@ -111,31 +108,35 @@ class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void reloadCurrentWidgetsData(boolean needCover) {
+    public void reloadCurrentWidgetsData() {
 
         int progress = (int) (mPlayCenter.getVolume() * 10);
         int playMode = mPlayCenter.getPlayMode();
-        Bitmap cover = null;
         String songName = "";
         String artistName = "";
 
         MP3 currentMP3 = mPlayCenter.getCurrentMP3();
         if (currentMP3 != null) {
-            if (needCover) {
-                cover = mPlayCenter.getAlbumart(currentMP3);
-            }
             songName = currentMP3.getTitle();
             artistName = currentMP3.getArtist();
         } else {
-            if (needCover) {
-                cover = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.marry);
-            }
             songName = mContext.getResources().getString(R.string.song_name);
             artistName = mContext.getResources().getString(R.string.artist_name);
         }
 
-        mView.invalidateWidgets(progress, playMode, cover, songName, artistName);
+        mView.invalidateWidgets(progress, playMode, songName, artistName);
     }
+
+    @Override
+    public void loadCoversAsync() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mView.invalidateCovers(mPlayCenter.loadCovers());
+            }
+        }).start();
+    }
+
 
     @Override
     public void saveCurrentVolume(float volume) {

@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.MainService" />
+        <service android:name=".service.MainService" android:process=":play" />
     </application>
 
 </manifest>

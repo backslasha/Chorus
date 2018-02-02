@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.IBinder;
@@ -197,7 +198,7 @@ public class MainService extends Service {
         setupRemoteView(remoteViews, currentMP3);
         setupRemoteView(remoteViewsBig, currentMP3);
 
-        Notification notification  = new NotificationCompat.Builder(this)
+        Notification notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)
                 .setTicker(currentMP3.getTitle())
                 .setContent(remoteViews)
@@ -218,14 +219,8 @@ public class MainService extends Service {
         } else {
             remoteViews.setImageViewResource(R.id.image_button_play_or_pause, R.drawable.ic_play_circle_outline);
         }
-        Bitmap bitmap;
-        if ((bitmap = mPlayCenter.getAlbumart(currentMP3)) != null) {
-            remoteViews.setImageViewBitmap(R.id.iv_artist_photo_id, bitmap);
 
-        } else {
-            remoteViews.setImageViewResource(R.id.iv_artist_photo_id, R.drawable.marry);
-        }
-
+        remoteViews.setImageViewBitmap(R.id.iv_artist_photo_id, mPlayCenter.getAlbumart(currentMP3));
 
         Intent broadIntent = new Intent(ACTION_EXIT);
         PendingIntent exitPi = PendingIntent.getBroadcast(this, 0, broadIntent, 0);

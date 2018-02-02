@@ -17,9 +17,11 @@ public interface MainContract {
 
     interface View extends BaseView<Presenter> {
 
-        void invalidateWidgets(int progress, int playMode, Bitmap cover, String songName, String artistName);
+        void invalidateWidgets(int progress, int playMode, String songName, String artistName);
 
         void invalidateSeekBarVolumeSystem(int currentVolume, int volumeSystemMax);
+
+        void invalidateCovers(Bitmap[] bitmaps);
     }
 
     interface Presenter extends BasePresenter {
@@ -44,7 +46,7 @@ public interface MainContract {
 
         void setCurrentVolumeSystem(int volume);
 
-        void reloadCurrentWidgetsData(boolean needCover);
+        void reloadCurrentWidgetsData();
 
         List<MP3> loadQueueMP3sFromMemory();
 
@@ -59,5 +61,7 @@ public interface MainContract {
         int getMaxVolumeSystem();
 
         void point(MP3 mp3);
+
+        void loadCoversAsync();
     }
 }

@@ -13,8 +13,10 @@ import java.io.FileDescriptor;
 import java.util.ArrayList;
 import java.util.List;
 
+import yhb.chorus.R;
 import yhb.chorus.app.ChorusApplication;
 import yhb.chorus.entity.MP3;
+import yhb.chorus.utils.LRUCache;
 
 
 public class PlayCenter {
@@ -28,7 +30,6 @@ public class PlayCenter {
     @SuppressLint("StaticFieldLeak")
     private static PlayCenter sPlayCenter;
     private Context mContext;
-    private int currentIndex = 0;
     private int playMode = MODE_LIST_LOOP;
     private float mVolume = 1f;
 
@@ -37,6 +38,8 @@ public class PlayCenter {
     private MP3 currentMP3;
     private MP3 candidateNextMP3;
     private MP3 candidatePreviousMP3;
+    private LRUCache<MP3, Bitmap> coverCache;
+    public static Bitmap DEFAULT_BITMAP;
 
     public static PlayCenter getInstance() {
         if (sPlayCenter == null) {
@@ -47,6 +50,8 @@ public class PlayCenter {
 
     private PlayCenter() {
         mContext = ChorusApplication.getsApplicationContext();
+        coverCache = new LRUCache<>(10);
+        DEFAULT_BITMAP = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.marry);
     }
 
     /*
@@ -85,7 +90,7 @@ public class PlayCenter {
             candidatePreviousMP3 = pickCandidatePrevious(fromUser);
         }
 
-        currentMP3 = candidateNextMP3;
+        currentMP3 = candidatePreviousMP3;
 
         sendCommand(MainService.ACTION_PREVIOUS);
 
@@ -243,19 +248,19 @@ public class PlayCenter {
         return mp3s;
     }
 
-    /**
-     * 根据 mp3 获取封面
-     *
-     * @param mp3Bean 目标 mp3
-     * @return 封面 bitmap
-     */
-    public Bitmap getAlbumart(MP3 mp3Bean) {
-        Bitmap albumArtBitMap = null;
+    public Bitmap getAlbumart(MP3 mp3) {
+
+        Bitmap albumArtBitMap = coverCache.get(mp3);
+
+        if (albumArtBitMap != null) {
+            return albumArtBitMap;
+        }
+
         BitmapFactory.Options options = new BitmapFactory.Options();
         try {
 
             Uri uri = Uri
-                    .parse("content://media/external/audio/albumart/" + mp3Bean.getAlbumId());
+                    .parse("content://media/external/audio/albumart/" + mp3.getAlbumId());
 
             ParcelFileDescriptor pfd = mContext.getContentResolver()
                     .openFileDescriptor(uri, "r");
@@ -267,11 +272,33 @@ public class PlayCenter {
                 pfd = null;
                 fd = null;
             }
+
+            if (albumArtBitMap == null) {
+                albumArtBitMap = DEFAULT_BITMAP;
+            }
+
+            coverCache.put(mp3, albumArtBitMap);
+
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return albumArtBitMap;
     }
 
+    public Bitmap[] loadCovers() {
+        Bitmap[] bitmaps;
+        MP3 currentMP3 = getCurrentMP3();
+        MP3 candidateNextMP3 = getCandidateNextMP3();
+        MP3 candidatePreviousMP3 = getCandidatePreviousMP3();
+
+        bitmaps = new Bitmap[3];
+
+        bitmaps[0] = getAlbumart(candidatePreviousMP3);
+        bitmaps[1] = getAlbumart(currentMP3);
+        bitmaps[2] = getAlbumart(candidateNextMP3);
+
+        return bitmaps;
+    }
 
     /*
      * record/get independent volume settings

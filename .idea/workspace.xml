@@ -6,16 +6,46 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db484e0f-6b25-473c-b088-f2b200d4a777" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/utils/LRUCache.java" />
+      <change type="NEW" beforePath="" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/LRUCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/fileHashes/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/fileHashes/fileHashes.lock" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/javaCompile/classAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/javaCompile/javaCompile.lock" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/javaCompile/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/taskHistory.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainContract.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainContract.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/service/MainService.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/service/MainService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/service/PlayCenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/service/PlayCenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" />
       <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.idea/workspace.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java" />
       <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java" />
       <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java" />
       <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_main.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_main.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,38 +72,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayCenter.java" pinned="false" current-in-tab="true">
-        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java">
+      <file leaf-file-name="MainFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+            <state relative-caret-position="600">
+              <caret line="88" column="37" lean-forward="false" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="37" />
               <folding>
-                <element signature="docComment;field#MODE_SINGLE_LOOP#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#getInstance#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#next#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#previous#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#playOrPause#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#point#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#sendCommand#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#pickCandidatePrevious#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#pickCandidateNext#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#nextPlayMode#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#nextPlayMode#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#sureServiceAlive#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#sureServiceAlive#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#setMp3s#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#setMp3s#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#setCurrentMP3#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#getPlayMode#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#getCurrentMP3#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#getAlbumart#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#getAlbumart#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#recordVolume#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#getVolume#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#getQueueMP3s#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#setQueueMP3s#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
+                <element signature="docComment;class#MainFragment#0" expanded="false" />
+                <element signature="method#newInstance#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onCreate#0;class#MainFragment#0" expanded="false" />
+                <element signature="e#2662#2671#0" expanded="false" />
+                <element signature="method#onCreateView#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#bindViews#0;class#MainFragment#0" expanded="false" />
+                <element signature="class#4406:5236" expanded="false" />
+                <element signature="method#onProgressChanged#0;class#4406:5236" expanded="false" />
+                <element signature="method#onStartTrackingTouch#0;class#4406:5236" expanded="false" />
+                <element signature="method#onStopTrackingTouch#0;class#4406:5236" expanded="false" />
+                <element signature="class#5368:6161" expanded="false" />
+                <element signature="method#onProgressChanged#0;class#5368:6161" expanded="false" />
+                <element signature="method#onStartTrackingTouch#0;class#5368:6161" expanded="false" />
+                <element signature="method#onStopTrackingTouch#0;class#5368:6161" expanded="false" />
+                <element signature="class#6374:6867" expanded="false" />
+                <element signature="method#onProgressChanged#0;class#6374:6867" expanded="false" />
+                <element signature="method#onStartTrackingTouch#0;class#6374:6867" expanded="false" />
+                <element signature="method#onStopTrackingTouch#0;class#6374:6867" expanded="false" />
+                <element signature="class#7374:7711" expanded="false" />
+                <element signature="method#onNext#0;class#7374:7711" expanded="false" />
+                <element signature="method#onPrevious#0;class#7374:7711" expanded="false" />
+                <element signature="method#onDestroy#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onCreateOptionsMenu#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onClick#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#invalidateWidgets#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#invalidateSeekBarVolumeSystem#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#invalidateCovers#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#showBottomSheet#0;class#MainFragment#0" expanded="false" />
+                <element signature="class#12394:13107" expanded="false" />
+                <element signature="method#forEachHolder#0;class#12394:13107" expanded="false" />
+                <element signature="method#mm2min#0;class#MainFragment#0" expanded="false" />
+                <element signature="class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#CoverPagerAdapter#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#instantiateItem#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#destroyItem#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
+                <element signature="class#OnSelectedListener#0;class#MainFragment#0" expanded="false" />
+                <element signature="class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#PageSelectedListener#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onPageScrolled#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onPageSelected#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onPageScrollStateChanged#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+                <element signature="class#ConsoleReceiver#0;class#MainFragment#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -82,38 +129,109 @@
       <file leaf-file-name="MainPresenter.java" pinned="false" current-in-tab="false">
         <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="171" column="20" lean-forward="false" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="20" />
+            <state relative-caret-position="309">
+              <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
               <folding>
                 <element signature="docComment;class#MainPresenter#0" expanded="false" />
-                <element signature="class#1193:1546" expanded="false" />
-                <element signature="method#onChange#0;class#1193:1546" expanded="false" />
+                <element signature="method#MainPresenter#0;class#MainPresenter#0" expanded="false" />
+                <element signature="class#1065:1418" expanded="false" />
+                <element signature="method#onChange#0;class#1065:1418" expanded="false" />
                 <element signature="method#start#0;class#MainPresenter#0" expanded="false" />
                 <element signature="method#release#0;class#MainPresenter#0" expanded="false" />
                 <element signature="method#loadQueueMP3sFromDB#0;class#MainPresenter#0" expanded="false" />
                 <element signature="method#loadMP3sFromDB#0;class#MainPresenter#0" expanded="false" />
                 <element signature="method#loadSavedSetting#0;class#MainPresenter#0" expanded="false" />
                 <element signature="method#setCurrentVolumeSystem#0;class#MainPresenter#0" expanded="false" />
-                <element signature="method#reloadCurrentWidgetsData#0;class#MainPresenter#0" expanded="false" />
-                <element signature="e#4786#4787#0" expanded="true" />
-                <element signature="e#4824#4825#0" expanded="true" />
-                <element signature="e#4956#4957#0" expanded="true" />
-                <element signature="e#4998#4999#0" expanded="true" />
+                <element signature="e#3747#3800#0" expanded="true" />
+                <element signature="e#3827#3882#0" expanded="true" />
+                <element signature="docComment;method#next#0;class#MainPresenter#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainService.java" pinned="false" current-in-tab="true">
         <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="74" column="29" lean-forward="true" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
+            <state relative-caret-position="400">
+              <caret line="74" column="45" lean-forward="true" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
               <folding>
-                <element signature="e#1692#1701#0" expanded="false" />
                 <element signature="method#onDestroy#0;class#MainService#0" expanded="false" />
+                <element signature="method#prepared#0;class#MainService#0" expanded="false" />
+                <element signature="method#foreSerLaunch#0;class#MainService#0" expanded="false" />
+                <element signature="method#setupRemoteView#0;class#MainService#0" expanded="false" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainContract.java" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="19" column="59" lean-forward="false" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayCenter.java" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="202" column="22" lean-forward="false" selection-start-line="202" selection-start-column="22" selection-end-line="202" selection-end-column="22" />
+              <folding>
+                <element signature="method#getInstance#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#playOrPause#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#next#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#previous#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#point#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#nextPlayMode#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#pickCandidateNext#0;class#PlayCenter#0" expanded="false" />
+                <element signature="docComment;method#setMp3s#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#setMp3s#0;class#PlayCenter#0" expanded="false" />
+                <element signature="docComment;method#getPlayMode#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#getCandidateNextMP3#0;class#PlayCenter#0" expanded="false" />
+                <element signature="method#getCandidatePreviousMP3#0;class#PlayCenter#0" expanded="false" />
+                <marker date="1517574658455" expanded="false" signature="8123:8189" ph="/**...*/" />
+                <marker date="1517574658455" expanded="false" signature="8232:8243" ph=" { " />
+                <marker date="1517574658455" expanded="false" signature="8260:8266" ph=" }" />
+                <marker date="1517574658455" expanded="false" signature="8272:8330" ph="/**...*/" />
+                <marker date="1517574658455" expanded="false" signature="8359:8370" ph=" { " />
+                <marker date="1517574658455" expanded="false" signature="8385:8391" ph=" }" />
+                <marker date="1517574658455" expanded="false" signature="8442:8502" ph="/**...*/" />
+                <marker date="1517574658455" expanded="false" signature="8543:8554" ph=" { " />
+                <marker date="1517574658455" expanded="false" signature="8572:8578" ph=" }" />
+                <marker date="1517574658455" expanded="false" signature="8584:8657" ph="/**...*/" />
+                <marker date="1517574658455" expanded="false" signature="8712:8723" ph=" { " />
+                <marker date="1517574658455" expanded="false" signature="8746:8752" ph=" }" />
+                <marker date="1517574658455" expanded="false" signature="8758:8848" ph="/**...*/" />
+                <marker date="1517574658455" expanded="false" signature="8906:9159" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Context.java" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/content/Context.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-52">
+              <caret line="2669" column="24" lean-forward="false" selection-start-line="2669" selection-start-column="24" selection-end-line="2669" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-manifest">
+            <state />
           </provider>
         </entry>
       </file>
@@ -149,6 +267,8 @@
       <find>mCallback</find>
       <find>close</find>
       <find>_id</find>
+      <find>mPlayCenter.</find>
+      <find>defaultBitmap</find>
     </findStrings>
     <replaceStrings>
       <replace>mp3</replace>
@@ -158,6 +278,7 @@
       <replace>mPlayCenter</replace>
       <replace>MP3</replace>
       <replace>id</replace>
+      <replace>DEFALUT_BITMAP</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -1882,8 +2003,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/drawable/ic_play_circle_outline.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/drawable/ic_pause_circle_outline.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/widgets/SlimSeekBar.java" />
@@ -1923,16 +2042,18 @@
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListContract.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/entity/MP3InQueue.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListPresenter.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListFragment.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainActivity.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification_big.xml" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_main.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/LRUCache.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -2226,6 +2347,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CHORUS" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yhb" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chorus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2288,7 +2435,6 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="full.screen.before.presentation.mode" value="true" />
-    <property name="android.profiler.active" value="true" />
     <property name="SearchEverywhereHistoryKey" value="Handler&#9;PSI&#9;JAVA://android.os.Handler&#10;Looper&#9;PSI&#9;JAVA://android.os.Looper" />
   </component>
   <component name="RecentsManager">
@@ -2395,7 +2541,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517557403730" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517576946429" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2443,7 +2589,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517557403730" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517576946429" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2601,7 +2747,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517557403732" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517576946429" />
       </method>
     </configuration>
     <list size="1">
@@ -2658,7 +2804,7 @@
     <frame x="-1" y="-38" width="1368" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886904" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51155627" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32738096" sideWeight="0.5045386" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41140217" sideWeight="0.49546143" order="9" side_tool="false" content_ui="tabs" />
@@ -2739,273 +2885,17 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java</url>
-          <line>299</line>
-          <properties />
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java</url>
-          <line>338</line>
+          <line>352</line>
           <properties />
           <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="60" />
+      <option name="time" value="67" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/database/sqlite/SQLiteDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="1680" column="31" lean-forward="false" selection-start-line="1680" selection-start-column="31" selection-end-line="1680" selection-end-column="31" />
-          <folding>
-            <element signature="docComment;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#CONFLICT_ROLLBACK#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#CONFLICT_ABORT#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#CONFLICT_FAIL#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#CONFLICT_IGNORE#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#CONFLICT_REPLACE#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#CONFLICT_NONE#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#SQLITE_MAX_LIKE_PATTERN_LENGTH#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#OPEN_READWRITE#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#OPEN_READONLY#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#NO_LOCALIZED_COLLATORS#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#CREATE_IF_NECESSARY#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#ENABLE_WRITE_AHEAD_LOGGING#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;field#MAX_SQL_CACHE_SIZE#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#SQLiteDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#finalize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#dispose#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#releaseMemory#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#setLockingEnabled#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#setLockingEnabled#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getLabel#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getLabel#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#onCorruption#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#onCorruption#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getThreadSession#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getThreadSession#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#createSession#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getThreadDefaultConnectionFlags#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getThreadDefaultConnectionFlags#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#isMainThread#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="e#15369#15419#0" expanded="false" />
-            <element signature="docComment;method#beginTransaction#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#beginTransactionNonExclusive#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#beginTransactionNonExclusive#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#beginTransactionWithListener#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#beginTransactionWithListener#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#beginTransactionWithListenerNonExclusive#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#beginTransactionWithListenerNonExclusive#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#beginTransaction#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#endTransaction#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#endTransaction#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#setTransactionSuccessful#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#setTransactionSuccessful#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#inTransaction#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#inTransaction#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#isDbLockedByCurrentThread#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#isDbLockedByCurrentThread#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#isDbLockedByOtherThreads#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#yieldIfContended#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#yieldIfContended#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#yieldIfContendedSafely#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#yieldIfContendedSafely#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#yieldIfContendedSafely#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#yieldIfContendedSafely#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#yieldIfContendedHelper#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getSyncedTables#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#openDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#openDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#openDatabase#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#openDatabase#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#openOrCreateDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#openOrCreateDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#openOrCreateDatabase#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#openOrCreateDatabase#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#openOrCreateDatabase#2;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#openOrCreateDatabase#2;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#deleteDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#deleteDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#reopenReadWrite#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#reopenReadWrite#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#open#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#openInner#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#create#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#create#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#addCustomFunction#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#addCustomFunction#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getVersion#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getVersion#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#setVersion#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getMaximumSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getMaximumSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#setMaximumSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#setMaximumSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getPageSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getPageSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#setPageSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#markTableSyncable#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#markTableSyncable#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#markTableSyncable#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#markTableSyncable#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#findEditTable#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#findEditTable#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#compileStatement#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#compileStatement#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#query#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#query#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#query#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#query#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#queryWithFactory#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#queryWithFactory#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#queryWithFactory#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#queryWithFactory#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#query#2;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#query#2;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#query#3;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#query#3;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#rawQuery#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#rawQuery#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#rawQuery#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#rawQuery#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#rawQueryWithFactory#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#rawQueryWithFactory#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#rawQueryWithFactory#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#rawQueryWithFactory#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#insert#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#insert#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#insertOrThrow#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#insertOrThrow#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#replace#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#replace#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#replaceOrThrow#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#replaceOrThrow#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#insertWithOnConflict#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#insertWithOnConflict#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#delete#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#delete#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#update#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#update#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#updateWithOnConflict#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#updateWithOnConflict#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#execSQL#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#execSQL#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#execSQL#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#execSQL#1;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#validateSql#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#validateSql#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#isReadOnly#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#isReadOnly#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#isReadOnlyLocked#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#isInMemoryDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#isInMemoryDatabase#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#isOpen#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#isOpen#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#needUpgrade#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getPath#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getPath#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#setLocale#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#setLocale#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#setMaxSqlCacheSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#setMaxSqlCacheSize#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#setForeignKeyConstraintsEnabled#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#setForeignKeyConstraintsEnabled#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#enableWriteAheadLogging#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#enableWriteAheadLogging#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="e#85296#85345#0" expanded="false" />
-            <element signature="e#85652#85741#0" expanded="false" />
-            <element signature="docComment;method#disableWriteAheadLogging#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#disableWriteAheadLogging#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#isWriteAheadLoggingEnabled#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#isWriteAheadLoggingEnabled#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getDbStats#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getDbStats#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#collectDbStats#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getActiveDatabases#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#dumpAll#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#dumpAll#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#dump#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#getAttachedDbs#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#getAttachedDbs#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="e#90022#90047#0" expanded="false" />
-            <element signature="e#91280#91356#0" expanded="false" />
-            <element signature="docComment;method#isDatabaseIntegrityOk#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#isDatabaseIntegrityOk#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="method#throwIfNotOpenLocked#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;class#CursorFactory#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="class#CursorFactory#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;method#newCursor#0;class#CursorFactory#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="docComment;class#CustomFunction#0;class#SQLiteDatabase#0" expanded="false" />
-            <element signature="class#CustomFunction#0;class#SQLiteDatabase#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/database/sqlite/SQLiteOpenHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3280">
-          <caret line="184" column="67" lean-forward="true" selection-start-line="184" selection-start-column="67" selection-end-line="184" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.6.1/b16b5ac30266a655988090385639582d0c39cd86/core-1.6.1-sources.jar!/org/litepal/tablemanager/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="57" column="52" lean-forward="true" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="52" />
-          <folding>
-            <element signature="e#2787#2788#0" expanded="false" />
-            <element signature="e#2822#2823#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="713" column="29" lean-forward="false" selection-start-line="713" selection-start-column="29" selection-end-line="713" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.6.1/b16b5ac30266a655988090385639582d0c39cd86/core-1.6.1-sources.jar!/org/litepal/crud/async/UpdateOrDeleteExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2240">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding>
-            <marker date="1517485851299" expanded="true" signature="4167:4451" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout-land/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding>
-            <element signature="e#1378#1396#0" expanded="true" />
-            <element signature="e#1817#1843#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_action_bar_buttons.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3124,14 +3014,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="5642" column="59" lean-forward="true" selection-start-line="5642" selection-start-column="59" selection-end-line="5642" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/db/DBUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
@@ -3211,14 +3093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="48" column="25" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/ActivityUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -3291,17 +3165,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
@@ -3325,14 +3188,6 @@
             <element signature="method#onDestroy#0;class#ListFragment#0" expanded="false" />
             <element signature="method#onCreateOptionsMenu#0;class#ListFragment#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="106" column="52" lean-forward="false" selection-start-line="106" selection-start-column="52" selection-end-line="106" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3371,31 +3226,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="74" column="19" lean-forward="true" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
-          <folding>
-            <element signature="e#3182#3205#0" expanded="true" />
-            <element signature="e#3233#3255#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="74" column="29" lean-forward="true" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
-          <folding>
-            <element signature="e#1692#1701#0" expanded="false" />
-            <element signature="method#onDestroy#0;class#MainService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -3411,99 +3241,456 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java">
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="41" column="59" lean-forward="false" selection-start-line="41" selection-start-column="59" selection-end-line="41" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
-          <caret line="95" column="47" lean-forward="true" selection-start-line="95" selection-start-column="47" selection-end-line="95" selection-end-column="47" />
+          <caret line="9756" column="6" lean-forward="true" selection-start-line="9756" selection-start-column="6" selection-end-line="9756" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-core-ui/26.1.0/4d52cef4a24bf9939de1d256ca9f0974c6e636a4/support-core-ui-26.1.0-sources.jar!/android/support/v4/view/PagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="254" column="16" lean-forward="false" selection-start-line="254" selection-start-column="16" selection-end-line="254" selection-end-column="16" />
+          <folding>
+            <element signature="docComment;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#getCount#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#startUpdate#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="e#4509#4510#0" expanded="false" />
+            <element signature="e#4554#4555#0" expanded="false" />
+            <element signature="docComment;method#instantiateItem#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#instantiateItem#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#destroyItem#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#destroyItem#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#setPrimaryItem#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#setPrimaryItem#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#finishUpdate#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#startUpdate#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#instantiateItem#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#instantiateItem#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#destroyItem#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#destroyItem#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#setPrimaryItem#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#setPrimaryItem#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#finishUpdate#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#finishUpdate#1;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#isViewFromObject#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#saveState#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#getItemPosition#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#notifyDataSetChanged#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#notifyDataSetChanged#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#registerDataSetObserver#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#registerDataSetObserver#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#unregisterDataSetObserver#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#unregisterDataSetObserver#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="method#setViewPagerObserver#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#getPageTitle#0;class#PagerAdapter#0" expanded="false" />
+            <element signature="docComment;method#getPageWidth#0;class#PagerAdapter#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-core-ui/26.1.0/4d52cef4a24bf9939de1d256ca9f0974c6e636a4/support-core-ui-26.1.0-sources.jar!/android/support/v4/view/ViewPager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1778">
+          <caret line="2659" column="59" lean-forward="true" selection-start-line="2659" selection-start-column="59" selection-end-line="2659" selection-end-column="59" />
+          <folding>
+            <element signature="docComment;class#ViewPager#0" expanded="false" />
+            <element signature="e#5471#5481#0" expanded="false" />
+            <element signature="docComment;field#mLastMotionX#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#mActivePointerId#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#INVALID_POINTER#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#mVelocityTracker#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#SCROLL_STATE_IDLE#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#SCROLL_STATE_DRAGGING#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#SCROLL_STATE_SETTLING#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;class#OnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#OnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#onPageScrolled#0;class#OnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#onPageSelected#0;class#OnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#onPageScrollStateChanged#0;class#OnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;class#SimpleOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#SimpleOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onPageScrolled#0;class#SimpleOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onPageSelected#0;class#SimpleOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onPageScrollStateChanged#0;class#SimpleOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;class#PageTransformer#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#PageTransformer#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;class#OnAdapterChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#OnAdapterChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#onAdapterChanged#0;class#OnAdapterChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;class#DecorView#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#13853#13888#0" expanded="false" />
+            <element signature="class#DecorView#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#ViewPager#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#ViewPager#1;class#ViewPager#0" expanded="false" />
+            <element signature="method#onApplyWindowInsets#0;class#15509:18478" expanded="false" />
+            <element signature="e#16261#16335#0" expanded="false" />
+            <element signature="e#17530#17596#0" expanded="false" />
+            <element signature="method#onDetachedFromWindow#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#removeNonDecorViews#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#getAdapter#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#addOnAdapterChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#addOnAdapterChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#removeOnAdapterChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#removeOnAdapterChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#getClientWidth#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setCurrentItem#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#setCurrentItem#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setCurrentItem#1;class#ViewPager#0" expanded="false" />
+            <element signature="method#setCurrentItem#1;class#ViewPager#0" expanded="false" />
+            <element signature="method#setCurrentItemInternal#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#setCurrentItemInternal#1;class#ViewPager#0" expanded="false" />
+            <element signature="e#24303#24358#0" expanded="false" />
+            <element signature="e#24694#24775#0" expanded="false" />
+            <element signature="method#scrollToItem#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#setOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#addOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#addOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#removeOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#removeOnPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#clearOnPageChangeListeners#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#clearOnPageChangeListeners#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setPageTransformer#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#setPageTransformer#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setPageTransformer#1;class#ViewPager#0" expanded="false" />
+            <element signature="method#setPageTransformer#1;class#ViewPager#0" expanded="false" />
+            <element signature="method#getChildDrawingOrder#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setInternalPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#setInternalPageChangeListener#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#getOffscreenPageLimit#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setOffscreenPageLimit#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#setOffscreenPageLimit#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setPageMargin#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#setPageMargin#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#getPageMargin#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setPageMarginDrawable#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#setPageMarginDrawable#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#setPageMarginDrawable#1;class#ViewPager#0" expanded="false" />
+            <element signature="method#setPageMarginDrawable#1;class#ViewPager#0" expanded="false" />
+            <element signature="method#verifyDrawable#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#drawableStateChanged#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#distanceInfluenceForSnapDuration#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#smoothScrollTo#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#smoothScrollTo#1;class#ViewPager#0" expanded="false" />
+            <element signature="method#smoothScrollTo#1;class#ViewPager#0" expanded="false" />
+            <element signature="e#36370#36442#0" expanded="false" />
+            <element signature="e#38088#38164#0" expanded="false" />
+            <element signature="method#addNewItem#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#dataSetChanged#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#41130#41131#0" expanded="false" />
+            <element signature="e#41164#41165#0" expanded="false" />
+            <element signature="e#43758#43821#0" expanded="false" />
+            <element signature="e#47801#47868#0" expanded="false" />
+            <element signature="method#sortChildDrawingOrder#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#50927#50971#0" expanded="false" />
+            <element signature="e#51899#51943#0" expanded="false" />
+            <element signature="docComment;class#SavedState#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#SavedState#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#writeToParcel#0;class#SavedState#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#toString#0;class#SavedState#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#54707:55198" expanded="false" />
+            <element signature="method#createFromParcel#0;class#54707:55198" expanded="false" />
+            <element signature="method#SavedState#1;class#SavedState#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onSaveInstanceState#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onRestoreInstanceState#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#addView#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#isDecorView#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#removeView#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#infoForChild#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#infoForAnyChild#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#infoForPosition#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onAttachedToWindow#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onMeasure#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#58887#58947#0" expanded="false" />
+            <element signature="method#onSizeChanged#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#recomputeScrollPosition#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onLayout#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#65333#65402#0" expanded="false" />
+            <element signature="e#68655#68709#0" expanded="false" />
+            <element signature="method#computeScroll#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#pageScrolled#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#71027#71107#0" expanded="false" />
+            <element signature="docComment;method#onPageScrolled#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onPageScrolled#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#dispatchOnPageScrolled#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#dispatchOnPageSelected#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#dispatchOnScrollStateChanged#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#completeScroll#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#isGutterDrag#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#enableLayers#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onInterceptTouchEvent#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#79937#80000#0" expanded="false" />
+            <element signature="e#82543#82589#0" expanded="false" />
+            <element signature="method#onTouchEvent#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#85225#85284#0" expanded="false" />
+            <element signature="e#85537#85619#0" expanded="false" />
+            <element signature="e#86798#86871#0" expanded="false" />
+            <element signature="method#resetTouch#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#requestParentDisallowInterceptTouchEvent#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#performDrag#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#infoForCurrentScrollPosition#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#infoForCurrentScrollPosition#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#determineTargetPage#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#draw#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onDraw#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#beginFakeDrag#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#beginFakeDrag#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#endFakeDrag#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#endFakeDrag#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#fakeDragBy#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#fakeDragBy#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#isFakeDragging#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onSecondaryPointerUp#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#104052#104105#0" expanded="false" />
+            <element signature="method#endDrag#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#canScrollHorizontally#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#canScrollHorizontally#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#canScroll#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#107045#107103#0" expanded="false" />
+            <element signature="method#dispatchKeyEvent#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#executeKeyEvent#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#arrowScroll#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#arrowScroll#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#111282#111342#0" expanded="false" />
+            <element signature="e#111910#111971#0" expanded="false" />
+            <element signature="method#getChildRectInPagerCoordinates#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#pageLeft#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;method#addFocusables#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#115046#115116#0" expanded="false" />
+            <element signature="e#115467#115494#0" expanded="false" />
+            <element signature="docComment;method#addTouchables#0;class#ViewPager#0" expanded="false" />
+            <element signature="e#116174#116240#0" expanded="false" />
+            <element signature="docComment;method#onRequestFocusInDescendants#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onRequestFocusInDescendants#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#dispatchPopulateAccessibilityEvent#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#generateLayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#checkLayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#generateLayoutParams#1;class#ViewPager#0" expanded="false" />
+            <element signature="class#MyAccessibilityDelegate#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onInitializeAccessibilityEvent#0;class#MyAccessibilityDelegate#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#onInitializeAccessibilityNodeInfo#0;class#MyAccessibilityDelegate#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#performAccessibilityAction#0;class#MyAccessibilityDelegate#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#PagerObserver#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#PagerObserver#0;class#PagerObserver#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#isDecor#0;class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#gravity#0;class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#widthFactor#0;class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#needsMeasure#0;class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#position#0;class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="docComment;field#childIndex#0;class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#LayoutParams#1;class#LayoutParams#0;class#ViewPager#0" expanded="false" />
+            <element signature="class#ViewPositionComparator#0;class#ViewPager#0" expanded="false" />
+            <element signature="method#compare#0;class#ViewPositionComparator#0;class#ViewPager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="78" column="27" lean-forward="false" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/util/SparseArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="46" column="67" lean-forward="false" selection-start-line="46" selection-start-column="67" selection-end-line="46" selection-end-column="67" />
+          <folding>
+            <element signature="e#2812#2813#0" expanded="true" />
+            <element signature="e#2836#2837#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/java/util/LinkedHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="324" column="58" lean-forward="false" selection-start-line="324" selection-start-column="58" selection-end-line="324" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/LRUCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="88" column="37" lean-forward="false" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="37" />
           <folding>
             <element signature="docComment;class#MainFragment#0" expanded="false" />
             <element signature="method#newInstance#0;class#MainFragment#0" expanded="false" />
             <element signature="method#onCreate#0;class#MainFragment#0" expanded="false" />
-            <element signature="e#2446#2455#0" expanded="false" />
+            <element signature="e#2662#2671#0" expanded="false" />
             <element signature="method#onCreateView#0;class#MainFragment#0" expanded="false" />
-            <element signature="method#onResume#0;class#MainFragment#0" expanded="false" />
-            <element signature="class#4156:4986" expanded="false" />
-            <element signature="method#onProgressChanged#0;class#4156:4986" expanded="false" />
-            <element signature="method#onStartTrackingTouch#0;class#4156:4986" expanded="false" />
-            <element signature="method#onStopTrackingTouch#0;class#4156:4986" expanded="false" />
-            <element signature="class#5118:5911" expanded="false" />
-            <element signature="method#onProgressChanged#0;class#5118:5911" expanded="false" />
-            <element signature="method#onStartTrackingTouch#0;class#5118:5911" expanded="false" />
-            <element signature="method#onStopTrackingTouch#0;class#5118:5911" expanded="false" />
-            <element signature="class#6124:6617" expanded="false" />
-            <element signature="method#onProgressChanged#0;class#6124:6617" expanded="false" />
-            <element signature="method#onStartTrackingTouch#0;class#6124:6617" expanded="false" />
-            <element signature="method#onStopTrackingTouch#0;class#6124:6617" expanded="false" />
+            <element signature="method#bindViews#0;class#MainFragment#0" expanded="false" />
+            <element signature="class#4406:5236" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#4406:5236" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#4406:5236" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#4406:5236" expanded="false" />
+            <element signature="class#5368:6161" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#5368:6161" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#5368:6161" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#5368:6161" expanded="false" />
+            <element signature="class#6374:6867" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#6374:6867" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#6374:6867" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#6374:6867" expanded="false" />
+            <element signature="class#7374:7711" expanded="false" />
+            <element signature="method#onNext#0;class#7374:7711" expanded="false" />
+            <element signature="method#onPrevious#0;class#7374:7711" expanded="false" />
             <element signature="method#onDestroy#0;class#MainFragment#0" expanded="false" />
             <element signature="method#onCreateOptionsMenu#0;class#MainFragment#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#MainFragment#0" expanded="false" />
             <element signature="method#onClick#0;class#MainFragment#0" expanded="false" />
             <element signature="method#invalidateWidgets#0;class#MainFragment#0" expanded="false" />
             <element signature="method#invalidateSeekBarVolumeSystem#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#invalidateCovers#0;class#MainFragment#0" expanded="false" />
             <element signature="method#showBottomSheet#0;class#MainFragment#0" expanded="false" />
-            <element signature="class#10275:10936" expanded="false" />
-            <element signature="method#forEachHolder#0;class#10275:10936" expanded="false" />
-            <element signature="class#ConsoleReceiver#0;class#MainFragment#0" expanded="false" />
-            <element signature="method#onReceive#0;class#ConsoleReceiver#0;class#MainFragment#0" expanded="false" />
+            <element signature="class#12394:13107" expanded="false" />
+            <element signature="method#forEachHolder#0;class#12394:13107" expanded="false" />
             <element signature="method#mm2min#0;class#MainFragment#0" expanded="false" />
+            <element signature="class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#CoverPagerAdapter#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#instantiateItem#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#destroyItem#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
+            <element signature="class#OnSelectedListener#0;class#MainFragment#0" expanded="false" />
+            <element signature="class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#PageSelectedListener#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#onPageScrolled#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#onPageSelected#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#onPageScrollStateChanged#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
+            <element signature="class#ConsoleReceiver#0;class#MainFragment#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="19" column="59" lean-forward="false" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="171" column="20" lean-forward="false" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="20" />
+        <state relative-caret-position="309">
+          <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
           <folding>
             <element signature="docComment;class#MainPresenter#0" expanded="false" />
-            <element signature="class#1193:1546" expanded="false" />
-            <element signature="method#onChange#0;class#1193:1546" expanded="false" />
+            <element signature="method#MainPresenter#0;class#MainPresenter#0" expanded="false" />
+            <element signature="class#1065:1418" expanded="false" />
+            <element signature="method#onChange#0;class#1065:1418" expanded="false" />
             <element signature="method#start#0;class#MainPresenter#0" expanded="false" />
             <element signature="method#release#0;class#MainPresenter#0" expanded="false" />
             <element signature="method#loadQueueMP3sFromDB#0;class#MainPresenter#0" expanded="false" />
             <element signature="method#loadMP3sFromDB#0;class#MainPresenter#0" expanded="false" />
             <element signature="method#loadSavedSetting#0;class#MainPresenter#0" expanded="false" />
             <element signature="method#setCurrentVolumeSystem#0;class#MainPresenter#0" expanded="false" />
-            <element signature="method#reloadCurrentWidgetsData#0;class#MainPresenter#0" expanded="false" />
-            <element signature="e#4786#4787#0" expanded="true" />
-            <element signature="e#4824#4825#0" expanded="true" />
-            <element signature="e#4956#4957#0" expanded="true" />
-            <element signature="e#4998#4999#0" expanded="true" />
+            <element signature="e#3747#3800#0" expanded="true" />
+            <element signature="e#3827#3882#0" expanded="true" />
+            <element signature="docComment;method#next#0;class#MainPresenter#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="202" column="22" lean-forward="false" selection-start-line="202" selection-start-column="22" selection-end-line="202" selection-end-column="22" />
           <folding>
-            <element signature="docComment;field#MODE_SINGLE_LOOP#0;class#PlayCenter#0" expanded="false" />
             <element signature="method#getInstance#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#playOrPause#0;class#PlayCenter#0" expanded="false" />
             <element signature="method#next#0;class#PlayCenter#0" expanded="false" />
             <element signature="method#previous#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#playOrPause#0;class#PlayCenter#0" expanded="false" />
             <element signature="method#point#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#sendCommand#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#pickCandidatePrevious#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#pickCandidateNext#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#nextPlayMode#0;class#PlayCenter#0" expanded="false" />
             <element signature="method#nextPlayMode#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#sureServiceAlive#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#sureServiceAlive#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#pickCandidateNext#0;class#PlayCenter#0" expanded="false" />
             <element signature="docComment;method#setMp3s#0;class#PlayCenter#0" expanded="false" />
             <element signature="method#setMp3s#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#setCurrentMP3#0;class#PlayCenter#0" expanded="false" />
             <element signature="docComment;method#getPlayMode#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#getCurrentMP3#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#getAlbumart#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#getAlbumart#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#recordVolume#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#getVolume#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#getQueueMP3s#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#setQueueMP3s#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#getCandidateNextMP3#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#getCandidatePreviousMP3#0;class#PlayCenter#0" expanded="false" />
+            <marker date="1517574658455" expanded="false" signature="8123:8189" ph="/**...*/" />
+            <marker date="1517574658455" expanded="false" signature="8232:8243" ph=" { " />
+            <marker date="1517574658455" expanded="false" signature="8260:8266" ph=" }" />
+            <marker date="1517574658455" expanded="false" signature="8272:8330" ph="/**...*/" />
+            <marker date="1517574658455" expanded="false" signature="8359:8370" ph=" { " />
+            <marker date="1517574658455" expanded="false" signature="8385:8391" ph=" }" />
+            <marker date="1517574658455" expanded="false" signature="8442:8502" ph="/**...*/" />
+            <marker date="1517574658455" expanded="false" signature="8543:8554" ph=" { " />
+            <marker date="1517574658455" expanded="false" signature="8572:8578" ph=" }" />
+            <marker date="1517574658455" expanded="false" signature="8584:8657" ph="/**...*/" />
+            <marker date="1517574658455" expanded="false" signature="8712:8723" ph=" { " />
+            <marker date="1517574658455" expanded="false" signature="8746:8752" ph=" }" />
+            <marker date="1517574658455" expanded="false" signature="8758:8848" ph="/**...*/" />
+            <marker date="1517574658455" expanded="false" signature="8906:9159" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/content/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-52">
+          <caret line="2669" column="24" lean-forward="false" selection-start-line="2669" selection-start-column="24" selection-end-line="2669" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="74" column="45" lean-forward="true" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+          <folding>
+            <element signature="method#onDestroy#0;class#MainService#0" expanded="false" />
+            <element signature="method#prepared#0;class#MainService#0" expanded="false" />
+            <element signature="method#foreSerLaunch#0;class#MainService#0" expanded="false" />
+            <element signature="method#setupRemoteView#0;class#MainService#0" expanded="false" />
           </folding>
         </state>
       </provider>

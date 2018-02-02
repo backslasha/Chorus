@@ -10,8 +10,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,6 +35,7 @@ import yhb.chorus.list.ListActivity;
 import yhb.chorus.service.MainService;
 import yhb.chorus.utils.ActivityUtils;
 
+import static yhb.chorus.main.MainActivity.TAG;
 import static yhb.chorus.service.PlayCenter.MODE_LIST_LOOP;
 import static yhb.chorus.service.PlayCenter.MODE_RANDOM;
 import static yhb.chorus.service.PlayCenter.MODE_SINGLE_LOOP;
@@ -43,12 +47,13 @@ import static yhb.chorus.service.PlayCenter.MODE_SINGLE_LOOP;
 public class MainFragment extends Fragment implements MainContract.View, View.OnClickListener {
 
     private MainContract.Presenter mPresenter;
-    private ImageView mImageViewCover;
+    private ViewPager mCoverViewPager;
     private ImageButton buttonPlayOrPause;
     private ImageButton buttonPlayMode;
     private TextView textViewCurrentProgress, textViewMaxProgress, textViewSongName, textViewArtistName;
     private SeekBar mSeekBar, mSeekBarVolume, mSeekBarVolumeSystem;
     private ConsoleReceiver mReceiver;
+    private PageSelectedListener mPageSelectedListener;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -79,8 +84,9 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     @Override
     public void onResume() {
         super.onResume();
+        mPresenter.reloadCurrentWidgetsData();
         mPresenter.loadSavedSetting();
-        mPresenter.reloadCurrentWidgetsData(true);
+        mPresenter.loadCoversAsync();
         invalidateSeekBarVolumeSystem(
                 mPresenter.getCurrentVolumeSystem(),
                 mPresenter.getMaxVolumeSystem()
@@ -94,7 +100,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
         buttonPlayMode = root.findViewById(R.id.image_button_play_mode);
         ImageButton buttonQueueMusic = root.findViewById(R.id.image_button_queue_music);
         buttonPlayOrPause = root.findViewById(R.id.image_button_play_or_pause);
-        mImageViewCover = root.findViewById(R.id.image_view_cover);
+        mCoverViewPager = root.findViewById(R.id.view_pager_cover);
         mSeekBar = root.findViewById(R.id.slim_seek_bar);
         mSeekBarVolume = root.findViewById(R.id.slim_seek_bar_volume);
         mSeekBarVolumeSystem = root.findViewById(R.id.slim_seek_bar_volume_system);
@@ -177,11 +183,34 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             }
         });
 
+
         int screenWidth = ActivityUtils.getScreenWidth(getActivity());
-        ViewGroup.LayoutParams layoutParams = mImageViewCover.getLayoutParams();
-        layoutParams.width = screenWidth * 4 / 5;
-        layoutParams.height = layoutParams.width;
-        mImageViewCover.setLayoutParams(layoutParams);
+        ViewGroup.LayoutParams layoutParams = mCoverViewPager.getLayoutParams();
+        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        layoutParams.height = screenWidth * 4 / 5;
+
+        CoverPagerAdapter coverPagerAdapter = new CoverPagerAdapter();
+        int initialIndex = coverPagerAdapter.getCount() / 4 * 3 + 1;
+        mPageSelectedListener = new PageSelectedListener(
+                initialIndex, new OnSelectedListener() {
+            @Override
+            public void onNext() {
+                mPresenter.next();
+                Log.d(TAG, "onNext: ");
+            }
+
+            @Override
+            public void onPrevious() {
+                Log.d(TAG, "onPrevious: ");
+                mPresenter.previous();
+            }
+        }
+        );
+        mCoverViewPager.setLayoutParams(layoutParams);
+        mCoverViewPager.setAdapter(coverPagerAdapter);
+        mCoverViewPager.setCurrentItem(initialIndex);
+        mCoverViewPager.addOnPageChangeListener(mPageSelectedListener);
+
 
         buttonNext.setOnClickListener(this);
         buttonPrevious.setOnClickListener(this);
@@ -228,14 +257,15 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 break;
             case R.id.image_button_play_or_pause:
                 mPresenter.playOrPause();
-                mPresenter.reloadCurrentWidgetsData(true);
+                mPresenter.reloadCurrentWidgetsData();
+                mPresenter.loadCoversAsync();
                 break;
             case R.id.image_button_previous:
                 mPresenter.previous();
                 break;
             case R.id.image_button_play_mode:
                 mPresenter.nextPlayMode();
-                mPresenter.reloadCurrentWidgetsData(false);
+                mPresenter.reloadCurrentWidgetsData();
                 break;
             case R.id.image_button_queue_music:
                 showBottomSheet();
@@ -244,7 +274,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     }
 
     @Override
-    public void invalidateWidgets(int progress, int playMode, Bitmap cover, String songName, String artistName) {
+    public void invalidateWidgets(int progress, int playMode, String songName, String artistName) {
 
         mSeekBarVolume.setProgress(progress);
 
@@ -263,10 +293,6 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 break;
         }
 
-        if (cover != null) {
-            mImageViewCover.setImageBitmap(cover);
-        }
-
         textViewSongName.setText(songName);
 
         textViewArtistName.setText(artistName);
@@ -276,6 +302,38 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     public void invalidateSeekBarVolumeSystem(int currentVolume, int volumeSystemMax) {
         mSeekBarVolumeSystem.setMax(volumeSystemMax);
         mSeekBarVolumeSystem.setProgress(currentVolume);
+    }
+
+    @Override
+    public void invalidateCovers(final Bitmap[] bitmaps) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                if (bitmaps != null) {
+                    ImageView[] covers = ((CoverPagerAdapter) mCoverViewPager.getAdapter()).getCovers();
+
+                    int i = mPageSelectedListener.currentIndex();
+                    covers[i].setImageBitmap(bitmaps[1]);
+
+                    switch (i) {
+                        case 0:
+                            covers[2].setImageBitmap(bitmaps[0]);
+                            covers[1].setImageBitmap(bitmaps[2]);
+                            break;
+                        case 1:
+                            covers[0].setImageBitmap(bitmaps[0]);
+                            covers[2].setImageBitmap(bitmaps[2]);
+                            break;
+                        case 2:
+                            covers[1].setImageBitmap(bitmaps[0]);
+                            covers[0].setImageBitmap(bitmaps[2]);
+                            break;
+                    }
+
+                }
+            }
+        });
     }
 
     private BottomSheetDialog bottomSheetDialog = null;
@@ -296,8 +354,9 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       mPresenter.point(mp3);
-                       mPresenter.reloadCurrentWidgetsData(true);
+                        mPresenter.point(mp3);
+                        mPresenter.reloadCurrentWidgetsData();
+                        mPresenter.loadCoversAsync();
                     }
                 });
             }
@@ -327,6 +386,134 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
     }
 
+    private String mm2min(int mm) {
+        String min, sec;
+        if (mm / 1000 / 60 > 9) {
+            min = mm / 1000 / 60 + "";
+        } else {
+            min = "0" + mm / 1000 / 60;
+        }
+
+        if (((mm / 1000) % 60) <= 9) {
+            sec = "0" + (mm / 1000) % 60;
+        } else {
+            sec = (mm / 1000) % 60 + "";
+        }
+        return min + ":" + sec;
+    }
+
+    class CoverPagerAdapter extends PagerAdapter {
+
+
+        private ImageView covers[];
+
+        ImageView[] getCovers() {
+            return covers;
+        }
+
+        CoverPagerAdapter() {
+            covers = new ImageView[3];
+
+            ImageView cover0, cover1, cover2;
+
+            cover0 = new ImageView(MainFragment.this.getActivity());
+            cover0.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            cover1 = new ImageView(MainFragment.this.getActivity());
+            cover1.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+            cover2 = new ImageView(MainFragment.this.getActivity());
+            cover2.setBackgroundColor(getResources().getColor(android.R.color.black));
+
+            covers[0] = cover0;
+            covers[1] = cover1;
+            covers[2] = cover2;
+
+            int screenWidth = ActivityUtils.getScreenWidth(getActivity());
+            for (ImageView cover : covers) {
+                cover.setPadding(screenWidth / 10, 0, screenWidth / 10, 0);
+                cover.setScaleType(ImageView.ScaleType.FIT_XY);
+            }
+
+
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            View view = covers[position % 3];
+            if (container.equals(view.getParent())) {
+                container.removeView(view);
+            }
+            container.addView(view);
+            return view;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+
+        }
+
+        @Override
+        public int getCount() {
+            return Integer.MAX_VALUE / 2;
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+    }
+
+    interface OnSelectedListener {
+
+        void onNext();
+
+        void onPrevious();
+
+    }
+
+    class PageSelectedListener implements ViewPager.OnPageChangeListener {
+
+        private int oldIndex;
+
+        private OnSelectedListener mOnSelectedListener;
+
+        PageSelectedListener(int initialIndex, OnSelectedListener onSelectedListener) {
+            this.oldIndex = initialIndex;
+            mOnSelectedListener = onSelectedListener;
+        }
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (position == oldIndex + 1) {
+                mOnSelectedListener.onNext();
+            } else if (position == oldIndex - 1) {
+                mOnSelectedListener.onPrevious();
+            }
+
+            oldIndex = position;
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+
+        public int currentIndex() {
+            return oldIndex % 3;
+        }
+
+    }
+
     private class ConsoleReceiver extends BroadcastReceiver {
 
         @Override
@@ -337,7 +524,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             }
             switch (action) {
                 case MainService.ACTION_CHANGE_FINISH:
-                    mPresenter.reloadCurrentWidgetsData(true);
+                    mPresenter.reloadCurrentWidgetsData();
+                    mPresenter.loadCoversAsync();
                     break;
                 default:
                     MP3 currentMP3 = mPresenter.getCurrentMP3();
@@ -365,20 +553,5 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
         }
     }
-
-    private String mm2min(int mm) {
-        String min, sec;
-        if (mm / 1000 / 60 > 9) {
-            min = mm / 1000 / 60 + "";
-        } else {
-            min = "0" + mm / 1000 / 60;
-        }
-
-        if (((mm / 1000) % 60) <= 9) {
-            sec = "0" + (mm / 1000) % 60;
-        } else {
-            sec = (mm / 1000) % 60 + "";
-        }
-        return min + ":" + sec;
-    }
 }
+

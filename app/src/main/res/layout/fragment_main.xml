@@ -74,14 +74,10 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/image_view_cover"
-        android:layout_width="314dp"
-        android:layout_height="224dp"
-        android:paddingBottom="@dimen/padding_middle"
-        android:paddingTop="@dimen/padding_small"
-        android:scaleType="fitXY"
-        android:src="@drawable/marry" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager_cover"
+        android:layout_width="match_parent"
+        android:layout_height="224dp"/>
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
