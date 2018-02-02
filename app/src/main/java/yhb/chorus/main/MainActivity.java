@@ -2,6 +2,8 @@ package yhb.chorus.main;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import java.util.Date;
 
 import yhb.chorus.BuildConfig;
 import yhb.chorus.R;
+import yhb.chorus.service.MainService;
 import yhb.chorus.utils.ActivityUtils;
 
 /**
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int minutes = (int) (delta / 1000 / 60);
 
-                supportActionBar.setTitle("还有 " + days + " 天 " + hours + " 小时 " +minutes+ " 分钟");
+                supportActionBar.setTitle("还有 " + days + " 天 " + hours + " 小时 " + minutes + " 分钟");
 
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -98,5 +101,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public static Intent newIntent(Context context) {
+        return new Intent(context, MainActivity.class);
     }
 }

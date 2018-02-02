@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -20,6 +22,7 @@ import java.io.IOException;
 import yhb.chorus.R;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.list.ListActivity;
+import yhb.chorus.main.MainActivity;
 
 import static yhb.chorus.main.MainActivity.TAG;
 
@@ -160,7 +163,7 @@ public class MainService extends Service {
                 case ACTION_SET_VOLUME:
                     int intExtra = intent.getIntExtra("progress", 0);
                     float volume = ((float) intExtra) / 10f;
-                    mMediaPlayer.setVolume(volume,volume);
+                    mMediaPlayer.setVolume(volume, volume);
                     break;
             }
 
@@ -191,12 +194,29 @@ public class MainService extends Service {
     //启动前台服务的方法
     private void foreSerLaunch() {
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.content_notification);
-
+        RemoteViews remoteViewsBig = new RemoteViews(getPackageName(), R.layout.content_notification_big);
         MP3 currentMP3 = mPlayCenter.getCurrentMP3();
         if (currentMP3 == null) {
             return;
         }
 
+        setupRemoteView(remoteViews, currentMP3);
+        setupRemoteView(remoteViewsBig, currentMP3);
+
+        Notification notification  = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher_foreground)
+                .setTicker(currentMP3.getTitle())
+                .setContent(remoteViews)
+                .setCustomBigContentView(remoteViewsBig)
+                .setContentIntent(PendingIntent.getActivity(this, 0, MainActivity.newIntent(this), 0))
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .build();
+
+
+        startForeground(1, notification);
+    }
+
+    private void setupRemoteView(RemoteViews remoteViews, MP3 currentMP3) {
         remoteViews.setTextViewText(R.id.tv_not_title_id, currentMP3.getTitle());
         remoteViews.setTextViewText(R.id.tv_not_author_id, currentMP3.getArtist());
         if (mMediaPlayer.isPlaying()) {
@@ -224,15 +244,6 @@ public class MainService extends Service {
         Intent pSIntent = new Intent(ACTION_PLAY_PAUSE);
         PendingIntent pSPi = PendingIntent.getBroadcast(this, 0, pSIntent, 0);
         remoteViews.setOnClickPendingIntent(R.id.image_button_play_or_pause, pSPi);
-
-        Notification.Builder builder = new Notification.Builder(this);
-        builder.setSmallIcon(R.mipmap.ic_launcher_foreground)
-                .setTicker(currentMP3.getTitle())
-                .setContent(remoteViews)
-                .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, ListActivity.class), 0));
-        Notification notification = builder.build();
-
-        startForeground(1, notification);
     }
 
 

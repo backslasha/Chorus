@@ -154,7 +154,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                         if (mEditable) {
                             checkBox.setChecked(!checkBox.isChecked());
                         } else {
-                            PlayCenter.getInstance(getActivity()).point(mp3);
+                            PlayCenter.getInstance().point(mp3);
                         }
                     }
                 });
