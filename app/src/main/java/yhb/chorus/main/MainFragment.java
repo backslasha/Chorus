@@ -280,15 +280,15 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
     private BottomSheetDialog bottomSheetDialog = null;
 
-    private SimpleAdapter<MP3> mMP3SimpleAdapter;
+    private SimpleAdapter<MP3> mQueueMP3SimpleAdapter;
 
     private void showBottomSheet() {
-        if (bottomSheetDialog != null && mMP3SimpleAdapter != null) {
-            mMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3sFromMemory());
+        if (bottomSheetDialog != null && mQueueMP3SimpleAdapter != null) {
+            mQueueMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3sFromMemory());
             bottomSheetDialog.show();
             return;
         }
-        mMP3SimpleAdapter = new SimpleAdapter<MP3>(getActivity(), R.layout.item_mp3_simple) {
+        mQueueMP3SimpleAdapter = new SimpleAdapter<MP3>(getActivity(), R.layout.item_mp3_simple) {
             @Override
             public void forEachHolder(SimpleHolder holder, final MP3 mp3) {
                 TextView textView = holder.getView(R.id.text_view_song_name);
@@ -305,8 +305,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
         RecyclerView recyclerView = (RecyclerView) LayoutInflater.from(getActivity())
                 .inflate(R.layout.content_queue_song, null);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(mMP3SimpleAdapter);
-        mMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3sFromMemory());
+        recyclerView.setAdapter(mQueueMP3SimpleAdapter);
+        mQueueMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3sFromMemory());
 
         bottomSheetDialog = new BottomSheetDialog(getActivity());
         bottomSheetDialog.setCancelable(true);

@@ -18,7 +18,7 @@ import yhb.chorus.entity.MP3;
 
 
 public class PlayCenter {
-    /**
+    /*
      * three kinds of play mode
      */
     public static final int MODE_SINGLE_LOOP = 1;
@@ -28,13 +28,15 @@ public class PlayCenter {
     @SuppressLint("StaticFieldLeak")
     private static PlayCenter sPlayCenter;
     private Context mContext;
-    private int currentPosition = 0;
+    private int currentIndex = 0;
     private int playMode = MODE_LIST_LOOP;
     private float mVolume = 1f;
 
     private ArrayList<MP3> mQueueMP3s = new ArrayList<>();
     private List<MP3> mp3s;
     private MP3 currentMP3;
+    private MP3 candidateNextMP3;
+    private MP3 candidatePreviousMP3;
 
     public static PlayCenter getInstance() {
         if (sPlayCenter == null) {
@@ -47,151 +49,64 @@ public class PlayCenter {
         mContext = ChorusApplication.getsApplicationContext();
     }
 
-    /**
+    /*
      * operations of controlling music player
      */
 
+    public void playOrPause() {
+
+        if (currentMP3 == null) {
+            next(true);
+            return;
+        }
+
+        sendCommand(MainService.ACTION_PLAY_PAUSE);
+
+    }
+
     public void next(boolean fromUser) {
 
-        sureServiceAlive();
-
-        currentMP3 = pickCandidateNext(fromUser);
-
-        if (currentMP3 != null) {
-            Intent intent = new Intent(MainService.ACTION_NEXT);
-            mContext.sendBroadcast(intent);
+        if (candidateNextMP3 == null) {
+            candidateNextMP3 = pickCandidatePrevious(fromUser);
         }
+
+        currentMP3 = candidateNextMP3;
+
+        sendCommand(MainService.ACTION_NEXT);
+
+        candidateNextMP3 = pickCandidateNext(fromUser);
+        candidatePreviousMP3 = pickCandidatePrevious(fromUser);
 
     }
 
     public void previous(boolean fromUser) {
 
-        sureServiceAlive();
-
-        currentMP3 = pickCandidatePrevious(fromUser);
-
-        if (currentMP3 != null) {
-            Intent intent = new Intent(MainService.ACTION_PREVIOUS);
-            mContext.sendBroadcast(intent);
-        }
-    }
-
-    public void next() {
-
-        sureServiceAlive();
-
-        currentMP3 = pickCandidateNext(false);
-
-        if (currentMP3 != null) {
-            Intent intent = new Intent(MainService.ACTION_NEXT);
-            mContext.sendBroadcast(intent);
+        if (candidatePreviousMP3 == null) {
+            candidatePreviousMP3 = pickCandidatePrevious(fromUser);
         }
 
-    }
+        currentMP3 = candidateNextMP3;
 
-    public void previous() {
+        sendCommand(MainService.ACTION_PREVIOUS);
 
-        sureServiceAlive();
-
-        currentMP3 = pickCandidatePrevious(false);
-
-        if (currentMP3 != null) {
-            Intent intent = new Intent(MainService.ACTION_PREVIOUS);
-            mContext.sendBroadcast(intent);
-        }
-    }
-
-    public void playOrPause() {
-
-        if (currentMP3 == null) {
-            currentMP3 = pickCandidateNext(false);
-        }
-
-        sureServiceAlive();
-
-        if (currentMP3 != null) {
-            Intent intent = new Intent(MainService.ACTION_PLAY_PAUSE);
-            mContext.sendBroadcast(intent);
-        }
-
+        candidateNextMP3 = pickCandidateNext(fromUser);
+        candidatePreviousMP3 = pickCandidatePrevious(fromUser);
     }
 
     public void point(MP3 mp3) {
-        if (mp3 == null) {
-            return;
-        }
 
-        int index = mp3s.indexOf(mp3);
-        if (-1 == index) {
-            mp3s.add(mp3);
-            index = mp3s.size() - 1;
+        if (!mQueueMP3s.contains(mp3)) {
+            mQueueMP3s.add(mp3);
         }
-
-        currentPosition = index;
 
         currentMP3 = mp3;
 
-        Intent intent = new Intent(MainService.ACTION_POINT);
-        mContext.sendBroadcast(intent);
+        sendCommand(MainService.ACTION_POINT);
+
+        candidateNextMP3 = pickCandidateNext(true);
+        candidatePreviousMP3 = pickCandidatePrevious(true);
     }
 
-    private MP3 pickCandidatePrevious(boolean fromUser) {
-        if (playMode == MODE_LIST_LOOP) {
-            if (currentPosition > 0) {
-                currentPosition -= 1;
-            } else {
-                currentPosition = mQueueMP3s.size() - 1;
-            }
-        } else if (playMode == MODE_RANDOM) {
-            currentPosition = (int) (mQueueMP3s.size() * Math.random());
-        } else if (playMode == MODE_SINGLE_LOOP) {
-            if (fromUser) {
-                if (currentPosition > 0) {
-                    currentPosition -= 1;
-                } else {
-                    currentPosition = mQueueMP3s.size() - 1;
-                }
-            }
-        }
-        if (currentPosition < 0 || currentPosition >= mQueueMP3s.size()) {
-            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
-            return null;
-        }
-
-        return mQueueMP3s.get(currentPosition);
-    }
-
-    private MP3 pickCandidateNext(boolean fromUser) {
-
-        if (playMode == PlayCenter.MODE_LIST_LOOP) {
-            if (currentPosition + 1 <= mQueueMP3s.size() - 1) {
-                currentPosition += 1;
-            } else {
-                currentPosition = 0;
-            }
-        } else if (playMode == PlayCenter.MODE_RANDOM) {
-            currentPosition = (int) (mQueueMP3s.size() * Math.random());
-        } else if (playMode == PlayCenter.MODE_SINGLE_LOOP) {
-            if (fromUser) {
-                if (currentPosition > 0) {
-                    currentPosition += 1;
-                } else {
-                    currentPosition = 0;
-                }
-            }
-        }
-
-        if (currentPosition < 0 || currentPosition >= mQueueMP3s.size()) {
-            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
-            return null;
-        }
-
-        return mQueueMP3s.get(currentPosition);
-    }
-
-    /**
-     * 循环选中下一个播放模式
-     */
     public void nextPlayMode() {
         switch (playMode) {
             case MODE_LIST_LOOP:
@@ -209,15 +124,81 @@ public class PlayCenter {
         }
     }
 
-    /**
-     * 确保服务存活
-     */
+    private MP3 pickCandidatePrevious(boolean fromUser) {
+
+        int currentIndex = mQueueMP3s.indexOf(currentMP3);
+
+        if (playMode == MODE_LIST_LOOP) {
+            if (currentIndex > 0) {
+                currentIndex -= 1;
+            } else {
+                currentIndex = mQueueMP3s.size() - 1;
+            }
+        } else if (playMode == MODE_RANDOM) {
+            currentIndex = (int) (mQueueMP3s.size() * Math.random());
+        } else if (playMode == MODE_SINGLE_LOOP) {
+            if (fromUser) {
+                if (currentIndex > 0) {
+                    currentIndex -= 1;
+                } else {
+                    currentIndex = mQueueMP3s.size() - 1;
+                }
+            }
+        }
+        if (currentIndex < 0 || currentIndex >= mQueueMP3s.size()) {
+            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
+        return mQueueMP3s.get(currentIndex);
+    }
+
+    private MP3 pickCandidateNext(boolean fromUser) {
+
+        int currentIndex = mQueueMP3s.indexOf(currentMP3);
+
+        if (playMode == PlayCenter.MODE_LIST_LOOP) {
+            if (currentIndex + 1 <= mQueueMP3s.size() - 1) {
+                currentIndex += 1;
+            } else {
+                currentIndex = 0;
+            }
+        } else if (playMode == PlayCenter.MODE_RANDOM) {
+            currentIndex = (int) (mQueueMP3s.size() * Math.random());
+        } else if (playMode == PlayCenter.MODE_SINGLE_LOOP) {
+            if (fromUser) {
+                if (currentIndex > 0) {
+                    currentIndex += 1;
+                } else {
+                    currentIndex = 0;
+                }
+            }
+        }
+
+        if (currentIndex < 0 || currentIndex >= mQueueMP3s.size()) {
+            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
+        return mQueueMP3s.get(currentIndex);
+    }
+
+    private void sendCommand(String action) {
+
+        sureServiceAlive();
+
+        if (currentMP3 != null) {
+            Intent intent = new Intent(action);
+            mContext.sendBroadcast(intent);
+        }
+    }
+
     private void sureServiceAlive() {
         Intent serIntent = new Intent(mContext, MainService.class);
         mContext.startService(serIntent);
     }
 
-    /**
+    /*
      * global public data get/set methods
      */
 
@@ -232,15 +213,6 @@ public class PlayCenter {
     }
 
     /**
-     * 设置当前正在播放/暂停的 mp3
-     *
-     * @param currentMP3 当前正在播放/暂停的 mp3
-     */
-    void setCurrentMP3(MP3 currentMP3) {
-        this.currentMP3 = currentMP3;
-    }
-
-    /**
      * 获取当前的播放模式
      *
      * @return 当前的播放模式
@@ -249,13 +221,22 @@ public class PlayCenter {
         return playMode;
     }
 
-    /**
-     * 获取当前正在播放/暂停的 mp3
-     *
-     * @return 当前正在播放/暂停的 mp3
-     */
     public MP3 getCurrentMP3() {
         return currentMP3;
+    }
+
+    public MP3 getCandidateNextMP3() {
+        if (candidateNextMP3 == null) {
+            candidateNextMP3 = pickCandidateNext(false);
+        }
+        return candidateNextMP3;
+    }
+
+    public MP3 getCandidatePreviousMP3() {
+        if (candidatePreviousMP3 == null) {
+            candidatePreviousMP3 = pickCandidatePrevious(false);
+        }
+        return candidatePreviousMP3;
     }
 
     public List<MP3> getMP3s() {
@@ -292,8 +273,8 @@ public class PlayCenter {
     }
 
 
-    /**
-     * record/get independant volume settings
+    /*
+     * record/get independent volume settings
      */
 
     /**
@@ -314,12 +295,13 @@ public class PlayCenter {
         return mVolume;
     }
 
-    /**
+    /*
      * mp3s queue operations
      */
 
     /**
      * 缓存数据库中查询到的 queue 队列
+     *
      * @return
      */
     public ArrayList<MP3> getQueueMP3s() {

@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -21,7 +20,6 @@ import java.io.IOException;
 
 import yhb.chorus.R;
 import yhb.chorus.entity.MP3;
-import yhb.chorus.list.ListActivity;
 import yhb.chorus.main.MainActivity;
 
 import static yhb.chorus.main.MainActivity.TAG;
@@ -31,6 +29,7 @@ public class MainService extends Service {
     public static final String ACTION_RENEW_PROGRESS = "ACTION_RENEW_PROGRESS";
     public static final String ACTION_PLAY_PAUSE = "ACTION_PLAY_PAUSE";
     public static final String ACTION_NEXT = "ACTION_NEXT";
+    public static final String ACTION_NEXT_FROM_REMOTE_VIEW = "ACTION_NEXT_FROM_REMOTE_VIEW";
     public static final String ACTION_PREVIOUS = "ACTION_PREVIOUS";
     public static final String ACTION_POINT = "ACTION_POINT";
     public static final String ACTION_EXIT = "ACTION_EXIT";
@@ -65,6 +64,7 @@ public class MainService extends Service {
         intentFilter.addAction(ACTION_EXIT);
         intentFilter.addAction(ACTION_PROGRESS_CHANGE);
         intentFilter.addAction(ACTION_SET_VOLUME);
+        intentFilter.addAction(ACTION_NEXT_FROM_REMOTE_VIEW);
         registerReceiver(receiver, intentFilter);
 
         mMediaPlayer = new MediaPlayer();
@@ -72,7 +72,7 @@ public class MainService extends Service {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 Log.d(TAG, "onCompletion: ");
-                mPlayCenter.next();
+                mPlayCenter.next(false);
             }
         });
 
@@ -140,22 +140,17 @@ public class MainService extends Service {
                     prepared();
                     mMediaPlayer.start();
                     foreSerLaunch();
-                    sendBroadcast(new Intent("ACTION_CHANGE_FINISH"));
+                    sendBroadcast(new Intent(ACTION_CHANGE_FINISH));
                     break;
                 case ACTION_NEXT:
-                    prepared();
-                    mMediaPlayer.start();
-                    foreSerLaunch();
-                    sendBroadcast(new Intent("ACTION_CHANGE_FINISH"));
-                    break;
                 case ACTION_PREVIOUS:
                     prepared();
                     mMediaPlayer.start();
                     foreSerLaunch();
-                    sendBroadcast(new Intent("ACTION_CHANGE_FINISH"));
+                    sendBroadcast(new Intent(ACTION_CHANGE_FINISH));
                     break;
-                case ACTION_EXIT:
-                    stopSelf();
+                case ACTION_NEXT_FROM_REMOTE_VIEW:
+                    mPlayCenter.next(true);
                     break;
                 case ACTION_PROGRESS_CHANGE:
                     mMediaPlayer.seekTo(intent.getIntExtra("changeTo", 0));
@@ -183,7 +178,6 @@ public class MainService extends Service {
             mMediaPlayer.reset();
             mMediaPlayer.setDataSource(candidate.getUri());
             mMediaPlayer.prepare();
-            mPlayCenter.setCurrentMP3(candidate);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -237,7 +231,7 @@ public class MainService extends Service {
         PendingIntent exitPi = PendingIntent.getBroadcast(this, 0, broadIntent, 0);
         remoteViews.setOnClickPendingIntent(R.id.image_button_stop, exitPi);
 
-        Intent nextIntent = new Intent(ACTION_NEXT);
+        Intent nextIntent = new Intent(ACTION_NEXT_FROM_REMOTE_VIEW);
         PendingIntent nextPi = PendingIntent.getBroadcast(this, 0, nextIntent, 0);
         remoteViews.setOnClickPendingIntent(R.id.image_button_next, nextPi);
 
