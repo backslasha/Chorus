@@ -1,11 +1,9 @@
 package yhb.chorus.main;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
@@ -32,7 +30,6 @@ import yhb.chorus.common.SimpleAdapter;
 import yhb.chorus.common.SimpleHolder;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.list.ListActivity;
-import yhb.chorus.service.MainService;
 import yhb.chorus.utils.ActivityUtils;
 
 import static yhb.chorus.main.MainActivity.TAG;
@@ -52,8 +49,9 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     private ImageButton buttonPlayMode;
     private TextView textViewCurrentProgress, textViewMaxProgress, textViewSongName, textViewArtistName;
     private SeekBar mSeekBar, mSeekBarVolume, mSeekBarVolumeSystem;
-    private ConsoleReceiver mReceiver;
     private PageSelectedListener mPageSelectedListener;
+    private Runnable invalidateConsole;
+    private Handler handler;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -65,11 +63,20 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        mReceiver = new ConsoleReceiver();
-        IntentFilter intentFilter = new IntentFilter(MainService.ACTION_RENEW_PROGRESS);
-        intentFilter.addAction(MainService.ACTION_CHANGE_FINISH);
-        getActivity().registerReceiver(mReceiver, intentFilter);
         super.onCreate(savedInstanceState);
+
+        handler = new Handler();
+        invalidateConsole = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mPresenter.reloadConsoleData();
+                    handler.postDelayed(invalidateConsole, 500);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
     }
 
     @Nullable
@@ -91,6 +98,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 mPresenter.getCurrentVolumeSystem(),
                 mPresenter.getMaxVolumeSystem()
         );
+
+        handler.postDelayed(invalidateConsole, 500);
 
     }
 
@@ -139,12 +148,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    Intent proChangeIntent = new Intent(MainService.ACTION_SET_VOLUME);
-                    proChangeIntent.putExtra("progress", progress);
-                    getActivity().sendBroadcast(proChangeIntent);
-
                     float volume = ((float) progress) / ((float) seekBar.getMax());
-                    mPresenter.saveCurrentVolume(volume);
+                    mPresenter.setVolume(volume);
                 }
             }
 
@@ -166,7 +171,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    mPresenter.setCurrentVolumeSystem(progress);
+                    mPresenter.setVolumeSystem(progress);
                 }
             }
 
@@ -221,7 +226,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     public void onDestroy() {
         super.onDestroy();
         mPresenter.release();
-        getActivity().unregisterReceiver(mReceiver);
+        handler.removeCallbacks(invalidateConsole);
     }
 
     @Override
@@ -334,6 +339,32 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
         });
     }
 
+    @Override
+    public void invalidateConsole(boolean playing, int progress, boolean newCurrent) {
+        MP3 currentMP3 = mPresenter.getCurrentMP3();
+        if (currentMP3 == null) {
+            return;
+        }
+        int maxProgress = currentMP3.getDuration();
+
+        mSeekBar.setMax(maxProgress);
+        mSeekBar.setProgress(progress);
+
+        textViewMaxProgress.setText(mm2min(maxProgress));
+        textViewCurrentProgress.setText(mm2min(progress));
+
+        if (playing) {
+            buttonPlayOrPause.setImageResource(R.drawable.ic_pause_circle_outline);
+        } else {
+            buttonPlayOrPause.setImageResource(R.drawable.ic_play_circle_outline);
+        }
+
+        if (newCurrent) {
+            mPresenter.reloadCurrentWidgetsData();
+            mPresenter.loadCoversAsync();
+        }
+    }
+
     private BottomSheetDialog bottomSheetDialog = null;
 
     private SimpleAdapter<MP3> mQueueMP3SimpleAdapter;
@@ -415,11 +446,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             ImageView cover0, cover1, cover2;
 
             cover0 = new ImageView(MainFragment.this.getActivity());
-            cover0.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             cover1 = new ImageView(MainFragment.this.getActivity());
-            cover1.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
             cover2 = new ImageView(MainFragment.this.getActivity());
-            cover2.setBackgroundColor(getResources().getColor(android.R.color.black));
 
             covers[0] = cover0;
             covers[1] = cover1;
@@ -506,50 +534,11 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
         }
 
-        public int currentIndex() {
+        int currentIndex() {
             return oldIndex % 3;
         }
 
     }
 
-    private class ConsoleReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action == null) {
-                return;
-            }
-            switch (action) {
-                case MainService.ACTION_CHANGE_FINISH:
-                    mPresenter.reloadCurrentWidgetsData();
-                    mPresenter.loadCoversAsync();
-                    break;
-                default:
-                    MP3 currentMP3 = mPresenter.getCurrentMP3();
-                    if (currentMP3 == null) {
-                        return;
-                    }
-
-                    int currentProgress = intent.getIntExtra("currentProgress", 0);
-                    int maxProgress = currentMP3.getDuration();
-
-                    mSeekBar.setMax(maxProgress);
-                    mSeekBar.setProgress(currentProgress);
-
-                    textViewMaxProgress.setText(mm2min(maxProgress));
-                    textViewCurrentProgress.setText(mm2min(currentProgress));
-
-                    if (intent.getBooleanExtra("isPlaying", false)) {
-                        buttonPlayOrPause.setImageResource(R.drawable.ic_pause_circle_outline);
-                    } else {
-                        buttonPlayOrPause.setImageResource(R.drawable.ic_play_circle_outline);
-                    }
-                    break;
-            }
-
-
-        }
-    }
 }
 

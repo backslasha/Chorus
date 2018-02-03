@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.MediaPlayer;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
@@ -43,10 +42,7 @@ public class MainService extends Service {
     public static final String REMOTE_INTENT_EXIT = "REMOTE_INTENT_EXIT";
 
     private MediaPlayer mMediaPlayer;
-    private Handler handler;
-    private Runnable progressLauncher;
     private ForegroundServiceHandlerReceiver receiver;
-    private boolean isBroadcasting = false;
     private Player mPlayer;
 
     @Nullable
@@ -72,7 +68,7 @@ public class MainService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        handler = new Handler();
+
         receiver = new ForegroundServiceHandlerReceiver();
 
         IntentFilter intentFilter = new IntentFilter();
@@ -89,38 +85,18 @@ public class MainService extends Service {
 
         mMediaPlayer = new MediaPlayer();
 
-        //循环散播附带歌曲进度信息的广播
-        progressLauncher = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Intent msgIntent = new Intent(ACTION_RENEW_PROGRESS);
-                    msgIntent.putExtra("currentProgress", mMediaPlayer.getCurrentPosition());
-                    msgIntent.putExtra("isPlaying", mMediaPlayer.isPlaying());
-                    sendBroadcast(msgIntent);
-                    handler.postDelayed(progressLauncher, 500);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         mMediaPlayer.release();
-        handler.removeCallbacks(progressLauncher);
         unregisterReceiver(receiver);
-        Intent msgIntent = new Intent(ACTION_RENEW_PROGRESS);
-        msgIntent.putExtra("currentProgress", 0);
-        msgIntent.putExtra("isPlaying", false);
-        sendBroadcast(msgIntent);
     }
 
-    //mMediaPlayer控制接口
+    /**
+     * receive remote intent of controlling the media player
+     */
     public class ForegroundServiceHandlerReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -187,7 +163,7 @@ public class MainService extends Service {
         remoteViews.setOnClickPendingIntent(R.id.image_button_play_or_pause, pSPi);
     }
 
-    class Player extends IPlayer.Stub {
+    public class Player extends IPlayer.Stub {
 
         private boolean isPaused = false;
 
@@ -223,14 +199,23 @@ public class MainService extends Service {
         }
 
         @Override
-        public void setVolume(int progress) {
-            float volume = ((float) progress) / 10f;
+        public void setVolume(float volume) {
             mMediaPlayer.setVolume(volume, volume);
         }
 
         @Override
         public void seekTo(int progress) {
             mMediaPlayer.seekTo(progress);
+        }
+
+        @Override
+        public boolean isPlaying() throws RemoteException {
+            return mMediaPlayer.isPlaying();
+        }
+
+        @Override
+        public int getProgress() throws RemoteException {
+            return mMediaPlayer.getCurrentPosition();
         }
 
         @Override
@@ -244,15 +229,19 @@ public class MainService extends Service {
             prepared(mp3);
             mMediaPlayer.start();
             foreSerLaunch(mp3);
-            sendBroadcast(new Intent(ACTION_CHANGE_FINISH));
+            try {
+                mICallback.onNewCurrent();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
 
 
         private void prepared(MP3 currentMP3) {
-            if (!isBroadcasting) {
-                handler.postDelayed(progressLauncher, 500);
-                isBroadcasting = true;
-            }
+//            if (!isBroadcasting) {
+//                handler.postDelayed(progressLauncher, 500);
+//                isBroadcasting = true;
+//            }
 
             if (currentMP3 == null) {
                 return;

@@ -16,9 +16,13 @@ interface IPlayer {
 
     void point( inout MP3 mp3) ;
 
-    void setVolume(int progress);
+    void setVolume(float volume);
 
     void seekTo(int progress);
+
+    boolean isPlaying();
+
+    int getProgress();
 
     void registerCallback(ICallback callback);
 }

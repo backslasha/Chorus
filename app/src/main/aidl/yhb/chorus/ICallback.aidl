@@ -5,6 +5,6 @@ package yhb.chorus;
 
 interface ICallback {
     void onComplete();
-    void onProgressChange(boolean isPlaying,int progress);
+    void onNewCurrent();
     void onNewRemoteIntent(String aciton);
 }

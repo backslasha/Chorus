@@ -52,8 +52,10 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void start() {
-        loadMP3sFromDBAsync(mPlayCenter);
-        loadQueueMP3sFromDBAsync(mPlayCenter);
+        if (mPlayCenter.getMP3s() == null || mPlayCenter.getMP3s().size() == 0) {
+            loadMP3sFromDBAsync(mPlayCenter);
+            loadQueueMP3sFromDBAsync(mPlayCenter);
+        }
         mVolumeSystemMax = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         mVolumeSystem = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         mView.invalidateSeekBarVolumeSystem(mVolumeSystem, mVolumeSystemMax);
@@ -113,7 +115,7 @@ class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void setCurrentVolumeSystem(int volume) {
+    public void setVolumeSystem(int volume) {
         mVolumeSystem = volume;
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mVolumeSystem, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
     }
@@ -121,7 +123,7 @@ class MainPresenter implements MainContract.Presenter {
     @Override
     public void reloadCurrentWidgetsData() {
 
-        int progress = (int) (mPlayCenter.getVolume() * 10);
+        int progress = (int) (mPlayCenter.getVolumeIndependent() * 10);
         int playMode = mPlayCenter.getPlayMode();
         String songName = "";
         String artistName = "";
@@ -148,10 +150,14 @@ class MainPresenter implements MainContract.Presenter {
         }).start();
     }
 
+    @Override
+    public void reloadConsoleData() {
+        mView.invalidateConsole(mPlayCenter.isPlaying(), mPlayCenter.getProgress(), mPlayCenter.isNewCurrent());
+    }
 
     @Override
-    public void saveCurrentVolume(float volume) {
-        mPlayCenter.recordVolume(volume);
+    public void setVolume(float volume) {
+        mPlayCenter.setVolumeIndependent(volume);
     }
 
     @Override
@@ -165,7 +171,7 @@ class MainPresenter implements MainContract.Presenter {
     }
 
 
-    /**
+    /*
      * music control methods
      */
 

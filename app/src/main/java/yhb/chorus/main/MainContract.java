@@ -22,19 +22,17 @@ public interface MainContract {
         void invalidateSeekBarVolumeSystem(int currentVolume, int volumeSystemMax);
 
         void invalidateCovers(Bitmap[] bitmaps);
+
+        void invalidateConsole(boolean playing, int progress, boolean newCurrent);
     }
 
     interface Presenter extends BasePresenter {
 
         void loadQueueMP3sFromDBAsync(PlayCenter playCenter);
 
-        /**
-         *
-         * @param playCenter
-         */
         void loadMP3sFromDBAsync(PlayCenter playCenter);
 
-        void saveCurrentVolume(float volume);
+        void setVolume(float volume);
 
         void next();
 
@@ -46,7 +44,7 @@ public interface MainContract {
 
         void nextPlayMode();
 
-        void setCurrentVolumeSystem(int volume);
+        void setVolumeSystem(int volume);
 
         void reloadCurrentWidgetsData();
 
@@ -66,5 +64,6 @@ public interface MainContract {
 
         void loadCoversAsync();
 
+        void reloadConsoleData();
     }
 }

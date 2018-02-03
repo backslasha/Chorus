@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 Date today = calendar.getTime();
 
-                calendar.setTime(new SimpleDateFormat("yy-MM-dd").parse("2018-02-10"));
+                calendar.setTime(new SimpleDateFormat("yy-MM-dd").parse("2018-02-08"));
                 long delta = calendar.getTimeInMillis() - today.getTime();
 
                 int days = (int) (delta / 1000 / 60 / 60 / 24);

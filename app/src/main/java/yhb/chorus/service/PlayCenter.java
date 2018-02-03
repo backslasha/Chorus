@@ -1,30 +1,24 @@
 package yhb.chorus.service;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.IBinder;
-import android.os.ParcelFileDescriptor;
 import android.os.RemoteException;
-import android.widget.Toast;
+import android.util.Log;
 
-import java.io.FileDescriptor;
 import java.util.ArrayList;
 import java.util.List;
 
 import yhb.chorus.ICallback;
 import yhb.chorus.IPlayer;
-import yhb.chorus.R;
 import yhb.chorus.app.ChorusApplication;
 import yhb.chorus.entity.MP3;
-import yhb.chorus.utils.LRUCache;
 
+import static yhb.chorus.main.MainActivity.TAG;
 import static yhb.chorus.service.MainService.REMOTE_INTENT_EXIT;
 import static yhb.chorus.service.MainService.REMOTE_INTENT_NEXT;
 import static yhb.chorus.service.MainService.REMOTE_INTENT_PLAY_PAUSE;
@@ -44,7 +38,7 @@ public class PlayCenter {
     private static PlayCenter sPlayCenter;
     private Context mContext;
     private int playMode = MODE_LIST_LOOP;
-    private float mVolume = 1f;
+    private float mVolumeIndependent = 1f;
 
     private ArrayList<MP3> mQueueMP3s = new ArrayList<>();
     private List<MP3> mp3s;
@@ -52,6 +46,8 @@ public class PlayCenter {
     private MP3 candidateNextMP3;
     private MP3 candidatePreviousMP3;
     private IPlayer mPlayer;
+
+    private boolean mNewCurrent = false;
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
@@ -65,8 +61,8 @@ public class PlayCenter {
                     }
 
                     @Override
-                    public void onProgressChange(boolean isPlaying,int progress)throws RemoteException {
-
+                    public void onNewCurrent() throws RemoteException {
+                        mNewCurrent = true;
                     }
 
                     @Override
@@ -83,11 +79,13 @@ public class PlayCenter {
                                 break;
                             case REMOTE_INTENT_EXIT:
                                 mContext.unbindService(mConnection);
+                                mPlayer = null;
                                 break;
                         }
                     }
 
                 });
+                mPlayer.point(currentMP3);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -95,7 +93,7 @@ public class PlayCenter {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-
+            mPlayer = null;
         }
     };
 
@@ -107,10 +105,8 @@ public class PlayCenter {
     }
 
     private PlayCenter() {
+        Log.d(TAG, "PlayCenter: created!");
         mContext = ChorusApplication.getsApplicationContext();
-
-        Intent intent = new Intent(mContext, MainService.class);
-        mContext.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
     /*
@@ -124,7 +120,10 @@ public class PlayCenter {
             return;
         }
 
-//        sendCommand(MainService.REMOTE_INTENT_PLAY_PAUSE);
+        if (!isBinderHere()) {
+            return;
+        }
+
         try {
             mPlayer.playOrPause(currentMP3);
         } catch (RemoteException e) {
@@ -140,7 +139,9 @@ public class PlayCenter {
 
         currentMP3 = candidateNextMP3;
 
-//        sendCommand(MainService.ACTION_NEXT);
+        if (!isBinderHere()) {
+            return;
+        }
 
         try {
             mPlayer.next(currentMP3);
@@ -161,7 +162,10 @@ public class PlayCenter {
 
         currentMP3 = candidatePreviousMP3;
 
-//        sendCommand(MainService.ACTION_PREVIOUS);
+        if (!isBinderHere()) {
+            return;
+        }
+
         try {
             mPlayer.previous(currentMP3);
         } catch (RemoteException e) {
@@ -180,7 +184,10 @@ public class PlayCenter {
 
         currentMP3 = mp3;
 
-//        sendCommand(MainService.ACTION_POINT);
+        if (!isBinderHere()) {
+            return;
+        }
+
         try {
             mPlayer.point(currentMP3);
         } catch (RemoteException e) {
@@ -209,6 +216,9 @@ public class PlayCenter {
     }
 
     public void seekTo(int progress) {
+        if (mPlayer == null) {
+            return;
+        }
         try {
             mPlayer.seekTo(progress);
         } catch (RemoteException e) {
@@ -275,6 +285,46 @@ public class PlayCenter {
         return mQueueMP3s.get(currentIndex);
     }
 
+    public boolean isPlaying() {
+        if (mPlayer == null) {
+            return false;
+        }
+        try {
+            return mPlayer.isPlaying();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public int getProgress() {
+        if (mPlayer == null) {
+            return -1;
+        }
+        try {
+            return mPlayer.getProgress();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public boolean isNewCurrent() {
+        if (mNewCurrent) {
+            mNewCurrent = false;
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isBinderHere() {
+        if (mPlayer == null) {
+            Intent intent = new Intent(mContext, MainService.class);
+            mContext.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+            return false;
+        }
+        return true;
+    }
 
     /*
      * global public data get/set methods
@@ -339,8 +389,13 @@ public class PlayCenter {
      *
      * @param volume 独立音量，0 ～ 1
      */
-    public void recordVolume(float volume) {
-        mVolume = volume;
+    public void setVolumeIndependent(float volume) {
+        try {
+            mPlayer.setVolume(volume);
+            mVolumeIndependent = volume;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -348,8 +403,8 @@ public class PlayCenter {
      *
      * @return 独立音量，0 ～ 1
      */
-    public float getVolume() {
-        return mVolume;
+    public float getVolumeIndependent() {
+        return mVolumeIndependent;
     }
 
     /*
@@ -389,4 +444,5 @@ public class PlayCenter {
         }
         return success;
     }
+
 }
