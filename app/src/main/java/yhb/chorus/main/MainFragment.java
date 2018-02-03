@@ -2,6 +2,7 @@ package yhb.chorus.main;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -455,7 +456,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
             int screenWidth = ActivityUtils.getScreenWidth(getActivity());
             for (ImageView cover : covers) {
-                cover.setPadding(screenWidth / 10, 0, screenWidth / 10, 0);
+                cover.setBackgroundColor(Color.parseColor("#44888888"));
+                cover.setPadding(screenWidth / 50, screenWidth / 50, screenWidth / 50, screenWidth / 50);
                 cover.setScaleType(ImageView.ScaleType.FIT_XY);
             }
 

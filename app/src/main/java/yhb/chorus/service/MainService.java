@@ -173,6 +173,7 @@ public class MainService extends Service {
         public void playOrPause(MP3 mp3) {
             if (isPaused) {
                 mMediaPlayer.start();
+                isPaused = false;
             } else if (!mMediaPlayer.isPlaying()) {
                 prepared(mp3);
                 mMediaPlayer.start();
@@ -238,10 +239,6 @@ public class MainService extends Service {
 
 
         private void prepared(MP3 currentMP3) {
-//            if (!isBroadcasting) {
-//                handler.postDelayed(progressLauncher, 500);
-//                isBroadcasting = true;
-//            }
 
             if (currentMP3 == null) {
                 return;

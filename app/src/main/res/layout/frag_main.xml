@@ -20,7 +20,6 @@
         android:id="@+id/lv_at_main_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar_id"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
          />

@@ -18,6 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,10 +31,6 @@
             android:name=".service.MainService"
             android:process=":play" />
 
-        <activity
-            android:name=".main.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
