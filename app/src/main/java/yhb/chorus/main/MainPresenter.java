@@ -6,6 +6,7 @@ import android.media.AudioManager;
 import android.os.Handler;
 
 import org.litepal.crud.DataSupport;
+import org.litepal.crud.callback.FindMultiCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +52,8 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void start() {
-        loadMP3sFromDB(mPlayCenter);
-        loadQueueMP3sFromDB(mPlayCenter);
+        loadMP3sFromDBAsync(mPlayCenter);
+        loadQueueMP3sFromDBAsync(mPlayCenter);
         mVolumeSystemMax = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         mVolumeSystem = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         mView.invalidateSeekBarVolumeSystem(mVolumeSystem, mVolumeSystemMax);
@@ -68,18 +69,28 @@ class MainPresenter implements MainContract.Presenter {
      */
 
     @Override
-    public void loadQueueMP3sFromDB(final PlayCenter playCenter) {
-        List<MP3InQueue> mp3InQueue = DataSupport.findAll(MP3InQueue.class, true);
-        ArrayList<MP3> queueMP3s = new ArrayList<>();
-        for (MP3InQueue inQueue : mp3InQueue) {
-            queueMP3s.add(inQueue.getMp3());
-        }
-        playCenter.setQueueMP3s(queueMP3s);
+    public void loadQueueMP3sFromDBAsync(final PlayCenter playCenter) {
+        DataSupport.findAllAsync(MP3InQueue.class, true).listen(new FindMultiCallback() {
+            @Override
+            public <T> void onFinish(List<T> t) {
+                List<MP3InQueue> mp3InQueue = (List<MP3InQueue>) t;
+                ArrayList<MP3> queueMP3s = new ArrayList<>();
+                for (MP3InQueue inQueue : mp3InQueue) {
+                    queueMP3s.add(inQueue.getMp3());
+                }
+                playCenter.setQueueMP3s(queueMP3s);
+            }
+        });
     }
 
     @Override
-    public void loadMP3sFromDB(final PlayCenter playCenter) {
-        playCenter.setMp3s(DataSupport.findAll(MP3.class));
+    public void loadMP3sFromDBAsync(final PlayCenter playCenter) {
+        DataSupport.findAllAsync(MP3.class).listen(new FindMultiCallback() {
+            @Override
+            public <T> void onFinish(List<T> t) {
+                playCenter.setMp3s((List<MP3>) t);
+            }
+        });
     }
 
     @Override
@@ -166,6 +177,11 @@ class MainPresenter implements MainContract.Presenter {
     @Override
     public void playOrPause() {
         mPlayCenter.playOrPause();
+    }
+
+    @Override
+    public void seekTo(int progress) {
+        mPlayCenter.seekTo(progress);
     }
 
     @Override

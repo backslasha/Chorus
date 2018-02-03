@@ -38,7 +38,7 @@ public class LocalsFragment extends Fragment {
                 Utils.mp3Beans = mp3Beans;
                 Intent intent;
                 if (Utils.currentPosition == position) {
-                    intent = new Intent(MainService.ACTION_PLAY_PAUSE);
+                    intent = new Intent(MainService.REMOTE_INTENT_PLAY_PAUSE);
                 } else {
                     Utils.currentPosition = position;
                     intent = new Intent(MainService.ACTION_POINT);

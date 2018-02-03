@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    >
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/iv_artist_photo_id"
@@ -15,12 +14,12 @@
         android:src="@drawable/marry" />
 
     <LinearLayout
-        android:padding="@dimen/padding_small"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="6dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/padding_small">
 
         <TextView
             android:id="@+id/tv_not_title_id"
@@ -50,7 +49,8 @@
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_play_circle_small" />
+        android:src="@drawable/ic_play_circle_small"
+        android:tint="#888888" />
 
     <ImageButton
         android:id="@+id/image_button_next"
@@ -58,7 +58,8 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/ic_skip_next" />
+        android:src="@drawable/ic_skip_next"
+        android:tint="#888888" />
 
     <ImageButton
         android:id="@+id/image_button_stop"

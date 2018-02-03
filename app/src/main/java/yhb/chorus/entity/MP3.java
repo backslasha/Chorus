@@ -1,9 +1,11 @@
 package yhb.chorus.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.litepal.crud.DataSupport;
 
-public class MP3 extends DataSupport{
-
+public class MP3 extends DataSupport implements Parcelable {
 
     public void setUri(String uri) {
         this.uri = uri;
@@ -127,5 +129,56 @@ public class MP3 extends DataSupport{
         int result = (int) (_id ^ (_id >>> 32));
         result = 31 * result + uri.hashCode();
         return result;
+    }
+
+    /*
+     * parcel
+     *
+     */
+
+    public static final Creator<MP3> CREATOR = new Creator<MP3>() {
+        @Override
+        public MP3 createFromParcel(Parcel source) {
+            return new MP3(source);
+        }
+
+        @Override
+        public MP3[] newArray(int size) {
+            return new MP3[size];
+        }
+    };
+
+    public MP3(Parcel source) {
+        readFromParcel(source);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(_id);
+        dest.writeString(title);
+        dest.writeString(artist);
+        dest.writeInt(duration);
+        dest.writeLong(size);
+        dest.writeString(uri);
+        dest.writeString(album);
+        dest.writeLong(albumId);
+        dest.writeInt(isMusic);
+    }
+
+    public void readFromParcel(Parcel in) {
+        _id = in.readLong();
+        title = in.readString();
+        artist = in.readString();
+        duration = in.readInt();
+        size = in.readLong();
+        uri = in.readString();
+        album = in.readString();
+        albumId = in.readLong();
+        isMusic = in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 }

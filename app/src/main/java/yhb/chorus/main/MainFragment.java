@@ -126,9 +126,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 if (progress != -1) {
-                    Intent proChangeIntent = new Intent(MainService.ACTION_PROGRESS_CHANGE);
-                    proChangeIntent.putExtra("changeTo", progress);
-                    getActivity().sendBroadcast(proChangeIntent);
+                    mPresenter.seekTo(progress);
                     progress = -1;
                 }
             }

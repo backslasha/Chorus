@@ -136,7 +136,7 @@ public class Utils {
     }
 
     public void playOrPause() {
-        Intent intent = new Intent(MainService.ACTION_PLAY_PAUSE);
+        Intent intent = new Intent(MainService.REMOTE_INTENT_PLAY_PAUSE);
         mContext.sendBroadcast(intent);
     }
 

@@ -1,22 +1,35 @@
 package yhb.chorus.service;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.IBinder;
 import android.os.ParcelFileDescriptor;
+import android.os.RemoteException;
 import android.widget.Toast;
 
 import java.io.FileDescriptor;
 import java.util.ArrayList;
 import java.util.List;
 
+import yhb.chorus.ICallback;
+import yhb.chorus.IPlayer;
 import yhb.chorus.R;
 import yhb.chorus.app.ChorusApplication;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.utils.LRUCache;
+
+import static yhb.chorus.service.MainService.REMOTE_INTENT_EXIT;
+import static yhb.chorus.service.MainService.REMOTE_INTENT_NEXT;
+import static yhb.chorus.service.MainService.REMOTE_INTENT_PLAY_PAUSE;
+import static yhb.chorus.service.MainService.REMOTE_INTENT_PREVIOUS;
+import static yhb.chorus.utils.MP3Utils.getAlbumart;
 
 
 public class PlayCenter {
@@ -38,8 +51,53 @@ public class PlayCenter {
     private MP3 currentMP3;
     private MP3 candidateNextMP3;
     private MP3 candidatePreviousMP3;
-    private LRUCache<MP3, Bitmap> coverCache;
-    public static Bitmap DEFAULT_BITMAP;
+    private IPlayer mPlayer;
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            try {
+                mPlayer = MainService.Player.asInterface(service);
+                mPlayer.registerCallback(new ICallback.Stub() {
+                    @Override
+                    public void onComplete() throws RemoteException {
+                        next(false);
+                    }
+
+                    @Override
+                    public void onProgressChange(boolean isPlaying,int progress)throws RemoteException {
+
+                    }
+
+                    @Override
+                    public void onNewRemoteIntent(String action) {
+                        switch (action) {
+                            case REMOTE_INTENT_NEXT:
+                                next(true);
+                                break;
+                            case REMOTE_INTENT_PREVIOUS:
+                                previous(true);
+                                break;
+                            case REMOTE_INTENT_PLAY_PAUSE:
+                                playOrPause();
+                                break;
+                            case REMOTE_INTENT_EXIT:
+                                mContext.unbindService(mConnection);
+                                break;
+                        }
+                    }
+
+                });
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
 
     public static PlayCenter getInstance() {
         if (sPlayCenter == null) {
@@ -50,12 +108,13 @@ public class PlayCenter {
 
     private PlayCenter() {
         mContext = ChorusApplication.getsApplicationContext();
-        coverCache = new LRUCache<>(10);
-        DEFAULT_BITMAP = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.marry);
+
+        Intent intent = new Intent(mContext, MainService.class);
+        mContext.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
     /*
-     * operations of controlling music player
+     * operations of controlling music mPlayer
      */
 
     public void playOrPause() {
@@ -65,8 +124,12 @@ public class PlayCenter {
             return;
         }
 
-        sendCommand(MainService.ACTION_PLAY_PAUSE);
-
+//        sendCommand(MainService.REMOTE_INTENT_PLAY_PAUSE);
+        try {
+            mPlayer.playOrPause(currentMP3);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     public void next(boolean fromUser) {
@@ -77,7 +140,13 @@ public class PlayCenter {
 
         currentMP3 = candidateNextMP3;
 
-        sendCommand(MainService.ACTION_NEXT);
+//        sendCommand(MainService.ACTION_NEXT);
+
+        try {
+            mPlayer.next(currentMP3);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         candidateNextMP3 = pickCandidateNext(fromUser);
         candidatePreviousMP3 = pickCandidatePrevious(fromUser);
@@ -92,7 +161,12 @@ public class PlayCenter {
 
         currentMP3 = candidatePreviousMP3;
 
-        sendCommand(MainService.ACTION_PREVIOUS);
+//        sendCommand(MainService.ACTION_PREVIOUS);
+        try {
+            mPlayer.previous(currentMP3);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         candidateNextMP3 = pickCandidateNext(fromUser);
         candidatePreviousMP3 = pickCandidatePrevious(fromUser);
@@ -106,7 +180,12 @@ public class PlayCenter {
 
         currentMP3 = mp3;
 
-        sendCommand(MainService.ACTION_POINT);
+//        sendCommand(MainService.ACTION_POINT);
+        try {
+            mPlayer.point(currentMP3);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         candidateNextMP3 = pickCandidateNext(true);
         candidatePreviousMP3 = pickCandidatePrevious(true);
@@ -126,6 +205,14 @@ public class PlayCenter {
             default:
                 playMode = MODE_LIST_LOOP;
                 break;
+        }
+    }
+
+    public void seekTo(int progress) {
+        try {
+            mPlayer.seekTo(progress);
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 
@@ -151,7 +238,7 @@ public class PlayCenter {
             }
         }
         if (currentIndex < 0 || currentIndex >= mQueueMP3s.size()) {
-            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
             return null;
         }
 
@@ -181,27 +268,13 @@ public class PlayCenter {
         }
 
         if (currentIndex < 0 || currentIndex >= mQueueMP3s.size()) {
-            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(mContext, "Queue is empty!", Toast.LENGTH_SHORT).show();
             return null;
         }
 
         return mQueueMP3s.get(currentIndex);
     }
 
-    private void sendCommand(String action) {
-
-        sureServiceAlive();
-
-        if (currentMP3 != null) {
-            Intent intent = new Intent(action);
-            mContext.sendBroadcast(intent);
-        }
-    }
-
-    private void sureServiceAlive() {
-        Intent serIntent = new Intent(mContext, MainService.class);
-        mContext.startService(serIntent);
-    }
 
     /*
      * global public data get/set methods
@@ -214,14 +287,12 @@ public class PlayCenter {
      */
     public void setMp3s(List<MP3> mp3s) {
         this.mp3s = mp3s;
-        sureServiceAlive();
     }
 
-    /**
-     * 获取当前的播放模式
-     *
-     * @return 当前的播放模式
-     */
+    public List<MP3> getMP3s() {
+        return mp3s;
+    }
+
     public int getPlayMode() {
         return playMode;
     }
@@ -230,59 +301,18 @@ public class PlayCenter {
         return currentMP3;
     }
 
-    public MP3 getCandidateNextMP3() {
+    private MP3 getCandidateNextMP3() {
         if (candidateNextMP3 == null) {
             candidateNextMP3 = pickCandidateNext(false);
         }
         return candidateNextMP3;
     }
 
-    public MP3 getCandidatePreviousMP3() {
+    private MP3 getCandidatePreviousMP3() {
         if (candidatePreviousMP3 == null) {
             candidatePreviousMP3 = pickCandidatePrevious(false);
         }
         return candidatePreviousMP3;
-    }
-
-    public List<MP3> getMP3s() {
-        return mp3s;
-    }
-
-    public Bitmap getAlbumart(MP3 mp3) {
-
-        Bitmap albumArtBitMap = coverCache.get(mp3);
-
-        if (albumArtBitMap != null) {
-            return albumArtBitMap;
-        }
-
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        try {
-
-            Uri uri = Uri
-                    .parse("content://media/external/audio/albumart/" + mp3.getAlbumId());
-
-            ParcelFileDescriptor pfd = mContext.getContentResolver()
-                    .openFileDescriptor(uri, "r");
-
-            if (pfd != null) {
-                FileDescriptor fd = pfd.getFileDescriptor();
-                albumArtBitMap = BitmapFactory.decodeFileDescriptor(fd, null,
-                        options);
-                pfd = null;
-                fd = null;
-            }
-
-            if (albumArtBitMap == null) {
-                albumArtBitMap = DEFAULT_BITMAP;
-            }
-
-            coverCache.put(mp3, albumArtBitMap);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return albumArtBitMap;
     }
 
     public Bitmap[] loadCovers() {

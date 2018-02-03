@@ -41,7 +41,7 @@ public class FavouritesFragment extends Fragment {
                 ImageView imageView = (ImageView) view.findViewById(R.id.image_view_flag);
                 Intent intent;
                 if (Utils.currentMP3 == Utils.mp3Beans.get(position)) {
-                    intent = new Intent(MainService.ACTION_PLAY_PAUSE);
+                    intent = new Intent(MainService.REMOTE_INTENT_PLAY_PAUSE);
                 } else {
                     Utils.currentPosition = position;
                     intent = new Intent(MainService.ACTION_POINT);

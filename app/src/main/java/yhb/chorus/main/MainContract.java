@@ -26,13 +26,13 @@ public interface MainContract {
 
     interface Presenter extends BasePresenter {
 
-        void loadQueueMP3sFromDB(PlayCenter playCenter);
+        void loadQueueMP3sFromDBAsync(PlayCenter playCenter);
 
         /**
          *
          * @param playCenter
          */
-        void loadMP3sFromDB(PlayCenter playCenter);
+        void loadMP3sFromDBAsync(PlayCenter playCenter);
 
         void saveCurrentVolume(float volume);
 
@@ -41,6 +41,8 @@ public interface MainContract {
         void previous();
 
         void playOrPause();
+
+        void seekTo(int progress);
 
         void nextPlayMode();
 
@@ -63,5 +65,6 @@ public interface MainContract {
         void point(MP3 mp3);
 
         void loadCoversAsync();
+
     }
 }

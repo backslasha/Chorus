@@ -44,18 +44,18 @@ public class FavouritesListViewAdapter extends BaseAdapter {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_mp3_simple, null);
         TextView tv = (TextView) view.findViewById(R.id.text_view_song_name);
         tv.setText((position + 1) + ". " + mp3BeanList.get(position).getTitle());
-        final ImageButton ibtn = (ImageButton) view.findViewById(R.id.image_button_favour);
-        ibtn.setBackgroundResource(R.drawable.ic_delete);
+//        final ImageButton ibtn = (ImageButton) view.findViewById(R.id.image_button_favour);
+//        ibtn.setBackgroundResource(R.drawable.ic_delete);
 
-        ibtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Utils.getInstance(mContext).updateBelongs(mp3BeanList.get(position), Utils.COLUMN_FAVOURITE, Utils.UPDATE_REMOVE);
-                mp3BeanList.get(position).setIsFavourite(0);
-                mp3BeanList.remove(position);
-                FavouritesListViewAdapter.this.notifyDataSetChanged();
-            }
-        });
+//        ibtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Utils.getInstance(mContext).updateBelongs(mp3BeanList.get(position), Utils.COLUMN_FAVOURITE, Utils.UPDATE_REMOVE);
+//                mp3BeanList.get(position).setIsFavourite(0);
+//                mp3BeanList.remove(position);
+//                FavouritesListViewAdapter.this.notifyDataSetChanged();
+//            }
+//        });
         return view;
     }
 }
