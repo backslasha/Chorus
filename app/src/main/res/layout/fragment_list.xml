@@ -29,8 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:background="@android:color/white"
-        android:paddingEnd="@dimen/padding_small"
-        android:paddingStart="@dimen/padding_small"
         tools:ignore="RtlSymmetry" />
 
 

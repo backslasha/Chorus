@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="frame" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -29,21 +30,20 @@
       <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/aidl/yhb/chorus/ICallback.aidl" afterPath="$PROJECT_DIR$/app/src/main/aidl/yhb/chorus/ICallback.aidl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/aidl/yhb/chorus/IPlayer.aidl" afterPath="$PROJECT_DIR$/app/src/main/aidl/yhb/chorus/IPlayer.aidl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainContract.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainContract.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/main/MainPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/list/ListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/list/ListFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/service/MainService.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/service/MainService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/service/PlayCenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/yhb/chorus/service/PlayCenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_mp3_editable.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_mp3_editable.xml" />
       <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/.idea/workspace.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/ICallback.aidl" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/ICallback.aidl" />
-      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/IPlayer.aidl" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/IPlayer.aidl" />
-      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java" />
-      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java" />
-      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/build.gradle" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListFragment.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListFragment.java" />
       <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java" />
-      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_list.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_list.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/item_mp3_editable.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/item_mp3_editable.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/values/dimens.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/values/dimens.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/values/strings.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/values/styles.xml" afterPath="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/values/styles.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -83,126 +83,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayCenter.java" pinned="false" current-in-tab="true">
-        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="309" column="0" lean-forward="true" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
-              <folding>
-                <element signature="class#1731:3272" expanded="false" />
-                <element signature="method#onServiceConnected#0;class#1731:3272" expanded="false" />
-                <element signature="class#1979:2997" expanded="false" />
-                <element signature="method#onComplete#0;class#1979:2997" expanded="false" />
-                <element signature="method#onNewRemoteIntent#0;class#1979:2997" expanded="false" />
-                <element signature="method#getInstance#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#playOrPause#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#next#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#previous#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#point#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#nextPlayMode#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#seekTo#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#pickCandidatePrevious#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#pickCandidateNext#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#isPlaying#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#getProgress#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#isRemoteBind#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#setMp3s#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#getCandidateNextMP3#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#getCandidatePreviousMP3#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#loadCovers#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#recordVolume#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#getVolume#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#getQueueMP3s#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#setQueueMP3s#0;class#PlayCenter#0" expanded="false" />
-                <element signature="docComment;method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
-                <element signature="method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainPresenter.java" pinned="false" current-in-tab="false">
-        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;class#MainPresenter#0" expanded="false" />
-                <element signature="method#MainPresenter#0;class#MainPresenter#0" expanded="false" />
-                <element signature="class#1117:1470" expanded="false" />
-                <element signature="method#onChange#0;class#1117:1470" expanded="false" />
-                <element signature="method#start#0;class#MainPresenter#0" expanded="false" />
-                <element signature="method#release#0;class#MainPresenter#0" expanded="false" />
-                <element signature="method#loadQueueMP3sFromDBAsync#0;class#MainPresenter#0" expanded="false" />
-                <element signature="method#loadMP3sFromDBAsync#0;class#MainPresenter#0" expanded="false" />
-                <element signature="method#loadSavedSetting#0;class#MainPresenter#0" expanded="false" />
-                <element signature="method#setCurrentVolumeSystem#0;class#MainPresenter#0" expanded="false" />
-                <element signature="docComment;method#next#0;class#MainPresenter#0" expanded="false" />
-                <element signature="e#5328#5329#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainService.java" pinned="false" current-in-tab="false">
-        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="52" column="41" lean-forward="false" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
-              <folding>
-                <element signature="e#1883#1892#0" expanded="false" />
-                <element signature="class#ForegroundServiceHandlerReceiver#0;class#MainService#0" expanded="false" />
-                <element signature="method#onReceive#0;class#ForegroundServiceHandlerReceiver#0;class#MainService#0" expanded="false" />
-                <element signature="method#foreSerLaunch#0;class#MainService#0" expanded="false" />
-                <element signature="method#setupRemoteView#0;class#MainService#0" expanded="false" />
-                <element signature="method#playOrPause#0;class#Player#0;class#MainService#0" expanded="false" />
-                <element signature="method#setVolume#0;class#Player#0;class#MainService#0" expanded="false" />
-                <element signature="method#registerCallback#0;class#Player#0;class#MainService#0" expanded="false" />
-                <element signature="method#newCurrent#0;class#Player#0;class#MainService#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainFragment.java" pinned="false" current-in-tab="true">
         <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="275" column="0" lean-forward="false" selection-start-line="275" selection-start-column="0" selection-end-line="275" selection-end-column="0" />
+            <state relative-caret-position="101">
+              <caret line="439" column="22" lean-forward="true" selection-start-line="439" selection-start-column="22" selection-end-line="439" selection-end-column="22" />
               <folding>
                 <element signature="docComment;class#MainFragment#0" expanded="false" />
                 <element signature="method#newInstance#0;class#MainFragment#0" expanded="false" />
-                <element signature="e#2809#3141#0" expanded="true" />
-                <element signature="e#3140#3141#0" expanded="true" />
-                <element signature="e#3154#3163#0" expanded="false" />
-                <element signature="method#onCreateView#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onCreate#0;class#MainFragment#0" expanded="false" />
+                <element signature="e#2702#2711#0" expanded="false" />
+                <element signature="method#onResume#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#bindViews#0;class#MainFragment#0" expanded="false" />
-                <element signature="class#4952:5604" expanded="false" />
-                <element signature="method#onProgressChanged#0;class#4952:5604" expanded="false" />
-                <element signature="method#onStartTrackingTouch#0;class#4952:5604" expanded="false" />
-                <element signature="method#onStopTrackingTouch#0;class#4952:5604" expanded="false" />
-                <element signature="class#5736:6529" expanded="false" />
-                <element signature="method#onProgressChanged#0;class#5736:6529" expanded="false" />
-                <element signature="method#onStartTrackingTouch#0;class#5736:6529" expanded="false" />
-                <element signature="method#onStopTrackingTouch#0;class#5736:6529" expanded="false" />
-                <element signature="class#6742:7235" expanded="false" />
-                <element signature="method#onProgressChanged#0;class#6742:7235" expanded="false" />
-                <element signature="method#onStartTrackingTouch#0;class#6742:7235" expanded="false" />
-                <element signature="method#onStopTrackingTouch#0;class#6742:7235" expanded="false" />
-                <element signature="class#7742:8079" expanded="false" />
-                <element signature="method#onNext#0;class#7742:8079" expanded="false" />
-                <element signature="method#onPrevious#0;class#7742:8079" expanded="false" />
+                <element signature="class#4500:5152" expanded="false" />
+                <element signature="method#onProgressChanged#0;class#4500:5152" expanded="false" />
+                <element signature="method#onStartTrackingTouch#0;class#4500:5152" expanded="false" />
+                <element signature="method#onStopTrackingTouch#0;class#4500:5152" expanded="false" />
+                <element signature="class#5284:5846" expanded="false" />
+                <element signature="method#onProgressChanged#0;class#5284:5846" expanded="false" />
+                <element signature="method#onStartTrackingTouch#0;class#5284:5846" expanded="false" />
+                <element signature="method#onStopTrackingTouch#0;class#5284:5846" expanded="false" />
+                <element signature="class#6059:6545" expanded="false" />
+                <element signature="method#onProgressChanged#0;class#6059:6545" expanded="false" />
+                <element signature="method#onStartTrackingTouch#0;class#6059:6545" expanded="false" />
+                <element signature="method#onStopTrackingTouch#0;class#6059:6545" expanded="false" />
+                <element signature="class#7052:7389" expanded="false" />
+                <element signature="method#onNext#0;class#7052:7389" expanded="false" />
+                <element signature="method#onPrevious#0;class#7052:7389" expanded="false" />
+                <element signature="method#onDestroy#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#onCreateOptionsMenu#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#onOptionsItemSelected#0;class#MainFragment#0" expanded="false" />
+                <element signature="method#onClick#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#invalidateWidgets#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#invalidateSeekBarVolumeSystem#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#invalidateCovers#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#invalidateConsole#0;class#MainFragment#0" expanded="false" />
-                <element signature="method#showBottomSheet#0;class#MainFragment#0" expanded="false" />
-                <element signature="class#13486:14199" expanded="false" />
-                <element signature="method#forEachHolder#0;class#13486:14199" expanded="false" />
+                <element signature="class#12893:13606" expanded="false" />
+                <element signature="method#forEachHolder#0;class#12893:13606" expanded="false" />
                 <element signature="method#mm2min#0;class#MainFragment#0" expanded="false" />
-                <element signature="class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#CoverPagerAdapter#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#instantiateItem#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#destroyItem#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
@@ -213,16 +131,6 @@
                 <element signature="method#onPageSelected#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
                 <element signature="method#onPageScrollStateChanged#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IPlayer.java" pinned="false" current-in-tab="false">
-        <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/build/generated/source/aidl/debug/yhb/chorus/IPlayer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -263,6 +171,7 @@
       <find>defaultBitmap</find>
       <find>load</find>
       <find>EXI</find>
+      <find>mItems</find>
     </findStrings>
     <replaceStrings>
       <replace>mp3</replace>
@@ -1999,10 +1908,8 @@
       <list>
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_edit_type_bar.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/drawable/ic_arrow_back.xml" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_list.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/drawable/ic_delete_white.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/include_edit_type_bar.xml" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/item_mp3_editable.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/DBUtils.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/menu/drawer_menu.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListActivity.java" />
@@ -2025,9 +1932,6 @@
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListContract.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/entity/MP3InQueue.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListPresenter.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListFragment.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainActivity.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification_big.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_main.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/LRUCache.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml" />
@@ -2039,15 +1943,20 @@
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/entity/MP3.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification.xml" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/MP3Utils.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/IPlayer.aidl" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/ICallback.aidl" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/build/generated/source/aidl/debug/yhb/chorus/IPlayer.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/build/generated/source/aidl/debug/yhb/chorus/ICallback.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/IPlayer.aidl" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/build/generated/source/aidl/debug/yhb/chorus/IPlayer.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainActivity.java" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification_big.xml" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/item_mp3_editable.xml" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_list.xml" />
+        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListFragment.java" />
         <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java" />
-        <option value="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java" />
       </list>
     </option>
   </component>
@@ -2161,116 +2070,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yhb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chorus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CHORUS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CHORUS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yhb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chorus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CHORUS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CHORUS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yhb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chorus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CHORUS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CHORUS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2336,14 +2135,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2353,6 +2144,18 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aidl" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yhb" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chorus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2374,6 +2177,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="chorus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2631,15 +2438,17 @@
     <property name="SearchEverywhereHistoryKey" value="Handler&#9;PSI&#9;JAVA://android.os.Handler&#10;Looper&#9;PSI&#9;JAVA://android.os.Looper" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="yhb.chorus.entity" />
+    <key name="android.template.parentActivityClass">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/entity" />
+    </key>
+    <key name="android.template.packageName">
       <recent name="yhb.chorus.main" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="yhb.chorus" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="yhb.chorus.main" />
@@ -2652,6 +2461,10 @@
       <recent name="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/drawable" />
       <recent name="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/mipmap-anydpi-v26" />
       <recent name="/mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/drawable-v24" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="yhb.chorus.entity" />
+      <recent name="yhb.chorus.main" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2737,7 +2550,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517637316702" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517660876542" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2785,7 +2598,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517637316706" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517660876542" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2943,7 +2756,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517637316718" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1517660876543" />
       </method>
     </configuration>
     <list size="1">
@@ -2998,7 +2811,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-38" width="1368" height="807" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51155627" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -3007,7 +2819,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1732224" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22692889" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39445302" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266564" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819724" sideWeight="0.49167928" order="10" side_tool="false" content_ui="tabs" />
@@ -3021,7 +2833,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32511556" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819724" sideWeight="0.50832075" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21633889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21633889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819724" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3081,106 +2893,11 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="70" />
+      <option name="time" value="72" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.6.1/b16b5ac30266a655988090385639582d0c39cd86/core-1.6.1-sources.jar!/org/litepal/crud/SaveHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/db/DBUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="86" column="14" lean-forward="false" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
-          <folding>
-            <element signature="docComment;class#DBUtils#0" expanded="false" />
-            <element signature="method#query#0;class#DBUtils#0" expanded="false" />
-            <element signature="method#queryAllLocalMP3s#0;class#DBUtils#0" expanded="false" />
-            <element signature="method#deleteFromQueue#0;class#DBUtils#0" expanded="false" />
-            <element signature="class#1033:1175" expanded="false" />
-            <element signature="method#onFinish#0;class#1033:1175" expanded="false" />
-            <element signature="method#scanMediaStoreAndCreateDB#0;class#DBUtils#0" expanded="false" />
-            <element signature="method#getContentValues#0;class#DBUtils#0" expanded="false" />
-            <element signature="method#getEntityFromMediaStoreCursor#0;class#DBUtils#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.6.1/b16b5ac30266a655988090385639582d0c39cd86/core-1.6.1-sources.jar!/org/litepal/crud/async/AsyncExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.6.1/b16b5ac30266a655988090385639582d0c39cd86/core-1.6.1-sources.jar!/org/litepal/crud/async/SaveExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.6.1/b16b5ac30266a655988090385639582d0c39cd86/core-1.6.1-sources.jar!/org/litepal/LitePal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="71" column="35" lean-forward="true" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
-          <folding>
-            <element signature="e#2423#2424#0" expanded="false" />
-            <element signature="e#2453#2454#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.6.1/b16b5ac30266a655988090385639582d0c39cd86/core-1.6.1-sources.jar!/org/litepal/crud/DataSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="1535" column="57" lean-forward="true" selection-start-line="1535" selection-start-column="57" selection-end-line="1535" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/app/ChorusApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/entity/MP3InQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/ActivityUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="18" column="48" lean-forward="false" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/drawable/ic_skip_previous.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3305,13 +3022,431 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/util/SparseArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="46" column="67" lean-forward="false" selection-start-line="46" selection-start-column="67" selection-end-line="46" selection-end-column="67" />
+          <folding>
+            <element signature="e#2812#2813#0" expanded="false" />
+            <element signature="e#2836#2837#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/java/util/LinkedHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="324" column="58" lean-forward="false" selection-start-line="324" selection-start-column="58" selection-end-line="324" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/app/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="601" column="12" lean-forward="false" selection-start-line="601" selection-start-column="12" selection-end-line="601" selection-end-column="12" />
+          <folding>
+            <element signature="e#28819#28820#0" expanded="false" />
+            <element signature="e#28847#28848#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/content/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="256" column="28" lean-forward="false" selection-start-line="256" selection-start-column="28" selection-end-line="256" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/content/Intent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="5686" column="11" lean-forward="false" selection-start-line="5686" selection-start-column="11" selection-end-line="5686" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/26.1.0/8279b00f5194701ff18363fa2958c5a26670b0ef/support-fragment-26.1.0-sources.jar!/android/support/v4/app/Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="2400" column="0" lean-forward="false" selection-start-line="2400" selection-start-column="0" selection-end-line="2400" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/androidTest/java/yhb/chorus/adapter/FavouritesListViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/widget/RemoteViews.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="2751" column="28" lean-forward="true" selection-start-line="2751" selection-start-column="28" selection-end-line="2751" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="51" column="8" lean-forward="false" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="166" column="24" lean-forward="false" selection-start-line="166" selection-start-column="24" selection-end-line="166" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/LRUCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/MP3Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/common/SimpleAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_queue_song.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/build/generated/source/aidl/debug/yhb/chorus/ICallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding>
+            <element signature="e#594#595#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="23" column="48" lean-forward="true" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/build/generated/source/aidl/debug/yhb/chorus/IPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="286" column="0" lean-forward="false" selection-start-line="286" selection-start-column="0" selection-end-line="286" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.6.1/b16b5ac30266a655988090385639582d0c39cd86/core-1.6.1-sources.jar!/org/litepal/crud/DataSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="1052" column="0" lean-forward="false" selection-start-line="1052" selection-start-column="0" selection-end-line="1052" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/com/android/internal/os/ZygoteInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="778" column="0" lean-forward="false" selection-start-line="778" selection-start-column="0" selection-end-line="778" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="406" column="25" lean-forward="false" selection-start-line="406" selection-start-column="25" selection-end-line="406" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="6185" column="0" lean-forward="false" selection-start-line="6185" selection-start-column="0" selection-end-line="6185" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/BasePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="49" column="64" lean-forward="true" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="78" column="61" lean-forward="true" selection-start-line="78" selection-start-column="61" selection-end-line="78" selection-end-column="61" />
+          <folding>
+            <element signature="docComment;class#MainPresenter#0" expanded="false" />
+            <element signature="class#1117:1470" expanded="false" />
+            <element signature="method#onChange#0;class#1117:1470" expanded="false" />
+            <element signature="method#release#0;class#MainPresenter#0" expanded="false" />
+            <element signature="e#3332#3333#0" expanded="true" />
+            <element signature="e#3381#3382#0" expanded="true" />
+            <element signature="method#loadSavedSetting#0;class#MainPresenter#0" expanded="false" />
+            <element signature="method#setVolumeSystem#0;class#MainPresenter#0" expanded="false" />
+            <element signature="method#reloadCurrentWidgetsData#0;class#MainPresenter#0" expanded="false" />
+            <element signature="method#loadCoversAsync#0;class#MainPresenter#0" expanded="false" />
+            <element signature="method#reloadConsoleData#0;class#MainPresenter#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification_big.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_list.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="31" column="37" lean-forward="false" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/item_mp3_editable.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="28" column="23" lean-forward="false" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/ICallback.aidl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="134" column="23" lean-forward="true" selection-start-line="134" selection-start-column="23" selection-end-line="134" selection-end-column="23" />
+          <folding>
+            <element signature="docComment;class#ListFragment#0" expanded="false" />
+            <element signature="method#newInstance#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#onCreate#0;class#ListFragment#0" expanded="false" />
+            <element signature="e#2149#2158#0" expanded="false" />
+            <element signature="method#onCreateView#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#turnOnEditable#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#selectAll#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#onDestroy#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#showProgressBar#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#hideProgressBar#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#showLocalMP3s#0;class#ListFragment#0" expanded="false" />
+            <element signature="method#onClick#0;class#ListFragment#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <element signature="method#onServiceConnected#0;class#1606:3316" expanded="false" />
+            <element signature="class#1854:3041" expanded="false" />
+            <element signature="method#onComplete#0;class#1854:3041" expanded="false" />
+            <element signature="method#onNewCurrent#0;class#1854:3041" expanded="false" />
+            <element signature="method#onNewRemoteIntent#0;class#1854:3041" expanded="false" />
+            <element signature="method#getInstance#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#PlayCenter#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#playOrPause#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#next#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#previous#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#point#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#nextPlayMode#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#seekTo#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#pickCandidatePrevious#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#pickCandidateNext#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#isPlaying#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#getProgress#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#isNewCurrent#0;class#PlayCenter#0" expanded="false" />
+            <element signature="docComment;method#setMp3s#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#getCandidateNextMP3#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#getCandidatePreviousMP3#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#loadCovers#0;class#PlayCenter#0" expanded="false" />
+            <element signature="docComment;method#setVolumeIndependent#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#setVolumeIndependent#0;class#PlayCenter#0" expanded="false" />
+            <element signature="docComment;method#getVolumeIndependent#0;class#PlayCenter#0" expanded="false" />
+            <element signature="docComment;method#getQueueMP3s#0;class#PlayCenter#0" expanded="false" />
+            <element signature="docComment;method#setQueueMP3s#0;class#PlayCenter#0" expanded="false" />
+            <element signature="docComment;method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
+            <element signature="method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="87" column="5" lean-forward="true" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+          <folding>
+            <element signature="e#1783#1792#0" expanded="false" />
+            <element signature="method#onBind#0;class#MainService#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainService#0" expanded="false" />
+            <element signature="method#onDestroy#0;class#MainService#0" expanded="false" />
+            <element signature="docComment;class#ForegroundServiceHandlerReceiver#0;class#MainService#0" expanded="false" />
+            <element signature="class#ForegroundServiceHandlerReceiver#0;class#MainService#0" expanded="false" />
+            <element signature="method#onReceive#0;class#ForegroundServiceHandlerReceiver#0;class#MainService#0" expanded="false" />
+            <element signature="method#foreSerLaunch#0;class#MainService#0" expanded="false" />
+            <element signature="method#setupRemoteView#0;class#MainService#0" expanded="false" />
+            <element signature="class#Player#0;class#MainService#0" expanded="false" />
+            <element signature="method#playOrPause#0;class#Player#0;class#MainService#0" expanded="false" />
+            <element signature="method#isPlaying#0;class#Player#0;class#MainService#0" expanded="false" />
+            <element signature="method#getProgress#0;class#Player#0;class#MainService#0" expanded="false" />
+            <element signature="method#registerCallback#0;class#Player#0;class#MainService#0" expanded="false" />
+            <element signature="method#newCurrent#0;class#Player#0;class#MainService#0" expanded="false" />
+            <element signature="method#prepared#0;class#Player#0;class#MainService#0" expanded="false" />
+            <element signature="e#8195#8231#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/text/SpannableString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="44" column="16" lean-forward="false" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/IPlayer.aidl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/entity/MP3.aidl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/entity/MP3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="method#MP3#0;class#MP3#0" expanded="false" />
+            <element signature="method#MP3#1;class#MP3#0" expanded="false" />
+            <element signature="method#equals#0;class#MP3#0" expanded="false" />
+            <element signature="method#hashCode#0;class#MP3#0" expanded="false" />
+            <element signature="class#2919:3163" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-core-ui/26.1.0/4d52cef4a24bf9939de1d256ca9f0974c6e636a4/support-core-ui-26.1.0-sources.jar!/android/support/v4/view/ViewPager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1778">
-          <caret line="2659" column="59" lean-forward="true" selection-start-line="2659" selection-start-column="59" selection-end-line="2659" selection-end-column="59" />
+        <state relative-caret-position="-177">
+          <caret line="482" column="19" lean-forward="true" selection-start-line="482" selection-start-column="19" selection-end-line="482" selection-end-column="19" />
           <folding>
             <element signature="docComment;class#ViewPager#0" expanded="false" />
-            <element signature="e#5471#5481#0" expanded="false" />
             <element signature="docComment;field#mLastMotionX#0;class#ViewPager#0" expanded="false" />
             <element signature="docComment;field#mActivePointerId#0;class#ViewPager#0" expanded="false" />
             <element signature="docComment;field#INVALID_POINTER#0;class#ViewPager#0" expanded="false" />
@@ -3393,9 +3528,6 @@
             <element signature="e#36370#36442#0" expanded="false" />
             <element signature="e#38088#38164#0" expanded="false" />
             <element signature="method#addNewItem#0;class#ViewPager#0" expanded="false" />
-            <element signature="method#dataSetChanged#0;class#ViewPager#0" expanded="false" />
-            <element signature="e#41130#41131#0" expanded="false" />
-            <element signature="e#41164#41165#0" expanded="false" />
             <element signature="e#43758#43821#0" expanded="false" />
             <element signature="e#47801#47868#0" expanded="false" />
             <element signature="method#sortChildDrawingOrder#0;class#ViewPager#0" expanded="false" />
@@ -3504,295 +3636,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/java/lang/Override.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/util/SparseArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="46" column="67" lean-forward="false" selection-start-line="46" selection-start-column="67" selection-end-line="46" selection-end-column="67" />
-          <folding>
-            <element signature="e#2812#2813#0" expanded="false" />
-            <element signature="e#2836#2837#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/java/util/LinkedHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="324" column="58" lean-forward="false" selection-start-line="324" selection-start-column="58" selection-end-line="324" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/app/Service.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="601" column="12" lean-forward="false" selection-start-line="601" selection-start-column="12" selection-end-line="601" selection-end-column="12" />
-          <folding>
-            <element signature="e#28819#28820#0" expanded="false" />
-            <element signature="e#28847#28848#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
+    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/xiaomi-redmi_3-192.168.199.146_5555/data/data/com.netease.cloudmusic/app_mpcd/mpcd.apk">
+      <provider selected="true" editor-type-id="apk-viewer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/content/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="256" column="28" lean-forward="false" selection-start-line="256" selection-start-column="28" selection-end-line="256" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/content/Intent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="5686" column="11" lean-forward="false" selection-start-line="5686" selection-start-column="11" selection-end-line="5686" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="77" column="34" lean-forward="false" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/26.1.0/8279b00f5194701ff18363fa2958c5a26670b0ef/support-fragment-26.1.0-sources.jar!/android/support/v4/app/Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="2400" column="0" lean-forward="false" selection-start-line="2400" selection-start-column="0" selection-end-line="2400" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/androidTest/java/yhb/chorus/adapter/FavouritesListViewAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/entity/MP3.aidl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/entity/MP3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="164" column="31" lean-forward="false" selection-start-line="164" selection-start-column="31" selection-end-line="164" selection-end-column="31" />
-          <folding>
-            <element signature="method#MP3#0;class#MP3#0" expanded="false" />
-            <element signature="method#MP3#1;class#MP3#0" expanded="false" />
-            <element signature="method#equals#0;class#MP3#0" expanded="false" />
-            <element signature="method#hashCode#0;class#MP3#0" expanded="false" />
-            <element signature="class#2919:3163" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/list/ListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="273" column="19" lean-forward="false" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
-          <folding>
-            <element signature="docComment;class#ListFragment#0" expanded="false" />
-            <element signature="method#newInstance#0;class#ListFragment#0" expanded="false" />
-            <element signature="method#onCreate#0;class#ListFragment#0" expanded="false" />
-            <element signature="e#2112#2121#0" expanded="false" />
-            <element signature="method#onCreateView#0;class#ListFragment#0" expanded="false" />
-            <element signature="method#selectAll#0;class#ListFragment#0" expanded="false" />
-            <element signature="method#onDestroy#0;class#ListFragment#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#ListFragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/adt-bundle-windows-x86_64-20140702/sdk/sources/android-26/android/widget/RemoteViews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="2751" column="28" lean-forward="true" selection-start-line="2751" selection-start-column="28" selection-end-line="2751" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="51" column="8" lean-forward="false" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_notification_big.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/fragment_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="166" column="24" lean-forward="false" selection-start-line="166" selection-start-column="24" selection-end-line="166" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/LRUCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/utils/MP3Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/common/SimpleAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/res/layout/content_queue_song.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/IPlayer.aidl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/aidl/yhb/chorus/ICallback.aidl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/build/generated/source/aidl/debug/yhb/chorus/ICallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding>
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="25" column="62" lean-forward="false" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/build/generated/source/aidl/debug/yhb/chorus/IPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="205" column="0" lean-forward="false" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="275" column="0" lean-forward="false" selection-start-line="275" selection-start-column="0" selection-end-line="275" selection-end-column="0" />
+        <state relative-caret-position="101">
+          <caret line="439" column="22" lean-forward="true" selection-start-line="439" selection-start-column="22" selection-end-line="439" selection-end-column="22" />
           <folding>
             <element signature="docComment;class#MainFragment#0" expanded="false" />
             <element signature="method#newInstance#0;class#MainFragment#0" expanded="false" />
-            <element signature="e#2809#3141#0" expanded="true" />
-            <element signature="e#3140#3141#0" expanded="true" />
-            <element signature="e#3154#3163#0" expanded="false" />
-            <element signature="method#onCreateView#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainFragment#0" expanded="false" />
+            <element signature="e#2702#2711#0" expanded="false" />
+            <element signature="method#onResume#0;class#MainFragment#0" expanded="false" />
             <element signature="method#bindViews#0;class#MainFragment#0" expanded="false" />
-            <element signature="class#4952:5604" expanded="false" />
-            <element signature="method#onProgressChanged#0;class#4952:5604" expanded="false" />
-            <element signature="method#onStartTrackingTouch#0;class#4952:5604" expanded="false" />
-            <element signature="method#onStopTrackingTouch#0;class#4952:5604" expanded="false" />
-            <element signature="class#5736:6529" expanded="false" />
-            <element signature="method#onProgressChanged#0;class#5736:6529" expanded="false" />
-            <element signature="method#onStartTrackingTouch#0;class#5736:6529" expanded="false" />
-            <element signature="method#onStopTrackingTouch#0;class#5736:6529" expanded="false" />
-            <element signature="class#6742:7235" expanded="false" />
-            <element signature="method#onProgressChanged#0;class#6742:7235" expanded="false" />
-            <element signature="method#onStartTrackingTouch#0;class#6742:7235" expanded="false" />
-            <element signature="method#onStopTrackingTouch#0;class#6742:7235" expanded="false" />
-            <element signature="class#7742:8079" expanded="false" />
-            <element signature="method#onNext#0;class#7742:8079" expanded="false" />
-            <element signature="method#onPrevious#0;class#7742:8079" expanded="false" />
+            <element signature="class#4500:5152" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#4500:5152" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#4500:5152" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#4500:5152" expanded="false" />
+            <element signature="class#5284:5846" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#5284:5846" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#5284:5846" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#5284:5846" expanded="false" />
+            <element signature="class#6059:6545" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#6059:6545" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#6059:6545" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#6059:6545" expanded="false" />
+            <element signature="class#7052:7389" expanded="false" />
+            <element signature="method#onNext#0;class#7052:7389" expanded="false" />
+            <element signature="method#onPrevious#0;class#7052:7389" expanded="false" />
+            <element signature="method#onDestroy#0;class#MainFragment#0" expanded="false" />
             <element signature="method#onCreateOptionsMenu#0;class#MainFragment#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#MainFragment#0" expanded="false" />
+            <element signature="method#onClick#0;class#MainFragment#0" expanded="false" />
             <element signature="method#invalidateWidgets#0;class#MainFragment#0" expanded="false" />
             <element signature="method#invalidateSeekBarVolumeSystem#0;class#MainFragment#0" expanded="false" />
             <element signature="method#invalidateCovers#0;class#MainFragment#0" expanded="false" />
             <element signature="method#invalidateConsole#0;class#MainFragment#0" expanded="false" />
-            <element signature="method#showBottomSheet#0;class#MainFragment#0" expanded="false" />
-            <element signature="class#13486:14199" expanded="false" />
-            <element signature="method#forEachHolder#0;class#13486:14199" expanded="false" />
+            <element signature="class#12893:13606" expanded="false" />
+            <element signature="method#forEachHolder#0;class#12893:13606" expanded="false" />
             <element signature="method#mm2min#0;class#MainFragment#0" expanded="false" />
-            <element signature="class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
             <element signature="method#CoverPagerAdapter#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
             <element signature="method#instantiateItem#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
             <element signature="method#destroyItem#0;class#CoverPagerAdapter#0;class#MainFragment#0" expanded="false" />
@@ -3802,81 +3687,6 @@
             <element signature="method#onPageScrolled#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
             <element signature="method#onPageSelected#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
             <element signature="method#onPageScrollStateChanged#0;class#PageSelectedListener#0;class#MainFragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/main/MainPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#MainPresenter#0" expanded="false" />
-            <element signature="method#MainPresenter#0;class#MainPresenter#0" expanded="false" />
-            <element signature="class#1117:1470" expanded="false" />
-            <element signature="method#onChange#0;class#1117:1470" expanded="false" />
-            <element signature="method#start#0;class#MainPresenter#0" expanded="false" />
-            <element signature="method#release#0;class#MainPresenter#0" expanded="false" />
-            <element signature="method#loadQueueMP3sFromDBAsync#0;class#MainPresenter#0" expanded="false" />
-            <element signature="method#loadMP3sFromDBAsync#0;class#MainPresenter#0" expanded="false" />
-            <element signature="method#loadSavedSetting#0;class#MainPresenter#0" expanded="false" />
-            <element signature="method#setCurrentVolumeSystem#0;class#MainPresenter#0" expanded="false" />
-            <element signature="docComment;method#next#0;class#MainPresenter#0" expanded="false" />
-            <element signature="e#5328#5329#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/MainService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="52" column="41" lean-forward="false" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
-          <folding>
-            <element signature="e#1883#1892#0" expanded="false" />
-            <element signature="class#ForegroundServiceHandlerReceiver#0;class#MainService#0" expanded="false" />
-            <element signature="method#onReceive#0;class#ForegroundServiceHandlerReceiver#0;class#MainService#0" expanded="false" />
-            <element signature="method#foreSerLaunch#0;class#MainService#0" expanded="false" />
-            <element signature="method#setupRemoteView#0;class#MainService#0" expanded="false" />
-            <element signature="method#playOrPause#0;class#Player#0;class#MainService#0" expanded="false" />
-            <element signature="method#setVolume#0;class#Player#0;class#MainService#0" expanded="false" />
-            <element signature="method#registerCallback#0;class#Player#0;class#MainService#0" expanded="false" />
-            <element signature="method#newCurrent#0;class#Player#0;class#MainService#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/shared-disk-data/workplace-android/CHORUS/app/src/main/java/yhb/chorus/service/PlayCenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="309" column="0" lean-forward="true" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
-          <folding>
-            <element signature="class#1731:3272" expanded="false" />
-            <element signature="method#onServiceConnected#0;class#1731:3272" expanded="false" />
-            <element signature="class#1979:2997" expanded="false" />
-            <element signature="method#onComplete#0;class#1979:2997" expanded="false" />
-            <element signature="method#onNewRemoteIntent#0;class#1979:2997" expanded="false" />
-            <element signature="method#getInstance#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#playOrPause#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#next#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#previous#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#point#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#nextPlayMode#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#seekTo#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#pickCandidatePrevious#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#pickCandidateNext#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#isPlaying#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#getProgress#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#isRemoteBind#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#setMp3s#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#getCandidateNextMP3#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#getCandidatePreviousMP3#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#loadCovers#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#recordVolume#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#getVolume#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#getQueueMP3s#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#setQueueMP3s#0;class#PlayCenter#0" expanded="false" />
-            <element signature="docComment;method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
-            <element signature="method#addIntoQueue#0;class#PlayCenter#0" expanded="false" />
           </folding>
         </state>
       </provider>

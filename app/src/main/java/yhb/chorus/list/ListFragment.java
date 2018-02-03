@@ -10,6 +10,7 @@ import android.support.v7.widget.AppCompatSeekBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -108,15 +109,6 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
             @Override
             public void forEachHolder(SimpleHolder holder, final MP3 mp3) {
 
-                String num = String.valueOf((holder.getAdapterPosition() + 1));
-                if (num.length() == 1) {
-                    num = "  " + num + " ";
-                } else if (num.length() == 2) {
-                    num = " " + num + " ";
-                } else if (num.length() >= 3) {
-                    num = num + " ";
-                }
-
 
                 final CheckBox checkBox = holder.getView(R.id.check_box);
                 if (mEditable) {
@@ -134,30 +126,37 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                             mToolbar.setTitle("选中 " + mSelectedMP3s.size() + " 条");
                         }
                     });
+
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            checkBox.setChecked(!checkBox.isChecked());
+                        }
+                    });
+
                 } else {
                     checkBox.setVisibility(View.GONE);
                 }
 
 
                 TextView textView = holder.getView(R.id.text_view_song_name);
-                textView.setText(String.format("%s %s / %s", num, mp3.getTitle(), mp3.getArtist()));
+                textView.setText(String.format("%s / %s", mp3.getTitle(), mp3.getArtist()));
                 textView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
                         turnOnEditable(true);
+                        checkBox.setChecked(true);
                         return true;
                     }
                 });
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mEditable) {
-                            checkBox.setChecked(!checkBox.isChecked());
-                        } else {
-                            PlayCenter.getInstance().point(mp3);
-                        }
+                        PlayCenter.getInstance().point(mp3);
                     }
                 });
+                textView.setClickable(!mEditable);
+                textView.setLongClickable(!mEditable);
 
 
             }
@@ -219,7 +218,6 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                 mPresenter.scanMediaStoreAndCreateDB();
                 break;
             case R.id.clean_queue_mp3:
-
                 break;
             case R.id.clear_queue_mp3:
                 mPresenter.clearQueue();

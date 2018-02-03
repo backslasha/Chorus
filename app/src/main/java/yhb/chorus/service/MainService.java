@@ -163,7 +163,7 @@ public class MainService extends Service {
         remoteViews.setOnClickPendingIntent(R.id.image_button_play_or_pause, pSPi);
     }
 
-    public class Player extends IPlayer.Stub {
+    class Player extends IPlayer.Stub {
 
         private boolean isPaused = false;
 

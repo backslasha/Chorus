@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/padding_small"
-    android:paddingEnd="@dimen/padding_middle"
+    android:divider="#55888888"
     android:orientation="horizontal">
 
     <TextView
@@ -18,15 +17,18 @@
         android:gravity="center_vertical"
         android:minHeight="48dp"
         android:paddingBottom="10dp"
+        android:paddingEnd="@dimen/padding_middle"
         android:paddingStart="16dp"
+        android:paddingTop="@dimen/padding_small"
         android:textColor="#888888"
         android:textSize="16sp"
         tools:ignore="RtlSymmetry" />
 
     <CheckBox
         android:id="@+id/check_box"
-        android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
 </LinearLayout>
 
