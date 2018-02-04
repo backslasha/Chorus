@@ -123,7 +123,7 @@ public class MainService extends Service {
         setupRemoteView(remoteViewsBig, currentMP3);
 
         Notification notification = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher_foreground)
+                .setSmallIcon(R.drawable.ic_launcher_notification)
                 .setTicker(currentMP3.getTitle())
                 .setContent(remoteViews)
                 .setCustomBigContentView(remoteViewsBig)

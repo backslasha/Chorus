@@ -17,7 +17,7 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingEnd="@dimen/padding_middle"
+        android:paddingEnd="@dimen/padding_small"
         android:paddingStart="@dimen/padding_middle">
 
         <TextView
@@ -163,10 +163,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_middle"
+            android:tint="@color/colorAccent"
             android:src="@drawable/ic_shuffle" />
 
         <ImageButton
             android:id="@+id/image_button_previous"
+            android:tint="@color/colorAccent"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -175,6 +177,7 @@
             android:src="@drawable/ic_skip_previous" />
 
         <ImageButton
+            android:tint="@color/colorAccent"
             android:id="@+id/image_button_play_or_pause"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -184,6 +187,7 @@
             android:src="@drawable/ic_play_circle_outline" />
 
         <ImageButton
+            android:tint="@color/colorAccent"
             android:id="@+id/image_button_next"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -193,6 +197,7 @@
             android:src="@drawable/ic_skip_next" />
 
         <ImageButton
+            android:tint="@color/colorAccent"
             android:id="@+id/image_button_queue_music"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
