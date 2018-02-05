@@ -15,7 +15,7 @@ import static android.support.v4.util.Preconditions.checkNotNull;
 
 public class ActivityUtils {
     /**
-     * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
+     * The {@code mFragment} is added to the container view with id {@code frameId}. The operation is
      * performed by the {@code fragmentManager}.
      */
     public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,

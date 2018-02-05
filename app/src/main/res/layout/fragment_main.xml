@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -77,9 +76,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_cover"
         android:layout_width="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_height="224dp"/>
+        android:layout_height="224dp" />
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
@@ -163,46 +160,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_middle"
-            android:tint="@color/colorAccent"
-            android:src="@drawable/ic_shuffle" />
+            android:src="@drawable/ic_shuffle"
+            android:tint="@color/colorAccent" />
 
         <ImageButton
             android:id="@+id/image_button_previous"
-            android:tint="@color/colorAccent"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/ic_skip_previous" />
+            android:src="@drawable/ic_skip_previous"
+            android:tint="@color/colorAccent" />
 
         <ImageButton
-            android:tint="@color/colorAccent"
             android:id="@+id/image_button_play_or_pause"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/ic_play_circle_outline" />
+            android:src="@drawable/ic_play_circle_outline"
+            android:tint="@color/colorAccent" />
 
         <ImageButton
-            android:tint="@color/colorAccent"
             android:id="@+id/image_button_next"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/ic_skip_next" />
+            android:src="@drawable/ic_skip_next"
+            android:tint="@color/colorAccent" />
 
         <ImageButton
-            android:tint="@color/colorAccent"
             android:id="@+id/image_button_queue_music"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_middle"
-            android:src="@drawable/ic_queue_music" />
+            android:src="@drawable/ic_queue_music"
+            android:tint="@color/colorAccent" />
     </LinearLayout>
 </LinearLayout>

@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import yhb.chorus.R;
+import yhb.chorus.gang.GangActivity;
 import yhb.chorus.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
@@ -146,7 +147,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Intent intent = GangActivity.newIntent(this);
+            startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

@@ -15,6 +15,7 @@ import yhb.chorus.R;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.entity.MP3InQueue;
 import yhb.chorus.service.PlayCenter;
+import yhb.chorus.utils.ActivityUtils;
 
 /**
  * Created by yhb on 18-1-17.
@@ -145,14 +146,17 @@ class MainPresenter implements MainContract.Presenter {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mView.invalidateCovers(mPlayCenter.loadCovers());
+                int coverSize = mView.getCoverSize();
+                mView.invalidateCovers(mPlayCenter.loadCovers(
+                        coverSize, coverSize
+                ));
             }
         }).start();
     }
 
     @Override
     public void reloadConsoleData() {
-        mView.invalidateConsole(mPlayCenter.isPlaying(), mPlayCenter.getProgress(), mPlayCenter.isNewCurrent());
+        mView.invalidateConsole(mPlayCenter.isPlaying(), mPlayCenter.getProgress(),false);
     }
 
     @Override

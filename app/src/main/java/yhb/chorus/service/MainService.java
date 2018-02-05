@@ -22,9 +22,10 @@ import yhb.chorus.IPlayer;
 import yhb.chorus.R;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.main.MainActivity;
+import yhb.chorus.utils.DensityUtils;
 
 import static yhb.chorus.main.MainActivity.TAG;
-import static yhb.chorus.utils.MP3Utils.getAlbumart;
+import static yhb.chorus.utils.BitmapUtils.getAlbumart;
 
 
 public class MainService extends Service {
@@ -144,7 +145,9 @@ public class MainService extends Service {
             remoteViews.setImageViewResource(R.id.image_button_play_or_pause, R.drawable.ic_play_circle_outline);
         }
 
-        remoteViews.setImageViewBitmap(R.id.iv_artist_photo_id, getAlbumart(currentMP3));
+        int size = DensityUtils.dp2px(this, 108);
+        remoteViews.setImageViewBitmap(R.id.iv_artist_photo_id,
+                getAlbumart(currentMP3, size, size));
 
         Intent broadIntent = new Intent(REMOTE_INTENT_EXIT);
         PendingIntent exitPi = PendingIntent.getBroadcast(this, 0, broadIntent, 0);
@@ -175,8 +178,7 @@ public class MainService extends Service {
                 mMediaPlayer.start();
                 isPaused = false;
             } else if (!mMediaPlayer.isPlaying()) {
-                prepared(mp3);
-                mMediaPlayer.start();
+                preparedAndStart(mp3);
             } else {
                 mMediaPlayer.pause();
                 isPaused = true;
@@ -211,12 +213,19 @@ public class MainService extends Service {
 
         @Override
         public boolean isPlaying() throws RemoteException {
-            return mMediaPlayer.isPlaying();
+            try {
+                return mMediaPlayer.isPlaying();
+            } catch (IllegalStateException e) {
+                return false;
+            }
         }
 
         @Override
         public int getProgress() throws RemoteException {
-            return mMediaPlayer.getCurrentPosition();
+            if (isPlaying() || isPaused) {
+                return mMediaPlayer.getCurrentPosition();
+            }
+            return -1;
         }
 
         @Override
@@ -227,27 +236,29 @@ public class MainService extends Service {
 
         private void newCurrent(MP3 mp3) {
             isPaused = false;
-            prepared(mp3);
-            mMediaPlayer.start();
-            foreSerLaunch(mp3);
-            try {
-                mICallback.onNewCurrent();
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
+            preparedAndStart(mp3);
         }
 
 
-        private void prepared(MP3 currentMP3) {
-
-            if (currentMP3 == null) {
-                return;
-            }
-
+        private void preparedAndStart(final MP3 currentMP3) {
             try {
                 mMediaPlayer.reset();
                 mMediaPlayer.setDataSource(currentMP3.getUri());
-                mMediaPlayer.prepare();
+                mMediaPlayer.prepareAsync();
+                mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+
+                        mMediaPlayer.start();
+
+                        foreSerLaunch(currentMP3);
+                        try {
+                            mICallback.onNewCurrent();
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
             } catch (IOException e) {
                 e.printStackTrace();

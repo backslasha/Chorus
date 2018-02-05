@@ -23,7 +23,7 @@ import static yhb.chorus.service.MainService.REMOTE_INTENT_EXIT;
 import static yhb.chorus.service.MainService.REMOTE_INTENT_NEXT;
 import static yhb.chorus.service.MainService.REMOTE_INTENT_PLAY_PAUSE;
 import static yhb.chorus.service.MainService.REMOTE_INTENT_PREVIOUS;
-import static yhb.chorus.utils.MP3Utils.getAlbumart;
+import static yhb.chorus.utils.BitmapUtils.getAlbumart;
 
 
 public class PlayCenter {
@@ -143,11 +143,16 @@ public class PlayCenter {
             return;
         }
 
-        try {
-            mPlayer.next(currentMP3);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mPlayer.next(currentMP3);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
         candidateNextMP3 = pickCandidateNext(fromUser);
         candidatePreviousMP3 = pickCandidatePrevious(fromUser);
@@ -166,11 +171,16 @@ public class PlayCenter {
             return;
         }
 
-        try {
-            mPlayer.previous(currentMP3);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mPlayer.previous(currentMP3);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
         candidateNextMP3 = pickCandidateNext(fromUser);
         candidatePreviousMP3 = pickCandidatePrevious(fromUser);
@@ -188,11 +198,16 @@ public class PlayCenter {
             return;
         }
 
-        try {
-            mPlayer.point(currentMP3);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mPlayer.point(currentMP3);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
         candidateNextMP3 = pickCandidateNext(true);
         candidatePreviousMP3 = pickCandidatePrevious(true);
@@ -365,7 +380,7 @@ public class PlayCenter {
         return candidatePreviousMP3;
     }
 
-    public Bitmap[] loadCovers() {
+    public Bitmap[] loadCovers(int reqWidth, int reqHeight) {
         Bitmap[] bitmaps;
         MP3 currentMP3 = getCurrentMP3();
         MP3 candidateNextMP3 = getCandidateNextMP3();
@@ -373,9 +388,9 @@ public class PlayCenter {
 
         bitmaps = new Bitmap[3];
 
-        bitmaps[0] = getAlbumart(candidatePreviousMP3);
-        bitmaps[1] = getAlbumart(currentMP3);
-        bitmaps[2] = getAlbumart(candidateNextMP3);
+        bitmaps[0] = getAlbumart(candidatePreviousMP3, reqWidth, reqHeight);
+        bitmaps[1] = getAlbumart(currentMP3, reqWidth, reqHeight);
+        bitmaps[2] = getAlbumart(candidateNextMP3, reqWidth, reqHeight);
 
         return bitmaps;
     }

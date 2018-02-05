@@ -53,6 +53,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     private PageSelectedListener mPageSelectedListener;
     private Runnable invalidateConsole;
     private Handler handler;
+    private int mCoverSize = -1;
 
     public static MainFragment newInstance() {
         Bundle args = new Bundle();
@@ -78,6 +79,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 }
             }
         };
+
+        mCoverSize = ActivityUtils.getScreenWidth(getActivity()) * 4 / 5;
     }
 
     @Nullable
@@ -188,10 +191,11 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
         });
 
 
-        int screenWidth = ActivityUtils.getScreenWidth(getActivity());
+
         ViewGroup.LayoutParams layoutParams = mCoverViewPager.getLayoutParams();
-        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        layoutParams.height = screenWidth * 4 / 5;
+        int coverSize = getCoverSize();
+        layoutParams.width = coverSize;
+        layoutParams.height = coverSize;
 
         CoverPagerAdapter coverPagerAdapter = new CoverPagerAdapter();
         int initialIndex = coverPagerAdapter.getCount() / 4 * 3 + 1;
@@ -200,6 +204,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             @Override
             public void onNext() {
                 mPresenter.next();
+                mPresenter.reloadCurrentWidgetsData();
+                mPresenter.loadCoversAsync();
                 Log.d(TAG, "onNext: ");
             }
 
@@ -207,6 +213,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             public void onPrevious() {
                 Log.d(TAG, "onPrevious: ");
                 mPresenter.previous();
+                mPresenter.reloadCurrentWidgetsData();
+                mPresenter.loadCoversAsync();
             }
         }
         );
@@ -258,6 +266,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
         switch (v.getId()) {
             case R.id.image_button_next:
                 mPresenter.next();
+                mPresenter.reloadCurrentWidgetsData();
+                mPresenter.loadCoversAsync();
                 break;
             case R.id.image_button_play_or_pause:
                 mPresenter.playOrPause();
@@ -266,6 +276,8 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 break;
             case R.id.image_button_previous:
                 mPresenter.previous();
+                mPresenter.reloadCurrentWidgetsData();
+                mPresenter.loadCoversAsync();
                 break;
             case R.id.image_button_play_mode:
                 mPresenter.nextPlayMode();
@@ -364,6 +376,11 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             mPresenter.reloadCurrentWidgetsData();
             mPresenter.loadCoversAsync();
         }
+    }
+
+    @Override
+    public int getCoverSize() {
+        return mCoverSize;
     }
 
     private BottomSheetDialog bottomSheetDialog = null;

@@ -24,6 +24,8 @@ public interface MainContract {
         void invalidateCovers(Bitmap[] bitmaps);
 
         void invalidateConsole(boolean playing, int progress, boolean newCurrent);
+
+        int getCoverSize();
     }
 
     interface Presenter extends BasePresenter {
