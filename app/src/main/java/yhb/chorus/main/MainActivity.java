@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity
     private MainPresenter mPresenter;
     public static final String TAG = "MainActivity";
 
+    public static Intent newIntent(Context context) {
+        return new Intent(context, MainActivity.class);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,32 +47,13 @@ public class MainActivity extends AppCompatActivity
 
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
-
             try {
-                Calendar calendar = Calendar.getInstance();
-                Date today = calendar.getTime();
-
-                calendar.setTime(new SimpleDateFormat("yy-MM-dd").parse("2018-02-08"));
-                long delta = calendar.getTimeInMillis() - today.getTime();
-
-                int days = (int) (delta / 1000 / 60 / 60 / 24);
-
-                delta -= days * 1000 * 60 * 60 * 24;
-
-                int hours = (int) (delta / 1000 / 60 / 60);
-
-                delta -= hours * 1000 * 60 * 60;
-
-                int minutes = (int) (delta / 1000 / 60);
-
-                supportActionBar.setTitle("还有 " + days + " 天 " + hours + " 小时 " + minutes + " 分钟");
-
+                supportActionBar.setTitle(getCountDown("2018-02-08"));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
         }
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(
@@ -110,6 +95,26 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private String getCountDown(String dest) throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
+
+        calendar.setTime(new SimpleDateFormat("yy-MM-dd").parse(dest));
+        long delta = calendar.getTimeInMillis() - today.getTime();
+
+        int days = (int) (delta / 1000 / 60 / 60 / 24);
+
+        delta -= days * 1000 * 60 * 60 * 24;
+
+        int hours = (int) (delta / 1000 / 60 / 60);
+
+        delta -= hours * 1000 * 60 * 60;
+
+        int minutes = (int) (delta / 1000 / 60);
+
+        return "还有 " + days + " 天 " + hours + " 小时 " + minutes + " 分钟";
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -123,10 +128,6 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         }
-    }
-
-    public static Intent newIntent(Context context) {
-        return new Intent(context, MainActivity.class);
     }
 
     @Override

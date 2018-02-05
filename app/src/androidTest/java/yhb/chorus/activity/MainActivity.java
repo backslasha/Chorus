@@ -64,16 +64,15 @@ public class MainActivity extends BaseActivity implements MainFragment.MainInter
         fragmentManager = getSupportFragmentManager();
         MainFragment mainFragment = new MainFragment();
         transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.rl_container_id, mainFragment);
         transaction.commit();
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_id);
-        toolbarTitle = (TextView) findViewById(R.id.tv_toolbar_title_id);
-        addList = (ImageButton) findViewById(R.id.ibtn_add_id);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_id);
-        mSlimSeekbar = (SlimSeekBar) findViewById(R.id.sb_id);
-
-        playMode = (Button) findViewById(R.id.btn_playmode_id);
+//        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_id);
+//        toolbarTitle = (TextView) findViewById(R.id.tv_toolbar_title_id);
+//        addList = (ImageButton) findViewById(R.id.ibtn_add_id);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar_id);
+//        mSlimSeekbar = (SlimSeekBar) findViewById(R.id.sb_id);
+//
+//        playMode = (Button) findViewById(R.id.btn_playmode_id);
         playMode.setOnClickListener(this);
 
         //toolbar菜单与抽屉建立联系
@@ -86,16 +85,16 @@ public class MainActivity extends BaseActivity implements MainFragment.MainInter
         startService(serviceIntent);
 
         receiver = new SeekBarReceiver();
-        IntentFilter intentFilter = new IntentFilter(MainService.ACTION_RENEW_PROGRESS);
-        registerReceiver(receiver, intentFilter);
+//        IntentFilter intentFilter = new IntentFilter(MainService.ACTION_RENEW_PROGRESS);
+//        registerReceiver(receiver, intentFilter);
 
         mSlimSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    Intent proChangeIntent = new Intent(MainService.ACTION_PROGRESS_CHANGE);
-                    proChangeIntent.putExtra("changeTo", progress);
-                    sendBroadcast(proChangeIntent);
+//                    Intent proChangeIntent = new Intent(MainService.ACTION_PROGRESS_CHANGE);
+//                    proChangeIntent.putExtra("changeTo", progress);
+//                    sendBroadcast(proChangeIntent);
                 }
             }
 
@@ -124,7 +123,7 @@ public class MainActivity extends BaseActivity implements MainFragment.MainInter
         }else {
             transaction.setCustomAnimations(R.anim.slide_in_from_right,R.anim.slide_out_to_left);
         }
-        transaction.replace(R.id.rl_container_id, fragment);
+//        transaction.replace(R.id.rl_container_id, fragment);
         transaction.commit();
 
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace);

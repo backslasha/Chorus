@@ -10,11 +10,7 @@ interface IPlayer {
 
     void playOrPause( inout MP3 mp3) ;
 
-    void next( inout MP3 mp3) ;
-
-    void previous( inout MP3 mp3) ;
-
-    void point( inout MP3 mp3) ;
+    void newCurrent( inout MP3 mp3) ;
 
     void setVolume(float volume);
 

@@ -290,31 +290,6 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     }
 
     @Override
-    public void invalidateWidgets(int progress, int playMode, String songName, String artistName) {
-
-        mSeekBarVolume.setProgress(progress);
-
-        switch (playMode) {
-            case MODE_LIST_LOOP:
-                buttonPlayMode.setImageResource(R.drawable.ic_repeat_list);
-                break;
-            case MODE_RANDOM:
-                buttonPlayMode.setImageResource(R.drawable.ic_shuffle);
-                break;
-            case MODE_SINGLE_LOOP:
-                buttonPlayMode.setImageResource(R.drawable.ic_repeat_one);
-                break;
-            default:
-                buttonPlayMode.setImageResource(R.drawable.ic_repeat_list);
-                break;
-        }
-
-        textViewSongName.setText(songName);
-
-        textViewArtistName.setText(artistName);
-    }
-
-    @Override
     public void invalidateSeekBarVolumeSystem(int currentVolume, int volumeSystemMax) {
         mSeekBarVolumeSystem.setMax(volumeSystemMax);
         mSeekBarVolumeSystem.setProgress(currentVolume);
@@ -353,7 +328,32 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
     }
 
     @Override
-    public void invalidateConsole(boolean playing, int progress, boolean newCurrent) {
+    public void invalidateWidgets(int progress, int playMode, String songName, String artistName) {
+
+        mSeekBarVolume.setProgress(progress);
+
+        switch (playMode) {
+            case MODE_LIST_LOOP:
+                buttonPlayMode.setImageResource(R.drawable.ic_repeat_list);
+                break;
+            case MODE_RANDOM:
+                buttonPlayMode.setImageResource(R.drawable.ic_shuffle);
+                break;
+            case MODE_SINGLE_LOOP:
+                buttonPlayMode.setImageResource(R.drawable.ic_repeat_one);
+                break;
+            default:
+                buttonPlayMode.setImageResource(R.drawable.ic_repeat_list);
+                break;
+        }
+
+        textViewSongName.setText(songName);
+
+        textViewArtistName.setText(artistName);
+    }
+
+    @Override
+    public void invalidatePlayStatus(boolean playing, int progress) {
         MP3 currentMP3 = mPresenter.getCurrentMP3();
         if (currentMP3 == null) {
             return;
@@ -372,10 +372,6 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
             buttonPlayOrPause.setImageResource(R.drawable.ic_play_circle_outline);
         }
 
-        if (newCurrent) {
-            mPresenter.reloadCurrentWidgetsData();
-            mPresenter.loadCoversAsync();
-        }
     }
 
     @Override

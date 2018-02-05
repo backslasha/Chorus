@@ -15,7 +15,6 @@ import yhb.chorus.R;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.entity.MP3InQueue;
 import yhb.chorus.service.PlayCenter;
-import yhb.chorus.utils.ActivityUtils;
 
 /**
  * Created by yhb on 18-1-17.
@@ -156,7 +155,7 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void reloadConsoleData() {
-        mView.invalidateConsole(mPlayCenter.isPlaying(), mPlayCenter.getProgress(),false);
+        mView.invalidatePlayStatus(mPlayCenter.isPlaying(), mPlayCenter.getProgress());
     }
 
     @Override

@@ -25,10 +25,8 @@ public class SimpleHolder extends RecyclerView.ViewHolder {
 
 
     public static SimpleHolder get(Context context, ViewGroup parent, int layoutId) {
-
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
-        SimpleHolder holder = new SimpleHolder(context, itemView, parent);
-        return holder;
+        return new SimpleHolder(context, itemView, parent);
     }
 
 

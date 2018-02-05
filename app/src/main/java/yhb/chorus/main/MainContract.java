@@ -23,7 +23,7 @@ public interface MainContract {
 
         void invalidateCovers(Bitmap[] bitmaps);
 
-        void invalidateConsole(boolean playing, int progress, boolean newCurrent);
+        void invalidatePlayStatus(boolean playing, int progress);
 
         int getCoverSize();
     }

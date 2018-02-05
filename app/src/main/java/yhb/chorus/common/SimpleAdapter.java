@@ -18,11 +18,12 @@ import yhb.chorus.R;
  */
 
 public abstract class SimpleAdapter<Entity> extends RecyclerView.Adapter<SimpleHolder> {
-    protected Context mContext;
-    protected int mLayoutId;
-    protected List<Entity> mEntities;
-    protected LayoutInflater mInflater;
 
+    private int mLayoutId;
+    private List<Entity> mEntities;
+    private LayoutInflater mInflater;
+
+    protected Context mContext;
 
     public SimpleAdapter(Context context, int layoutId) {
         mContext = context;
@@ -40,6 +41,14 @@ public abstract class SimpleAdapter<Entity> extends RecyclerView.Adapter<SimpleH
         forEachHolder(holder, mEntities.get(position));
     }
 
+    @Override
+    public int getItemCount() {
+        if (mEntities == null) {
+            return 0;
+        }
+        return mEntities.size();
+    }
+
     public abstract void forEachHolder(SimpleHolder holder, Entity entity);
 
     private void performDataChanged(Entity[] entities) {
@@ -49,7 +58,7 @@ public abstract class SimpleAdapter<Entity> extends RecyclerView.Adapter<SimpleH
         }
         this.mEntities = new ArrayList<>();
         this.mEntities.addAll(Arrays.asList(entities));
-        notifyItemRangeChanged(0, mEntities.size());
+        notifyDataSetChanged();
     }
 
     public void performDataChanged(List<Entity> entities) {
@@ -59,7 +68,7 @@ public abstract class SimpleAdapter<Entity> extends RecyclerView.Adapter<SimpleH
         }
         this.mEntities = new ArrayList<>();
         this.mEntities.addAll(entities);
-        notifyItemRangeChanged(0, mEntities.size());
+        notifyDataSetChanged();
     }
 
     public void addSingleData(Entity entity) {
@@ -80,13 +89,5 @@ public abstract class SimpleAdapter<Entity> extends RecyclerView.Adapter<SimpleH
         }
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, mEntities.size() - position - 1);
-    }
-
-    @Override
-    public int getItemCount() {
-        if (mEntities == null) {
-            return 0;
-        }
-        return mEntities.size();
     }
 }

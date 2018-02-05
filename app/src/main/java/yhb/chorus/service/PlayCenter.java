@@ -12,6 +12,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import yhb.chorus.ICallback;
 import yhb.chorus.IPlayer;
@@ -46,6 +48,8 @@ public class PlayCenter {
     private MP3 candidateNextMP3;
     private MP3 candidatePreviousMP3;
     private IPlayer mPlayer;
+
+    private ExecutorService mExecutorService;
 
     private boolean mNewCurrent = false;
 
@@ -85,7 +89,7 @@ public class PlayCenter {
                     }
 
                 });
-                mPlayer.point(currentMP3);
+                point(currentMP3);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -107,6 +111,7 @@ public class PlayCenter {
     private PlayCenter() {
         Log.d(TAG, "PlayCenter: created!");
         mContext = ChorusApplication.getsApplicationContext();
+        mExecutorService = Executors.newCachedThreadPool();
     }
 
     /*
@@ -143,20 +148,24 @@ public class PlayCenter {
             return;
         }
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    mPlayer.next(currentMP3);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        newCurrentAsync(currentMP3);
 
         candidateNextMP3 = pickCandidateNext(fromUser);
         candidatePreviousMP3 = pickCandidatePrevious(fromUser);
 
+    }
+
+    private void newCurrentAsync(final MP3 mp3) {
+        mExecutorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mPlayer.newCurrent(mp3);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void previous(boolean fromUser) {
@@ -171,22 +180,17 @@ public class PlayCenter {
             return;
         }
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    mPlayer.previous(currentMP3);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        newCurrentAsync(currentMP3);
 
         candidateNextMP3 = pickCandidateNext(fromUser);
         candidatePreviousMP3 = pickCandidatePrevious(fromUser);
     }
 
     public void point(MP3 mp3) {
+
+        if (mp3 == null) {
+            return;
+        }
 
         if (!mQueueMP3s.contains(mp3)) {
             mQueueMP3s.add(mp3);
@@ -198,16 +202,7 @@ public class PlayCenter {
             return;
         }
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    mPlayer.point(currentMP3);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        newCurrentAsync(currentMP3);
 
         candidateNextMP3 = pickCandidateNext(true);
         candidatePreviousMP3 = pickCandidatePrevious(true);
@@ -324,14 +319,6 @@ public class PlayCenter {
         return -1;
     }
 
-    public boolean isNewCurrent() {
-        if (mNewCurrent) {
-            mNewCurrent = false;
-            return true;
-        }
-        return false;
-    }
-
     private boolean isBinderHere() {
         if (mPlayer == null) {
             Intent intent = new Intent(mContext, MainService.class);
@@ -445,19 +432,23 @@ public class PlayCenter {
     }
 
     /**
+     * 添加 selectedMP3s 中的曲目到内存中的 queue 中（去掉重复的），
+     * 重复元素同时从 selectedMP3s 中去掉
+     *
      * @param selectedMP3s 选中的 mp3 list_menu
      * @return 成功添加到播放队列的 mp3 条目数
      */
     public int addIntoQueue(ArrayList<MP3> selectedMP3s) {
 
-        int success = 0;
         for (MP3 selectedMP3 : selectedMP3s) {
-            if (!mQueueMP3s.contains(selectedMP3)) {
-                mQueueMP3s.add(selectedMP3);
-                success++;
+            if (mQueueMP3s.contains(selectedMP3)) {
+                selectedMP3s.remove(selectedMP3);
             }
         }
-        return success;
+
+        mQueueMP3s.addAll(selectedMP3s);
+
+        return selectedMP3s.size();
     }
 
 }

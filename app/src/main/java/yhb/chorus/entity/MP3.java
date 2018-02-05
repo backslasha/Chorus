@@ -3,19 +3,30 @@ package yhb.chorus.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.litepal.annotation.Column;
 import org.litepal.crud.DataSupport;
 
 public class MP3 extends DataSupport implements Parcelable {
 
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
-
+    @Column(unique = true)
     private long _id; // 音乐id MediaStore.Audio.Media._ID
 
     private String title;// 音乐标题 MediaStore.Audio.Media.TITLE
 
     private String artist;// 艺术家 MediaStore.Audio.Media.ARTIST
+
+    private int duration;// 时长 MediaStore.Audio.Media.DURATION
+
+    private long size; // 文件大小 MediaStore.Audio.Media.SIZE
+
+    @Column(unique = true)
+    private String uri;// 文件路径 MediaStore.Audio.Media.DATA
+
+    private String album; // 唱片图片MediaStore.Audio.Media.ALBUM
+
+    private long albumId;// 唱片图片ID MediaStore.Audio.Media.ALBUM_ID
+
+    private int isMusic;// 是否为音乐 MediaStore.Audio.Media.IS_MUSIC
 
     public MP3() {
     }
@@ -32,20 +43,12 @@ public class MP3 extends DataSupport implements Parcelable {
         this.isMusic = isMusic;
     }
 
-    private int duration;// 时长 MediaStore.Audio.Media.DURATION
-
-    private long size; // 文件大小 MediaStore.Audio.Media.SIZE
-
-    private String uri;// 文件路径 MediaStore.Audio.Media.DATA
-
-    private String album; // 唱片图片MediaStore.Audio.Media.ALBUM
-
-    private long albumId;// 唱片图片ID MediaStore.Audio.Media.ALBUM_ID
-
-    private int isMusic;// 是否为音乐 MediaStore.Audio.Media.IS_MUSIC
-
     public long get_id() {
         return _id;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public void set_id(long _id) {

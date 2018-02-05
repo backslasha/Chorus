@@ -29,13 +29,6 @@ import static yhb.chorus.utils.BitmapUtils.getAlbumart;
 
 
 public class MainService extends Service {
-    public static final String ACTION_RENEW_PROGRESS = "ACTION_RENEW_PROGRESS";
-    public static final String ACTION_NEXT = "ACTION_NEXT";
-    public static final String ACTION_PREVIOUS = "ACTION_PREVIOUS";
-    public static final String ACTION_POINT = "ACTION_POINT";
-    public static final String ACTION_PROGRESS_CHANGE = "ACTION_PROGRESS_CHANGE";
-    public static final String ACTION_CHANGE_FINISH = "ACTION_CHANGE_FINISH";
-    public static final String ACTION_SET_VOLUME = "ACTION_SET_VOLUME";
 
     public static final String REMOTE_INTENT_PLAY_PAUSE = "REMOTE_INTENT_PLAY_PAUSE";
     public static final String REMOTE_INTENT_NEXT = "REMOTE_INTENT_NEXT";
@@ -77,11 +70,6 @@ public class MainService extends Service {
         intentFilter.addAction(REMOTE_INTENT_EXIT);
         intentFilter.addAction(REMOTE_INTENT_NEXT);
         intentFilter.addAction(REMOTE_INTENT_PREVIOUS);
-        intentFilter.addAction(ACTION_NEXT);
-        intentFilter.addAction(ACTION_PREVIOUS);
-        intentFilter.addAction(ACTION_POINT);
-        intentFilter.addAction(ACTION_PROGRESS_CHANGE);
-        intentFilter.addAction(ACTION_SET_VOLUME);
         registerReceiver(receiver, intentFilter);
 
         mMediaPlayer = new MediaPlayer();
@@ -95,25 +83,7 @@ public class MainService extends Service {
         unregisterReceiver(receiver);
     }
 
-    /**
-     * receive remote intent of controlling the media player
-     */
-    public class ForegroundServiceHandlerReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            try {
-                if (intent.getAction() != null) {
-                    mPlayer.mICallback.onNewRemoteIntent(intent.getAction());
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    private void foreSerLaunch(MP3 currentMP3) {
+    private void launchForegroundService(MP3 currentMP3) {
         RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.content_notification);
         RemoteViews remoteViewsBig = new RemoteViews(getPackageName(), R.layout.content_notification_big);
         if (currentMP3 == null) {
@@ -166,6 +136,24 @@ public class MainService extends Service {
         remoteViews.setOnClickPendingIntent(R.id.image_button_play_or_pause, pSPi);
     }
 
+    /**
+     * receive remote intent of controlling the media player
+     */
+    class ForegroundServiceHandlerReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            try {
+                if (intent.getAction() != null) {
+                    mPlayer.mICallback.onNewRemoteIntent(intent.getAction());
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
     class Player extends IPlayer.Stub {
 
         private boolean isPaused = false;
@@ -178,27 +166,12 @@ public class MainService extends Service {
                 mMediaPlayer.start();
                 isPaused = false;
             } else if (!mMediaPlayer.isPlaying()) {
-                preparedAndStart(mp3);
+                newCurrent(mp3);
             } else {
                 mMediaPlayer.pause();
                 isPaused = true;
             }
-            foreSerLaunch(mp3);
-        }
-
-        @Override
-        public void next(MP3 mp3) {
-            newCurrent(mp3);
-        }
-
-        @Override
-        public void previous(MP3 mp3) {
-            newCurrent(mp3);
-        }
-
-        @Override
-        public void point(MP3 mp3) {
-            newCurrent(mp3);
+            launchForegroundService(mp3);
         }
 
         @Override
@@ -233,8 +206,8 @@ public class MainService extends Service {
             mICallback = callback;
         }
 
-
-        private void newCurrent(MP3 mp3) {
+        @Override
+        public void newCurrent(MP3 mp3) {
             isPaused = false;
             preparedAndStart(mp3);
         }
@@ -251,7 +224,7 @@ public class MainService extends Service {
 
                         mMediaPlayer.start();
 
-                        foreSerLaunch(currentMP3);
+                        launchForegroundService(currentMP3);
                         try {
                             mICallback.onNewCurrent();
                         } catch (RemoteException e) {

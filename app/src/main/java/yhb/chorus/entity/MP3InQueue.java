@@ -1,5 +1,6 @@
 package yhb.chorus.entity;
 
+import org.litepal.annotation.Column;
 import org.litepal.crud.DataSupport;
 
 /**
@@ -12,10 +13,11 @@ public class MP3InQueue extends DataSupport {
         this.mp3 = mp3;
     }
 
+    @Column(unique = true)
+    private MP3 mp3;
+
     public MP3InQueue() {
     }
-
-    private MP3 mp3;
 
     public MP3 getMp3() {
         return mp3;
