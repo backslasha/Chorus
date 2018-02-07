@@ -329,7 +329,7 @@ public class PlayCenter {
     }
 
     /*
-     * global public data get/set methods
+     * global public data createViewHolder/set methods
      */
 
     /**
@@ -383,7 +383,7 @@ public class PlayCenter {
     }
 
     /*
-     * record/get independent volume settings
+     * record/createViewHolder independent volume settings
      */
 
     /**

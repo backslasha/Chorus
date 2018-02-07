@@ -50,8 +50,8 @@ public class FavouritesListViewAdapter extends BaseAdapter {
 //        ibtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Utils.getInstance(mContext).updateBelongs(mp3BeanList.get(position), Utils.COLUMN_FAVOURITE, Utils.UPDATE_REMOVE);
-//                mp3BeanList.get(position).setIsFavourite(0);
+//                Utils.getInstance(mContext).updateBelongs(mp3BeanList.createViewHolder(position), Utils.COLUMN_FAVOURITE, Utils.UPDATE_REMOVE);
+//                mp3BeanList.createViewHolder(position).setIsFavourite(0);
 //                mp3BeanList.remove(position);
 //                FavouritesListViewAdapter.this.notifyDataSetChanged();
 //            }

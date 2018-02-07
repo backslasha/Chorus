@@ -27,8 +27,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import yhb.chorus.R;
-import yhb.chorus.common.SimpleAdapter;
-import yhb.chorus.common.SimpleHolder;
+import yhb.chorus.common.adapter.SimpleAdapter;
+import yhb.chorus.common.adapter.base.SimpleHolder;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.list.ListActivity;
 import yhb.chorus.utils.ActivityUtils;
@@ -385,13 +385,13 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
     private void showBottomSheet() {
         if (bottomSheetDialog != null && mQueueMP3SimpleAdapter != null) {
-            mQueueMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3sFromMemory());
+            mQueueMP3SimpleAdapter.performDataSetChanged(mPresenter.loadQueueMP3sFromMemory());
             bottomSheetDialog.show();
             return;
         }
         mQueueMP3SimpleAdapter = new SimpleAdapter<MP3>(getActivity(), R.layout.item_mp3_simple) {
             @Override
-            public void forEachHolder(SimpleHolder holder, final MP3 mp3) {
+            public void convert(SimpleHolder holder, final MP3 mp3) {
                 TextView textView = holder.getView(R.id.text_view_song_name);
                 textView.setText(String.format("%s / %s", mp3.getTitle(), mp3.getArtist()));
                 textView.setOnClickListener(new View.OnClickListener() {
@@ -408,7 +408,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
                 .inflate(R.layout.content_queue_song, null);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(mQueueMP3SimpleAdapter);
-        mQueueMP3SimpleAdapter.performDataChanged(mPresenter.loadQueueMP3sFromMemory());
+        mQueueMP3SimpleAdapter.performDataSetChanged(mPresenter.loadQueueMP3sFromMemory());
 
         bottomSheetDialog = new BottomSheetDialog(getActivity());
         bottomSheetDialog.setCancelable(true);

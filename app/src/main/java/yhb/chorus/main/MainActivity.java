@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.design.widget.NavigationView;
@@ -15,7 +16,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -26,7 +26,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import yhb.chorus.R;
-import yhb.chorus.gang.GangActivity;
+import yhb.chorus.gank.GankActivity;
+import yhb.chorus.gank.GankFragment;
 import yhb.chorus.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
@@ -147,15 +148,18 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Intent intent = GangActivity.newIntent(this);
+        if (id == R.id.nav_all) {
+            Intent intent = GankActivity.newIntent(this, GankFragment.TYPE_ALL);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_android) {
+            Intent intent = GankActivity.newIntent(this, GankFragment.TYPE_ANDROID);
+            startActivity(intent);
+        } else if (id == R.id.nav_welfare) {
+            Intent intent = GankActivity.newIntent(this, GankFragment.TYPE_WELFARE);
+            startActivity(intent);
+        } else if (id == R.id.nav_app) {
+            Intent intent = GankActivity.newIntent(this, GankFragment.TYPE_APP);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

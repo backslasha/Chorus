@@ -10,7 +10,6 @@ import android.support.v7.widget.AppCompatSeekBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,8 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yhb.chorus.R;
-import yhb.chorus.common.SimpleAdapter;
-import yhb.chorus.common.SimpleHolder;
+import yhb.chorus.common.adapter.SimpleAdapter;
+import yhb.chorus.common.adapter.base.SimpleHolder;
 import yhb.chorus.entity.MP3;
 import yhb.chorus.service.PlayCenter;
 
@@ -107,7 +106,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
         mMP3SimpleAdapter = new SimpleAdapter<MP3>(getActivity(), R.layout.item_mp3_editable) {
 
             @Override
-            public void forEachHolder(SimpleHolder holder, final MP3 mp3) {
+            public void convert(SimpleHolder holder, final MP3 mp3) {
 
 
                 final CheckBox checkBox = holder.getView(R.id.check_box);
@@ -179,7 +178,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
                     mButtonBarTop.setVisibility(View.GONE);
                 }
                 mEditable = on;
-                mMP3SimpleAdapter.performDataChanged(null);
+                mMP3SimpleAdapter.performDataSetChanged(null);
                 mSelectedMP3s.clear();
             }
         });
@@ -194,7 +193,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
             mButtonSelectAll.setText("全选");
         }
         mToolbar.setTitle("选中 " + mSelectedMP3s.size() + " 条");
-        mMP3SimpleAdapter.performDataChanged(null);
+        mMP3SimpleAdapter.performDataSetChanged(null);
     }
 
     @Override
@@ -260,7 +259,7 @@ public class ListFragment extends Fragment implements ListContract.View, View.On
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mMP3SimpleAdapter.performDataChanged(mp3s);
+                mMP3SimpleAdapter.performDataSetChanged(mp3s);
             }
         });
     }
