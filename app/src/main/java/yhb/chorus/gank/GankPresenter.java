@@ -36,7 +36,7 @@ class GankPresenter implements GankContract.Presenter {
 
     private void loadPageAsync(int page) {
         OkHttpUtils.doRequest(
-                getUrl(mView.getType(), 30, page),
+                getUrl(mView.getType(), 20, page),
                 GankResponse.class,
                 new OkHttpUtils.HttpResponseListener<GankResponse>() {
 

@@ -3,8 +3,9 @@
     package="yhb.chorus">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".app.ChorusApplication"
@@ -30,6 +31,7 @@
         <activity
             android:name=".gank.GankActivity"
             android:parentActivityName=".main.MainActivity" />
+        <activity android:name=".record.RecordActivity" />
 
         <service
             android:name=".service.MainService"

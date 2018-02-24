@@ -28,7 +28,12 @@ import java.util.Date;
 import yhb.chorus.R;
 import yhb.chorus.gank.GankActivity;
 import yhb.chorus.gank.GankFragment;
+import yhb.chorus.record.RecordActivity;
 import yhb.chorus.utils.ActivityUtils;
+
+import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -75,13 +80,16 @@ public class MainActivity extends AppCompatActivity
 
         mPresenter = new MainPresenter(this, mainFragment);
 
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-
+        int checkStorage = ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE);
+        int checkAudio = ContextCompat.checkSelfPermission(this, RECORD_AUDIO);
+        if (PERMISSION_GRANTED != checkStorage || PERMISSION_GRANTED != checkAudio) {
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    502);
+                    new String[]{
+                            WRITE_EXTERNAL_STORAGE,
+                            RECORD_AUDIO
+                    },
+                    502
+            );
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -122,7 +130,7 @@ public class MainActivity extends AppCompatActivity
         switch (requestCode) {
             case 502: {
                 if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        && grantResults[0] == PERMISSION_GRANTED) {
                 } else {
                     Toast.makeText(this, "permission denied!", Toast.LENGTH_SHORT).show();
 
@@ -141,13 +149,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_all) {
             Intent intent = GankActivity.newIntent(this, GankFragment.TYPE_ALL);
             startActivity(intent);
@@ -164,9 +169,12 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_micro) {
+            Intent intent = RecordActivity.newIntent(this);
+            startActivity(intent);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

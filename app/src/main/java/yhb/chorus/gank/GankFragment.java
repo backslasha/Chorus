@@ -1,5 +1,7 @@
 package yhb.chorus.gank;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -117,8 +119,9 @@ public class GankFragment extends Fragment implements GankContract.View, View.On
                     imageView.setVisibility(View.VISIBLE);
                     Picasso.with(getActivity())
                             .load(ganHuo.getUrl())
-                            .placeholder(R.mipmap.ic_launcher)
-                            .error(R.drawable.ic_delete)
+                            .placeholder(new ColorDrawable(Color.WHITE))
+                            .error(new ColorDrawable(Color.DKGRAY))
+                            .centerInside()
                             .fit()
                             .into(imageView);
                 } else {

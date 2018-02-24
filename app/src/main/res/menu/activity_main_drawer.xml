@@ -24,6 +24,14 @@
         </menu>
     </item>
 
+    <item android:title="工具">
+        <menu>
+            <item
+                android:id="@+id/nav_micro"
+                android:icon="@drawable/ic_menu_send"
+                android:title="麦克风" />
+        </menu>
+    </item>
     <item android:title="分享">
         <menu>
             <item

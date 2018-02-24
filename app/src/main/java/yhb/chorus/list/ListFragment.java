@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSeekBar;
@@ -39,7 +40,7 @@ import yhb.chorus.service.PlayCenter;
 public class ListFragment extends Fragment implements ListContract.View, View.OnClickListener {
 
     private ListContract.Presenter mPresenter;
-    private AppCompatSeekBar mSeekBar;
+    private ContentLoadingProgressBar mSeekBar;
     private SimpleAdapter<MP3> mMP3SimpleAdapter;
     private Button mButtonSelectAll, mButtonDelete, mButtonAddToQueue;
     private ImageButton mImageButtonCancel;
