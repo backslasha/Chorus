@@ -1,1 +1,1 @@
-a local music player, created for independant volume which could turn up/down all alone, then i can put on my headset, recite english words and listening to lower volume background musics at the same time.
+一个本地音乐播放器，允许独立调整音量，而不会影响到系统的音量。
