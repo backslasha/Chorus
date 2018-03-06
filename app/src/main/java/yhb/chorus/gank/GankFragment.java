@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.net.CookieStore;
 import java.util.List;
 
 import yhb.chorus.R;
