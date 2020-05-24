@@ -5,14 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -417,7 +417,7 @@ public class MainFragment extends Fragment implements MainContract.View, View.On
 
         // 曲线救国设置 peekHeight（出现时的高度）
         int maxHeight = ActivityUtils.getScreenHeight(getActivity()) * 3 / 5;
-        View view = bottomSheetDialog.getWindow().findViewById(android.support.design.R.id.design_bottom_sheet);
+        View view = bottomSheetDialog.getWindow().findViewById(com.google.android.material.R.id.design_bottom_sheet);
         BottomSheetBehavior.from(view).setPeekHeight(maxHeight);
 
         bottomSheetDialog.show();

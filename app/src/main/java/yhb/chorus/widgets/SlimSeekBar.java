@@ -11,7 +11,7 @@ import android.util.TypedValue;
 import yhb.chorus.R;
 
 
-public class SlimSeekBar extends android.support.v7.widget.AppCompatSeekBar {
+public class SlimSeekBar extends androidx.appcompat.widget.AppCompatSeekBar {
     private static final int DEFAULT_THUMB_COLOR = 0xff000000;
     private static final int DEFAULT_SEEK_BAR_HEIGHT = 5;//dp
     private static final int DEFAULT_REACH_COLOR = 0xffffffff;

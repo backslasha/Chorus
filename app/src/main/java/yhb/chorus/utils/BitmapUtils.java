@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
-import android.support.v4.util.LruCache;
+import androidx.collection.LruCache;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
