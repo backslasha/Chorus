@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:title="@string/alarm_page_title"
+        app:titleTextColor="@color/colorAccent" />
+
+    <RelativeLayout
+        android:id="@+id/rl_alarm_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="@dimen/common_page_padding"
+        android:paddingEnd="@dimen/common_page_padding">
+
+        <TextView
+            android:id="@+id/tv_alarm_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toStartOf="@id/switch_alarm_status"
+            android:textColor="@color/main_content_text_color"
+            android:textSize="32sp"
+            tools:text="08:25" />
+
+        <Switch
+            android:id="@+id/switch_alarm_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_alarm_time"
+            android:layout_alignBottom="@id/tv_alarm_time"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/include_common_divider" />
+
+    <FrameLayout
+        android:id="@+id/fl_alarm_song"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="@dimen/common_page_padding"
+        android:paddingTop="@dimen/common_page_padding_small"
+        android:paddingEnd="@dimen/common_page_padding"
+        android:paddingBottom="@dimen/common_page_padding_small">
+
+        <TextView
+            android:id="@+id/tv_alarm_song_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_margin="4dp"
+            android:text="@string/alarm_song_title"
+            android:textColor="@color/main_content_text_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_alarm_song_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:textColor="@color/vice_content_text_color"
+            android:textSize="13sp"
+            tools:text="随机播放本地音乐" />
+
+    </FrameLayout>
+
+    <include layout="@layout/include_common_divider" />
+
+    <FrameLayout
+        android:id="@+id/fl_alarm_repeat_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="@dimen/common_page_padding"
+        android:paddingTop="@dimen/common_page_padding_small"
+        android:paddingEnd="@dimen/common_page_padding"
+        android:paddingBottom="@dimen/common_page_padding_small">
+
+        <TextView
+            android:id="@+id/tv_alarm_repeat_mode_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_margin="4dp"
+            android:text="@string/alarm_repeat_mode_title"
+            android:textColor="@color/main_content_text_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_alarm_repeat_mode_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:textColor="@color/vice_content_text_color"
+            android:textSize="13sp"
+            tools:text="每天" />
+
+    </FrameLayout>
+
+    <include layout="@layout/include_common_divider" />
+
+</LinearLayout>

@@ -20,7 +20,7 @@ import yhb.chorus.service.PlayCenter;
  * Created by yhb on 18-1-17.
  */
 
-class MainPresenter implements MainContract.Presenter {
+public class MainPresenter implements MainContract.Presenter {
     private final ContentObserver mSettingsContentObserver;
     private Context mContext;
     private MainContract.View mView;
@@ -29,7 +29,7 @@ class MainPresenter implements MainContract.Presenter {
     private int mVolumeSystem = -1, mVolumeSystemMax = -1;
 
 
-    MainPresenter(Context context, MainContract.View view) {
+    public MainPresenter(Context context, MainContract.View view) {
         mContext = context;
         mView = view;
         mView.setPresenter(this);

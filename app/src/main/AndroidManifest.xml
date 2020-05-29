@@ -34,6 +34,9 @@
             android:name=".gank.GankActivity"
             android:parentActivityName=".main.MainActivity" />
         <activity android:name=".record.RecordActivity" />
+        <activity android:name=".alarm.AlarmConfigActivity" android:parentActivityName=".main.MainActivity"/>
+        <activity android:name=".alarm.ChooseSongActivity" />
+        <activity android:name=".alarm.AlarmActivity" />
 
         <service
             android:name=".service.MainService"

@@ -13,7 +13,7 @@ import java.util.List;
 import yhb.chorus.entity.LirBean;
 
 
-public class LirView extends TextView {
+public class LirView extends androidx.appcompat.widget.AppCompatTextView {
     public int getTime() {
         return time;
     }

@@ -32,5 +32,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="alarm_song_title">铃声</string>
+    <string name="alarm_repeat_mode_title">重复</string>
+    <string name="alarm_page_title">音乐闹钟</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="choose_song_page_title">选择铃声</string>
 
 </resources>

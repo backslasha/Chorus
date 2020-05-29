@@ -18,6 +18,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import yhb.chorus.R
+import yhb.chorus.alarm.AlarmConfigActivity
 import yhb.chorus.gank.GankActivity
 import yhb.chorus.gank.GankFragment
 import yhb.chorus.record.RecordActivity
@@ -134,6 +135,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_share -> {
             }
             R.id.nav_send -> {
+                AlarmConfigActivity.startActivity(this)
             }
             R.id.nav_micro -> {
                 val intent = RecordActivity.newIntent(this)
