@@ -1,5 +1,6 @@
 package yhb.chorus.main
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
@@ -18,6 +19,7 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import yhb.chorus.R
+import yhb.chorus.alarm.AlarmConfigActivity
 import yhb.chorus.common.adapter.SimpleAdapter
 import yhb.chorus.common.adapter.base.SimpleHolder
 import yhb.chorus.databinding.FragmentMainBinding
@@ -172,6 +174,9 @@ class MainFragment : Fragment(), MainContract.View, View.OnClickListener {
             R.id.sort_out -> {
                 val intent = ListActivity.newIntent(activity)
                 startActivity(intent)
+            }
+            R.id.muic_alarm -> {
+                AlarmConfigActivity.startActivity(activity as Context)
             }
             else -> {
             }

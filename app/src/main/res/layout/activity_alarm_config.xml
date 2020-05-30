@@ -31,10 +31,27 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_toStartOf="@id/switch_alarm_status"
+            android:layout_toStartOf="@id/tv_alarm_time_countdown"
             android:textColor="@color/main_content_text_color"
             android:textSize="32sp"
             tools:text="08:25" />
+
+        <TextView
+            android:id="@+id/tv_alarm_time_countdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_alarm_time"
+            android:layout_alignBottom="@id/tv_alarm_time"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toStartOf="@id/switch_alarm_status"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:textColor="@color/vice_content_text_color"
+            android:textSize="16sp"
+            tools:text="08分25秒后响起" />
 
         <Switch
             android:id="@+id/switch_alarm_status"

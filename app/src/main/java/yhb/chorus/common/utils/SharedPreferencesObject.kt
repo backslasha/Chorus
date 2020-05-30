@@ -2,6 +2,7 @@ package yhb.chorus.common.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import java.util.HashSet
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -63,12 +64,12 @@ open class SharedPreferencesObject(context: Context, spName: String) : SpGetterS
             }
         }
 
-        override fun stringSet(defaultValue: Set<String>?) = object : ReadWriteProperty<SharedPreferencesObject, Set<String>?> {
-            override fun getValue(thisRef: SharedPreferencesObject, property: KProperty<*>): Set<String>? {
-                return thisRef.preferences.getStringSet(property.name, defaultValue)
+        override fun stringSet(defaultValue: Set<String>) = object : ReadWriteProperty<SharedPreferencesObject, Set<String>> {
+            override fun getValue(thisRef: SharedPreferencesObject, property: KProperty<*>): Set<String> {
+                return thisRef.preferences.getStringSet(property.name, defaultValue) ?: HashSet()
             }
 
-            override fun setValue(thisRef: SharedPreferencesObject, property: KProperty<*>, value: Set<String>?) {
+            override fun setValue(thisRef: SharedPreferencesObject, property: KProperty<*>, value: Set<String>) {
                 thisRef.preferences.edit().putStringSet(property.name, value).apply()
             }
         }
@@ -81,5 +82,5 @@ interface SpGetterSetter {
     fun boolean(defaultValue: Boolean = false): ReadWriteProperty<SharedPreferencesObject, Boolean>
     fun float(defaultValue: Float = 0.0f): ReadWriteProperty<SharedPreferencesObject, Float>
     fun string(defaultValue: String? = null): ReadWriteProperty<SharedPreferencesObject, String?>
-    fun stringSet(defaultValue: Set<String>? = null): ReadWriteProperty<SharedPreferencesObject, Set<String>?>
+    fun stringSet(defaultValue: Set<String> = HashSet()): ReadWriteProperty<SharedPreferencesObject, Set<String>>
 }

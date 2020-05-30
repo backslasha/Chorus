@@ -3,4 +3,7 @@
     <item
         android:id="@+id/sort_out"
         android:title="整理歌曲" />
+    <item
+        android:id="@+id/muic_alarm"
+        android:title="音乐闹钟" />
 </menu>

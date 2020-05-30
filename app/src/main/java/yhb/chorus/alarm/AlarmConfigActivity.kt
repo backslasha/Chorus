@@ -7,7 +7,9 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.os.CountDownTimer
+import android.text.format.DateUtils
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,12 +19,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import org.json.JSONException
 import yhb.chorus.R
-import yhb.chorus.alarm.AlarmConstants.WEEK_DAYS
 import yhb.chorus.common.utils.TimeDescHelper
+import yhb.chorus.common.utils.TimeDescHelper.WEEK_DAYS
 import yhb.chorus.common.utils.toast
 import yhb.chorus.databinding.ActivityAlarmConfigBinding
 import yhb.chorus.entity.MP3
-import yhb.chorus.main.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,20 +52,30 @@ class AlarmConfigActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("yaohaibiao","ondestory")
-    }
-
     private fun bindViewModel(viewModel: AlarmConfigViewModel) {
         viewModel.alarmTime().observe(this, androidx.lifecycle.Observer {
             binding.tvAlarmTime.text = SimpleDateFormat("hh:mm", Locale.CHINA).format(calendar(it).time)
+            viewModel.cancelCountdownTimer()
+            viewModel.startCountdownTimer()
+        })
+        viewModel.alarmCountDownTime().observe(this, androidx.lifecycle.Observer {
+            binding.tvAlarmTimeCountdown.text = DateUtils.formatElapsedTime(it / 1000)
         })
         viewModel.song().observe(this, androidx.lifecycle.Observer {
-            binding.tvAlarmSongContent.text = it?.title ?: "请选择铃声"
+            binding.tvAlarmSongContent.text = if (it == null) "请选择铃声" else "${it.title} - ${it.artist}"
         })
         viewModel.enable().observe(this, androidx.lifecycle.Observer {
             binding.switchAlarmStatus.isChecked = it
+            viewModel.cancelCountdownTimer()
+            if (!it) {
+                binding.tvAlarmTimeCountdown.visibility = View.GONE
+            } else {
+                binding.tvAlarmTimeCountdown.visibility = View.VISIBLE
+                viewModel.startCountdownTimer()
+            }
+        })
+        viewModel.repeatDays().observe(this, androidx.lifecycle.Observer { repeatDays ->
+            binding.tvAlarmRepeatModeContent.text = TimeDescHelper.weekDesc(repeatDays)
         })
     }
 
@@ -92,6 +103,7 @@ class AlarmConfigActivity : AppCompatActivity() {
             val calendar = calendar(viewModel.alarmTime().value ?: System.currentTimeMillis())
             TimePickerDialog(this,
                     TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
+                        calendar.time = Date(System.currentTimeMillis())
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
                         calendar.set(Calendar.MINUTE, minute)
                         viewModel.updateAlarmTime(calendar.timeInMillis)
@@ -107,21 +119,26 @@ class AlarmConfigActivity : AppCompatActivity() {
         }
         binding.switchAlarmStatus.setOnClickListener {
             val enabled = binding.switchAlarmStatus.isChecked
+            val mp3 = viewModel.song().value
+            if (mp3 == null) {
+                binding.switchAlarmStatus.isChecked = false
+                "请选择铃声!".toast(this)
+                return@setOnClickListener
+            }
             viewModel.updateAlarmEnable(enabled)
             val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             if (enabled) {
                 val alarmTime = System.currentTimeMillis() + 5000
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTime, playMusicIntent())
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTime, playMusicIntent(mp3))
                 "闹钟将在 ${TimeDescHelper.desc(alarmTime)} 响起.".toast(this@AlarmConfigActivity)
             } else {
-                alarmManager.cancel(playMusicIntent())
+                alarmManager.cancel(playMusicIntent(mp3))
                 "闹钟已经取消.".toast(this@AlarmConfigActivity)
             }
         }
     }
 
-    private fun playMusicIntent(): PendingIntent {
-        val mp3 = viewModel.song().value!!
+    private fun playMusicIntent(mp3: MP3): PendingIntent {
         return PendingIntent.getActivity(this,
                 AlarmConstants.REQUEST_CODE_AUTO_PLAY,
                 AlarmActivity.newIntent(this, mp3),
@@ -158,11 +175,15 @@ class AlarmConfigViewModel : ViewModel() {
             null
         } // init with sp value
     }
+    private val alarmCountDownTimeLiveData = MutableLiveData<Long>()
+
+    private var countDownTimer: CountDownTimer? = null
 
     fun alarmTime(): LiveData<Long> = alarmTimeLiveData
     fun repeatDays(): LiveData<Set<String>> = repeatDaysLiveData
     fun song(): LiveData<MP3> = songLiveData
     fun enable(): LiveData<Boolean> = alarmEnableLiveData
+    fun alarmCountDownTime(): LiveData<Long> = alarmCountDownTimeLiveData
 
     fun updateAlarmTime(timeInMillis: Long) {
         AlarmSpObject.alarmTime = timeInMillis
@@ -176,6 +197,27 @@ class AlarmConfigViewModel : ViewModel() {
         }
     }
 
+    fun cancelCountdownTimer() {
+        val timer = countDownTimer
+        timer ?: return
+        timer.cancel()
+        countDownTimer = null
+    }
+
+    fun startCountdownTimer() {
+        val triggerTime = alarmTime().value ?: return
+        val millisInFuture = triggerTime - System.currentTimeMillis()
+        countDownTimer = object : CountDownTimer(millisInFuture, 1000) {
+            override fun onFinish() {
+
+            }
+
+            override fun onTick(millisUntilFinished: Long) {
+                alarmCountDownTimeLiveData.value = millisUntilFinished
+            }
+        }.start()
+    }
+
     fun updateAlarmRepeatDays(repeatDays: Set<String>) {
         repeatDaysLiveData.value = repeatDays
         AlarmSpObject.repeatDays = repeatDays
@@ -187,12 +229,15 @@ class AlarmConfigViewModel : ViewModel() {
         songLiveData.value = mp3
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        cancelCountdownTimer()
+    }
+
 }
 
 object AlarmConstants {
-    const val EXTRA_AUTO_PLAY_CHOSEN: String = "extra_auto_play_chosen"
     const val REQUEST_CODE_AUTO_PLAY: Int = 1
     const val REQUEST_CODE_CHOOSE_SONG: Int = 0
     const val KEY_SONG_CHOSEN: String = "key_song_chosen"
-    val WEEK_DAYS = arrayOf("周一", "周二", "周三", "周四", "周五", "周六", "周日")
 }

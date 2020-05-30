@@ -17,9 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".main.MainActivity"
-            android:launchMode="singleTask">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,14 +25,10 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".list.ListActivity"
-            android:parentActivityName=".main.MainActivity" />
-        <activity
-            android:name=".gank.GankActivity"
-            android:parentActivityName=".main.MainActivity" />
+        <activity android:name=".list.ListActivity" />
+        <activity android:name=".gank.GankActivity"/>
         <activity android:name=".record.RecordActivity" />
-        <activity android:name=".alarm.AlarmConfigActivity" android:parentActivityName=".main.MainActivity"/>
+        <activity android:name=".alarm.AlarmConfigActivity" />
         <activity android:name=".alarm.ChooseSongActivity" />
         <activity android:name=".alarm.AlarmActivity" />
 
