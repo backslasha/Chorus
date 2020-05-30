@@ -39,7 +39,7 @@
         <activity android:name=".alarm.AlarmActivity" />
 
         <service
-            android:name=".service.MainService"
+            android:name=".service.PlayerService"
             android:process=":play" />
 
     </application>

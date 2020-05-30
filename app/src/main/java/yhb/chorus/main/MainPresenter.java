@@ -21,11 +21,12 @@ import yhb.chorus.service.PlayCenter;
  */
 
 public class MainPresenter implements MainContract.Presenter {
+
     private final ContentObserver mSettingsContentObserver;
     private Context mContext;
     private MainContract.View mView;
     private PlayCenter mPlayCenter;
-    private AudioManager mAudioManager = null;
+    private AudioManager mAudioManager;
     private int mVolumeSystem = -1, mVolumeSystemMax = -1;
 
 
@@ -52,7 +53,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void start() {
-        if (mPlayCenter.getMP3s() == null || mPlayCenter.getMP3s().size() == 0) {
+        if (mPlayCenter.getMP3s().size() == 0) {
             loadMP3sFromDBAsync(mPlayCenter);
             loadQueueMP3sFromDBAsync(mPlayCenter);
         }
