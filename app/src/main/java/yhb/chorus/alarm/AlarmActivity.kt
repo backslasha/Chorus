@@ -5,6 +5,11 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import yhb.chorus.alarm.AlarmTimeUtils.getNearestAlarmTimeFromRepeatDays
+import yhb.chorus.common.utils.TimeDescHelper
 import yhb.chorus.common.utils.toast
 import yhb.chorus.databinding.ActivityAlarmBinding
 import yhb.chorus.entity.MP3
@@ -28,11 +33,17 @@ class AlarmActivity : AppCompatActivity() {
     private lateinit var mp3: MP3
     private lateinit var binding: ActivityAlarmBinding
     private lateinit var mainPresenter: MainPresenter
+    private lateinit var viewModel: AlarmViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAlarmBinding.inflate(layoutInflater)
+        viewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
+        viewModel.alarmConfigUpdated.observe(this, androidx.lifecycle.Observer {
+            "下个闹钟将在${TimeDescHelper.desc(it)}响起.".toast(this)
+        })
         mp3 = intent.getBundleExtra(EXTRA_MP3).getParcelable(EXTRA_MP3) ?: return
+        viewModel.updateAlarmConfig()
         mainPresenter = MainPresenter(this, object : MainContract.View {
             override fun getCoverSize(): Int {
                 return 0
@@ -66,6 +77,21 @@ class AlarmActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        mainPresenter.playOrPause()
+        "闹钟取消.".toast(this)
+    }
+}
 
+class AlarmViewModel : ViewModel() {
+    val alarmConfigUpdated = MutableLiveData<Long>()
+    fun updateAlarmConfig() {
+        val repeatDays: Set<String> = AlarmSpObject.repeatDays
+        val nextAlarmTime = getNearestAlarmTimeFromRepeatDays(repeatDays, AlarmSpObject.alarmTime)
+        if (nextAlarmTime == 0L) { // 闹钟不重复
+            AlarmSpObject.enable = false
+            return
+        }
+        AlarmSpObject.alarmTime = nextAlarmTime
+        alarmConfigUpdated.value = nextAlarmTime
     }
 }

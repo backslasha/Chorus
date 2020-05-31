@@ -54,12 +54,12 @@ open class SharedPreferencesObject(context: Context, spName: String) : SpGetterS
             }
         }
 
-        override fun string(defaultValue: String?) = object : ReadWriteProperty<SharedPreferencesObject, String?> {
-            override fun getValue(thisRef: SharedPreferencesObject, property: KProperty<*>): String? {
-                return thisRef.preferences.getString(property.name, defaultValue)
+        override fun string(defaultValue: String) = object : ReadWriteProperty<SharedPreferencesObject, String> {
+            override fun getValue(thisRef: SharedPreferencesObject, property: KProperty<*>): String {
+                return thisRef.preferences.getString(property.name, defaultValue) ?: defaultValue
             }
 
-            override fun setValue(thisRef: SharedPreferencesObject, property: KProperty<*>, value: String?) {
+            override fun setValue(thisRef: SharedPreferencesObject, property: KProperty<*>, value: String) {
                 thisRef.preferences.edit().putString(property.name, value).apply()
             }
         }
@@ -81,6 +81,6 @@ interface SpGetterSetter {
     fun long(defaultValue: Long = 0L): ReadWriteProperty<SharedPreferencesObject, Long>
     fun boolean(defaultValue: Boolean = false): ReadWriteProperty<SharedPreferencesObject, Boolean>
     fun float(defaultValue: Float = 0.0f): ReadWriteProperty<SharedPreferencesObject, Float>
-    fun string(defaultValue: String? = null): ReadWriteProperty<SharedPreferencesObject, String?>
+    fun string(defaultValue: String = ""): ReadWriteProperty<SharedPreferencesObject, String>
     fun stringSet(defaultValue: Set<String> = HashSet()): ReadWriteProperty<SharedPreferencesObject, Set<String>>
 }
