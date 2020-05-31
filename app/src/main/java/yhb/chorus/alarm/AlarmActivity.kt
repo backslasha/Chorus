@@ -106,6 +106,7 @@ class AlarmActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         mainPresenter.playOrPause()
+        handler.removeCallbacks(volumeIncreaseTask)
         "闹钟取消.".toast(this)
     }
 }

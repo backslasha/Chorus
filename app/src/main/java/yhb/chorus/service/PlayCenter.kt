@@ -8,6 +8,8 @@ import android.graphics.Bitmap
 import android.os.IBinder
 import android.os.RemoteException
 import android.util.Log
+import com.google.gson.Gson
+import org.json.JSONException
 import yhb.chorus.ICallback
 import yhb.chorus.IPlayer
 import yhb.chorus.app.ChorusApplication
@@ -33,15 +35,30 @@ object PlayCenter {
 
     val MP3s = ArrayList<MP3>()
 
-    var currentMP3: MP3? = null
-        private set
+    var currentMP3: MP3? = {
+        val mp3Json = PlayConfigSpObject.mp3Json
+        try {
+            Gson().fromJson(mp3Json, MP3::class.java)
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            null
+        }
+    }()
+        private set(mp3) {
+            try {
+                field = mp3
+                PlayConfigSpObject.mp3Json = Gson().toJson(mp3)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
 
     private var player: IPlayer? = null
 
     private var candidateNextMP3: MP3? = null
     private var candidatePreviousMP3: MP3? = null
-    private val mExecutorService: ExecutorService
-    private var mNewCurrent = false
+    private val executorService: ExecutorService
+    private var newCurrent = false
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             try {
@@ -49,12 +66,12 @@ object PlayCenter {
                 player?.registerCallback(object : ICallback.Stub() {
                     @Throws(RemoteException::class)
                     override fun onComplete() {
-                        next(false)
+                        playOrPause()
                     }
 
                     @Throws(RemoteException::class)
                     override fun onNewCurrent() {
-                        mNewCurrent = true
+                        newCurrent = true
                     }
 
                     override fun onNewRemoteIntent(action: String) {
@@ -84,15 +101,26 @@ object PlayCenter {
         }
     }
 
-    init {
-        Log.d(MainActivity.TAG, "PlayCenter: created!")
-        mExecutorService = Executors.newCachedThreadPool()
-    }
-
     var playMode = MODE_LIST_LOOP
         private set
 
-    private var mVolumeIndependent = MAX_INDEPENDENT_VOLUME
+    var volumeIndependent = PlayConfigSpObject.independentVolume
+        set(volume) {
+            try {
+                field = volume
+                PlayConfigSpObject.independentVolume = volume
+                player?.setVolume(volumeIndependent.toFloat() / MAX_INDEPENDENT_VOLUME.toFloat())
+            } catch (e: RemoteException) {
+                e.printStackTrace()
+            }
+        }
+
+    init {
+        Log.d(MainActivity.TAG, "PlayCenter: created!")
+        executorService = Executors.newCachedThreadPool()
+        playMode = PlayConfigSpObject.playMode
+    }
+
     private val appContext: Context = ChorusApplication.getsApplicationContext()
 
 
@@ -128,7 +156,8 @@ object PlayCenter {
     }
 
     private fun newCurrentAsync(mp3: MP3?) {
-        mExecutorService.execute {
+        mp3 ?: return
+        executorService.execute {
             try {
                 player?.newCurrent(mp3)
             } catch (e: RemoteException) {
@@ -169,6 +198,8 @@ object PlayCenter {
             MODE_RANDOM -> MODE_SINGLE_LOOP
             MODE_SINGLE_LOOP -> MODE_LIST_LOOP
             else -> MODE_LIST_LOOP
+        }.also {
+            PlayConfigSpObject.playMode = it
         }
     }
 
@@ -294,17 +325,6 @@ object PlayCenter {
         bitmaps[2] = BitmapUtils.getAlbumart(candidateNextMP3, reqWidth, reqHeight)
         return bitmaps
     }
-
-    var volumeIndependent
-        get() = mVolumeIndependent
-        set(volume) {
-            try {
-                mVolumeIndependent = volume
-                player?.setVolume(mVolumeIndependent.toFloat() / MAX_INDEPENDENT_VOLUME.toFloat())
-            } catch (e: RemoteException) {
-                e.printStackTrace()
-            }
-        }
 
     /**
      * 添加 selectedMP3s 中的曲目到内存中的 queue 中（去掉重复的），

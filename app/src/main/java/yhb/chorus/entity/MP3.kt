@@ -7,7 +7,7 @@ import org.litepal.annotation.Column
 import org.litepal.crud.DataSupport
 
 data class MP3(@Column(unique = true)
-               private var _id: Long = 0,/* 音乐id MediaStore.Audio.Media._ID */
+               var _id: Long = 0,/* 音乐id MediaStore.Audio.Media._ID */
                var title: String? = null,/* 音乐标题 MediaStore.Audio.Media.TITLE */
                var artist: String? = null,/* 艺术家 MediaStore.Audio.Media.ARTIST */
                var duration: Int = 0,/* 时长 MediaStore.Audio.Media.DURATION = 0 */

@@ -79,7 +79,7 @@ class MainPresenter(private val mContext: Context, private val mView: MainContra
     }
 
     override fun reloadCurrentWidgetsData() {
-        val progress = playCenter.volumeIndependent as Int
+        val progress = playCenter.volumeIndependent
         val playMode = playCenter.playMode
         val songName: String?
         val artistName: String?
