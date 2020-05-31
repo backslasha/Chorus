@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import yhb.chorus.R
 import yhb.chorus.alarm.AlarmTimeUtils.getNearestAlarmTime
+import yhb.chorus.common.utils.ExitClearTaskActivity
 import yhb.chorus.common.utils.TimeDescHelper
 import yhb.chorus.common.utils.TimeDescHelper.WeekDayNames
 import yhb.chorus.common.utils.toast
@@ -166,6 +167,7 @@ class AlarmConfigActivity : AppCompatActivity() {
             val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTime, playMusicIntent(mp3))
             "闹钟将在 ${TimeDescHelper.desc(alarmTime)} 响起.".toast(this@AlarmConfigActivity)
+//            ExitClearTaskActivity.finishAndRemoveTask(this)
         }
         return super.onOptionsItemSelected(item)
     }

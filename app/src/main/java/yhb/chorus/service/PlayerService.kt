@@ -1,16 +1,22 @@
 package yhb.chorus.service
 
+import android.app.Notification.VISIBILITY_PUBLIC
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Color
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.IBinder
 import android.os.RemoteException
 import android.util.Log
 import android.widget.RemoteViews
+import androidx.annotation.NonNull
 import androidx.core.app.NotificationCompat
 import yhb.chorus.ICallback
 import yhb.chorus.IPlayer
@@ -20,6 +26,7 @@ import yhb.chorus.main.MainActivity.Companion.newIntent
 import yhb.chorus.utils.BitmapUtils
 import yhb.chorus.utils.DensityUtils
 import java.io.IOException
+
 
 class PlayerService : Service() {
 
@@ -66,7 +73,7 @@ class PlayerService : Service() {
         }
         setupRemoteView(remoteViews, currentMP3)
         setupRemoteView(remoteViewsBig, currentMP3)
-        val notification = NotificationCompat.Builder(this)
+        val notification = getNotificationBuilder()
                 .setSmallIcon(R.drawable.ic_launcher_notification)
                 .setTicker(currentMP3.title)
                 .setContent(remoteViews)
@@ -75,6 +82,44 @@ class PlayerService : Service() {
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .build()
         startForeground(1, notification)
+    }
+
+    @NonNull
+    private fun getNotificationBuilder(): NotificationCompat.Builder {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel("channel_id", "channel_name",
+                    NotificationManager.IMPORTANCE_DEFAULT)
+            //是否绕过请勿打扰模式
+            channel.canBypassDnd()
+            //闪光灯
+            channel.enableLights(true)
+            //锁屏显示通知
+            channel.lockscreenVisibility = VISIBILITY_PUBLIC
+            //闪关灯的灯光颜色
+            channel.lightColor = Color.RED
+            //桌面launcher的消息角标
+            channel.canShowBadge()
+            //是否允许震动
+            channel.enableVibration(true)
+            //获取系统通知响铃声音的配置
+            channel.audioAttributes
+            //获取通知取到组
+            channel.group
+            //设置可绕过  请勿打扰模式
+            channel.setBypassDnd(true)
+            //设置震动模式
+            channel.vibrationPattern = longArrayOf(100, 100, 200)
+            //是否会有灯光
+            channel.shouldShowLights()
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+        val notification = NotificationCompat.Builder(this, "channel_id")
+        notification.setContentTitle("新消息来了")
+        notification.setContentText("周末到了，不用上班了")
+        notification.setSmallIcon(R.mipmap.ic_launcher)
+        notification.setAutoCancel(true)
+        return notification
     }
 
     private fun setupRemoteView(remoteViews: RemoteViews, currentMP3: MP3) {

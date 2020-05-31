@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".app.ChorusApplication"
@@ -26,11 +27,12 @@
         </activity>
 
         <activity android:name=".list.ListActivity" />
-        <activity android:name=".gank.GankActivity"/>
+        <activity android:name=".gank.GankActivity" />
         <activity android:name=".record.RecordActivity" />
         <activity android:name=".alarm.AlarmConfigActivity" />
         <activity android:name=".alarm.ChooseSongActivity" />
         <activity android:name=".alarm.AlarmActivity" />
+        <activity android:name=".common.utils.ExitClearTaskActivity" />
 
         <service
             android:name=".service.PlayerService"
