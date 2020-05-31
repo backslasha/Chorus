@@ -13,6 +13,7 @@ import yhb.chorus.IPlayer
 import yhb.chorus.app.ChorusApplication
 import yhb.chorus.entity.MP3
 import yhb.chorus.main.MainActivity
+import yhb.chorus.main.MainPresenter.Companion.MAX_INDEPENDENT_VOLUME
 import yhb.chorus.utils.BitmapUtils
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -91,7 +92,7 @@ object PlayCenter {
     var playMode = MODE_LIST_LOOP
         private set
 
-    private var mVolumeIndependent = 1f
+    private var mVolumeIndependent = MAX_INDEPENDENT_VOLUME
     private val appContext: Context = ChorusApplication.getsApplicationContext()
 
 
@@ -294,12 +295,12 @@ object PlayCenter {
         return bitmaps
     }
 
-    var volumeIndependent: Float
+    var volumeIndependent
         get() = mVolumeIndependent
         set(volume) {
             try {
-                player?.setVolume(volume)
                 mVolumeIndependent = volume
+                player?.setVolume(mVolumeIndependent.toFloat() / MAX_INDEPENDENT_VOLUME.toFloat())
             } catch (e: RemoteException) {
                 e.printStackTrace()
             }

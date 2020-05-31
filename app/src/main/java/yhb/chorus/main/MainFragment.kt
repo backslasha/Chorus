@@ -95,13 +95,12 @@ class MainFragment : Fragment(), MainContract.View, View.OnClickListener {
                 }
             }
         })
-        binding.slimSeekBarVolume.max = 10
+        binding.slimSeekBarVolume.max = mainPresenter.maxVolume
         binding.slimSeekBarVolume.progress = 0
         binding.slimSeekBarVolume.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    val volume = progress.toFloat() / seekBar.max.toFloat()
-                    mainPresenter.setVolume(volume)
+                    mainPresenter.setVolume(progress)
                 }
             }
 

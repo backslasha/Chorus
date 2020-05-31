@@ -16,7 +16,7 @@ object TimeDescHelper {
             Calendar.SATURDAY to "周六"
     )
 
-    private const val SECONDS_OF_MINUTE = 60
+    const val SECONDS_OF_MINUTE = 60
     private const val SECONDS_OF_HOUR = SECONDS_OF_MINUTE * 60
     const val SECONDS_OF_DAY = SECONDS_OF_HOUR * 24L
     private val simpleDateFormat = SimpleDateFormat("MM-dd HH:mm", Locale.CHINA)

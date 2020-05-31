@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,6 +23,7 @@ class AlarmActivity : AppCompatActivity() {
 
     companion object {
         private const val EXTRA_MP3 = "alarm_activity_extra_mp3"
+        private const val TAG = "AlarmActivity"
 
         fun newIntent(context: Context, mp3: MP3): Intent {
             return Intent(context, AlarmActivity::class.java).apply {
@@ -34,6 +38,29 @@ class AlarmActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlarmBinding
     private lateinit var mainPresenter: MainPresenter
     private lateinit var viewModel: AlarmViewModel
+    private val handler = Handler(Looper.getMainLooper())
+
+    private val volumeIncreaseTask = object : Runnable {
+        override fun run() {
+            mainPresenter.maxVolumeSystem
+            mainPresenter.currentVolumeSystem
+            when {
+                mainPresenter.currentVolumeSystem < mainPresenter.maxVolumeSystem -> {
+                    mainPresenter.setVolumeSystem(mainPresenter.currentVolumeSystem + (mainPresenter.maxVolumeSystem * 0.1f).toInt())
+                    handler.postDelayed(this, TimeDescHelper.SECONDS_OF_MINUTE * 1000L)
+                    "系统音量增加10%.".toast(this@AlarmActivity)
+                }
+                mainPresenter.currentVolume < mainPresenter.maxVolume -> {
+                    mainPresenter.setVolume(mainPresenter.currentVolume + (mainPresenter.maxVolume * 0.1f).toInt())
+                    handler.postDelayed(this, TimeDescHelper.SECONDS_OF_MINUTE * 1000L)
+                    "独立音量增加10%.".toast(this@AlarmActivity)
+                }
+                else -> {
+                    Log.i(TAG, "volume has reached top.")
+                }
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +69,7 @@ class AlarmActivity : AppCompatActivity() {
         viewModel.alarmConfigUpdated.observe(this, androidx.lifecycle.Observer {
             "下个闹钟将在${TimeDescHelper.desc(it)}响起.".toast(this)
         })
-        mp3 = intent.getBundleExtra(EXTRA_MP3).getParcelable(EXTRA_MP3) ?: return
+        mp3 = intent?.getBundleExtra(EXTRA_MP3)?.getParcelable(EXTRA_MP3) ?: return
         viewModel.updateAlarmConfig()
         mainPresenter = MainPresenter(this, object : MainContract.View {
             override fun getCoverSize(): Int {
@@ -72,6 +99,7 @@ class AlarmActivity : AppCompatActivity() {
         })
         mainPresenter.point(mp3)
         binding.tvMp3Name.text = mp3.title
+        handler.postDelayed(volumeIncreaseTask, TimeDescHelper.SECONDS_OF_MINUTE * 1000L)
         "闹钟响起!".toast(this)
     }
 

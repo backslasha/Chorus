@@ -63,7 +63,7 @@ public class DBUtils {
         values.put(MP3Table.Cols.ALBUM_ID, mp3.getAlbumId());
         values.put(MP3Table.Cols.ARTIST, mp3.getArtist());
         values.put(MP3Table.Cols.DURATION, mp3.getDuration());
-        values.put(MP3Table.Cols.IS_MUSIC, mp3.getIsMusic());
+        values.put(MP3Table.Cols.IS_MUSIC, mp3.isMusic());
         values.put(MP3Table.Cols.URI, mp3.getUri());
         values.put(MP3Table.Cols.SIZE, mp3.getSize());
         return values;

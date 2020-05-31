@@ -34,7 +34,11 @@ public interface MainContract {
 
         void loadMP3sFromDBAsync(PlayCenter playCenter);
 
-        void setVolume(float volume);
+        void setVolume(int volume);
+
+        int getMaxVolume();
+
+        int getCurrentVolume();
 
         void next();
 
