@@ -46,7 +46,7 @@ class AlarmActivity : AppCompatActivity() {
             mainPresenter.currentVolumeSystem
             when {
                 mainPresenter.currentVolumeSystem < mainPresenter.maxVolumeSystem -> {
-                    mainPresenter.setVolumeSystem(mainPresenter.currentVolumeSystem + (mainPresenter.maxVolumeSystem * 0.05f).toInt())
+                    mainPresenter.setVolumeSystem(mainPresenter.currentVolumeSystem + (mainPresenter.maxVolumeSystem * 0.1f).toInt())
                     handler.postDelayed(this, TimeDescHelper.SECONDS_OF_MINUTE * 1000L)
                     "系统音量增加10%.".toast(this@AlarmActivity)
                 }

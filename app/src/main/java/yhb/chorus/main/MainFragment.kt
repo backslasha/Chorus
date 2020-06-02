@@ -25,9 +25,11 @@ import yhb.chorus.common.adapter.base.SimpleHolder
 import yhb.chorus.databinding.FragmentMainBinding
 import yhb.chorus.entity.MP3
 import yhb.chorus.list.ListActivity
+import yhb.chorus.service.PlayCenter
 import yhb.chorus.service.PlayCenter.MODE_LIST_LOOP
 import yhb.chorus.service.PlayCenter.MODE_RANDOM
 import yhb.chorus.service.PlayCenter.MODE_SINGLE_LOOP
+import yhb.chorus.service.PlayCenter.loadCovers
 import yhb.chorus.utils.ActivityUtils
 
 /**
@@ -262,6 +264,9 @@ class MainFragment : Fragment(), MainContract.View, View.OnClickListener {
             binding.imageButtonPlayOrPause.setImageResource(R.drawable.ic_pause_circle_outline)
         } else {
             binding.imageButtonPlayOrPause.setImageResource(R.drawable.ic_play_circle_outline)
+        }
+        if (PlayCenter.newCurrent) {
+            mainPresenter.loadCoversAsync()
         }
     }
 

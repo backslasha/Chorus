@@ -53,12 +53,22 @@ object PlayCenter {
             }
         }
 
+    var newCurrent = false
+        private set
+        get() {
+            val value = field
+            if (field) {
+                field = false
+            }
+            return value
+        }
+
     private var player: IPlayer? = null
 
     private var candidateNextMP3: MP3? = null
     private var candidatePreviousMP3: MP3? = null
     private val executorService: ExecutorService
-    private var newCurrent = false
+
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             try {
@@ -66,7 +76,7 @@ object PlayCenter {
                 player?.registerCallback(object : ICallback.Stub() {
                     @Throws(RemoteException::class)
                     override fun onComplete() {
-                        playOrPause()
+                        next(false)
                     }
 
                     @Throws(RemoteException::class)
@@ -334,12 +344,7 @@ object PlayCenter {
      * @return 成功添加到播放队列的 mp3 条目数
      */
     fun addIntoQueue(selectedMP3s: ArrayList<MP3>): Int {
-        for (selectedMP3 in selectedMP3s) {
-            if (queueMP3s.contains(selectedMP3)) {
-                selectedMP3s.remove(selectedMP3)
-            }
-        }
-        queueMP3s.addAll(selectedMP3s)
+        queueMP3s.addAll(selectedMP3s.filter { !queueMP3s.contains(it) })
         return selectedMP3s.size
     }
 
